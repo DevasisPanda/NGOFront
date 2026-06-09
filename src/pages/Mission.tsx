@@ -24,17 +24,17 @@ const Mission: React.FC = () => {
 
   return (
     <div className="page-section fade-in-section" id="mission">
+      <section className="bg-[#00123a] text-white py-16 mb-12">
+        <div className="container-main text-center">
+          <h1 className="text-[#ed8901] mb-4 text-4xl md:text-6xl font-bold">Mission/Vision</h1>
+          <p className="opacity-90 max-w-2xl mx-auto text-xl">Glimpses of our mission in action, showcasing our impact and the communities we serve.</p>
+        </div>
+      </section>
       <div className="container-main">
-        <section className="bg-[#00123a] text-white py-16 mb-12">
-          <div className="container-main text-center">
-            <h1 className="text-[#ed8901] mb-4 text-6xl font-bold">Mission/Vision</h1>
-            <p className="opacity-90 max-w-2xl mx-auto text-xl">Glimpses of our mission in action, showcasing our impact and the communities we serve.</p>
-          </div>
-        </section>
         
         <div className="grid md:grid-cols-2 gap-8 mb-12">
           {/* Mission Card */}
-          <div className="border-2 border-[#061941] rounded-xl p-8 flex flex-col items-center bg-white">
+          <div className="border-2 border-[#061941] rounded-xl p-5 sm:p-8 flex flex-col items-center bg-white">
             <div className="bg-[#FF9933] w-16 h-16 rounded-full flex items-center justify-center mb-6">
               <span className="material-symbols-outlined icon-white-lg">send</span>
             </div>
@@ -50,7 +50,7 @@ const Mission: React.FC = () => {
           </div>
           
           {/* Vision Card */}
-          <div className="border-2 border-[#061941] rounded-xl p-8 flex flex-col items-center bg-white">
+          <div className="border-2 border-[#061941] rounded-xl p-5 sm:p-8 flex flex-col items-center bg-white">
             <div className="bg-[#FF9933] w-16 h-16 rounded-full flex items-center justify-center mb-6">
               <span className="material-symbols-outlined icon-white-lg">visibility</span>
             </div>

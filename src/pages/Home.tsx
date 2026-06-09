@@ -47,7 +47,7 @@ const Home: React.FC = () => {
           style={{ backgroundImage: `url("${heroImages[currentImageIndex]}")` }}
         />
         <div className="relative z-10 container-main text-center py-20">
-          <h1 className="text-[48px] md:text-[64px] font-extrabold mb-6 leading-tight tracking-tight text-white">
+          <h1 className="text-[36px] sm:text-[48px] md:text-[64px] font-extrabold mb-6 leading-tight tracking-tight text-white">
             Serving Humanity <br />
             <span className="text-[#ed8901]">with Compassion</span>
           </h1>

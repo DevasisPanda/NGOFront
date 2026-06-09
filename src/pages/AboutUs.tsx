@@ -28,14 +28,14 @@ const AboutUs: React.FC = () => {
       <section className="bg-[#00123a] text-white py-20 relative overflow-hidden">
         <div className="absolute inset-0 opacity-10 pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/stardust.png')]"></div>
         <div className="container-main text-center relative z-10">
-          <h1 className="text-[#ed8901] mb-6 text-5xl md:text-6xl font-extrabold tracking-tight flex items-center justify-center gap-4">
+          <h1 className="text-[#ed8901] mb-6 text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight flex items-center justify-center gap-2 md:gap-4 flex-wrap">
             About Us
           </h1>
           <p className="opacity-90 max-w-3xl mx-auto text-xl md:text-2xl font-medium italic">
             "Every human life deserves dignity, hope, opportunity, and a future."
           </p>
-          <div className="mt-8 inline-block bg-white/10 backdrop-blur-sm px-6 py-3 rounded-full border border-white/20 shadow-lg">
-             <span className="text-[#ed8901] font-bold">Our Motto:</span> "Service to Humanity is Service to God."
+          <div className="mt-8 inline-flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2 bg-white/10 backdrop-blur-sm px-6 py-3 rounded-2xl sm:rounded-full border border-white/20 shadow-lg text-sm md:text-base">
+             <span className="text-[#ed8901] font-bold">Our Motto:</span> <span>"Service to Humanity is Service to God."</span>
           </div>
         </div>
       </section>
@@ -48,9 +48,9 @@ const AboutUs: React.FC = () => {
           <div className="mb-24 fade-in-section opacity-0 translate-y-5 transition-all duration-800 ease-out [&.is-visible]:opacity-100 [&.is-visible]:translate-y-0">
             <div className="flex flex-col lg:flex-row gap-16 items-start">
               <div className="flex-1 order-2 lg:order-1">
-                <h2 className="text-[36px] font-bold text-[#00123a] mb-8 border-l-4 border-[#ed8901] pl-4 leading-tight">Valmiki Samaj Charitable Trust</h2>
+                <h2 className="text-[28px] md:text-[36px] font-bold text-[#00123a] mb-8 border-l-4 border-[#ed8901] pl-4 leading-tight">Valmiki Samaj Charitable Trust</h2>
                 
-                <div className="bg-[#f8f9fa] card-content md:p-8 rounded-2xl border border-gray-100 mb-10 shadow-sm">
+                <div className="bg-[#f8f9fa] card-content p-5 md:p-8 rounded-2xl border border-gray-100 mb-10 shadow-sm">
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     <div className="flex items-center gap-4">
                       <div className="bg-[#ed8901]/10 p-3 rounded-xl text-[#ed8901]"><span className="material-symbols-outlined text-[24px]">receipt_long</span></div>
@@ -111,7 +111,7 @@ const AboutUs: React.FC = () => {
           <div className="mb-24 fade-in-section opacity-0 translate-y-5 transition-all duration-800 ease-out [&.is-visible]:opacity-100 [&.is-visible]:translate-y-0">
             <div className="text-center mb-16">
               <span className="text-[#ed8901] font-bold tracking-widest uppercase text-sm mb-2 block">Areas of Focus</span>
-              <h2 className="text-[36px] font-bold text-[#00123a]">Our Deepest Commitments</h2>
+              <h2 className="text-[28px] md:text-[36px] font-bold text-[#00123a]">Our Deepest Commitments</h2>
               <div className="w-24 h-1.5 bg-[#ed8901] mx-auto mt-6 rounded-full"></div>
               <p className="max-w-3xl mx-auto text-[#64748B] mt-6 text-[17px] leading-relaxed">
                 We believe that charity should not merely provide temporary relief; it should create lasting transformation. Our efforts focus on empowering individuals through targeted humanitarian support and skill development.
@@ -206,7 +206,7 @@ const AboutUs: React.FC = () => {
           {/* Core Values */}
           <div className="mb-24 fade-in-section opacity-0 translate-y-5 transition-all duration-800 ease-out [&.is-visible]:opacity-100 [&.is-visible]:translate-y-0">
             <div className="text-center mb-16">
-              <h2 className="text-[36px] font-bold text-[#00123a]">The Foundation of Our Projects</h2>
+              <h2 className="text-[28px] md:text-[36px] font-bold text-[#00123a]">The Foundation of Our Projects</h2>
               <div className="w-24 h-1.5 bg-[#ed8901] mx-auto mt-6 rounded-full mb-6"></div>
               <p className="text-[#64748B] text-[17px] max-w-2xl mx-auto">
                 These principles form the foundation of every project we undertake. We ensure every contribution is utilized responsibly and effectively to create meaningful impact.
@@ -250,14 +250,14 @@ const AboutUs: React.FC = () => {
               <div className="inline-flex items-center justify-center w-20 h-20 bg-white rounded-full shadow-md mb-8">
                 <span className="material-symbols-outlined text-4xl text-[#ed8901]">workspace_premium</span>
               </div>
-              <h2 className="text-[36px] font-bold text-[#00123a] mb-8">Our Promise</h2>
+              <h2 className="text-[28px] md:text-[36px] font-bold text-[#00123a] mb-8">Our Promise</h2>
               <p className="text-[22px] md:text-[26px] text-[#00123a] leading-relaxed mb-12 italic font-medium px-4">
                 "We will continue working until every child can dream without fear, every widow can live with dignity, every family can stand on its own feet, and every human being can experience the respect, opportunity, and hope they deserve."
               </p>
               
               <div className="h-px w-full max-w-2xl mx-auto bg-gradient-to-r from-transparent via-gray-300 to-transparent mb-12"></div>
               
-              <h3 className="text-[30px] font-bold text-[#00123a] mb-6">Join Our Journey</h3>
+              <h3 className="text-[24px] md:text-[30px] font-bold text-[#00123a] mb-6">Join Our Journey</h3>
               <p className="text-[#64748B] text-[18px] mb-12 leading-relaxed px-4 md:px-12">
                 As we continue our journey, we invite compassionate individuals, volunteers, donors, institutions, and partners to join hands with us. At <strong className="text-[#00123a]">Valmiki Samaj Charitable Trust</strong>, we do not simply serve people—we stand with them, believe in them, and walk beside them until they can confidently build a brighter future for themselves and generations to come.
               </p>

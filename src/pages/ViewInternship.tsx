@@ -5,7 +5,7 @@ const ViewInternship: React.FC = () => {
     <div className="flex-grow flex flex-col items-center justify-center py-20 px-6 relative bg-[#f9f9f9] min-h-screen">
       <div className="w-full max-w-[700px] relative mt-12">
         {/* Central Card */}
-        <div className="bg-white rounded-[2rem] shadow-[0_10px_30px_rgba(0,0,0,0.08)] p-12 relative border border-[#e2e2e2]">
+        <div className="bg-white rounded-[2rem] shadow-[0_10px_30px_rgba(0,0,0,0.08)] p-6 sm:p-12 relative border border-[#e2e2e2]">
           {/* Logo Overlay */}
           <div className="absolute -top-16 left-1/2 -translate-x-1/2">
             <div className="bg-white p-2 rounded-full shadow-lg border border-[#e2e2e2]">
@@ -15,7 +15,7 @@ const ViewInternship: React.FC = () => {
           
           {/* Card Content */}
           <div className="mt-16 text-center">
-            <h1 className="text-[#061941] text-[38px] font-extrabold tracking-tight leading-tight uppercase">Valmiki Samaj Charitable Trust</h1>
+            <h1 className="text-[#061941] text-[28px] sm:text-[38px] font-extrabold tracking-tight leading-tight uppercase">Valmiki Samaj Charitable Trust</h1>
             <p className="text-[#64748B] text-xl mt-2 font-medium">Internship Certificate Verification</p>
             <div className="w-16 h-1 mx-auto mt-4 bg-[#061941] rounded-full"></div>
             
@@ -29,7 +29,7 @@ const ViewInternship: React.FC = () => {
               </div>
               
               {/* Buttons */}
-              <div className="grid grid-cols-2 gap-4 mt-8">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8">
                 <button className="bg-[#f3f3f4] text-[#061941] font-bold py-4 rounded-2xl hover:bg-[#e2e2e2] transition-colors text-lg border border-[#e2e2e2]">
                   Verify Now
                 </button>
@@ -40,7 +40,7 @@ const ViewInternship: React.FC = () => {
             </div>
             
             {/* Trust Indicators */}
-            <div className="grid grid-cols-3 gap-8 mt-12 pt-12 border-t border-[#e2e2e2]">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 mt-12 pt-12 border-t border-[#e2e2e2]">
               <div className="flex flex-col items-center gap-3">
                 <span className="material-symbols-outlined text-[#061941] text-4xl">lock</span>
                 <span className="text-[#061941]/80 font-bold text-sm">Secure Verification</span>

@@ -37,14 +37,14 @@ const Events: React.FC = () => {
       </section>
 
       <section className="container-main -mt-12 mb-20 relative z-20">
-        <div className="bg-white rounded-xl shadow-lg border border-[#c5c6cf] card-content md:p-8">
+        <div className="bg-white rounded-xl shadow-lg border border-[#c5c6cf] card-content p-4 sm:p-8">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-end">
             <div className="md:col-span-6">
               <label className="block text-sm font-bold text-[#1a1c1c] mb-2">Search Events</label>
-              <div className="flex">
-                <input className="flex-1 border-[#c5c6cf] focus:border-[#00123a] focus:ring-[#00123a] rounded-l-lg bg-[#f3f3f4] text-[#1a1c1c] py-2.5 px-4 outline-none border" placeholder="Search events..." type="text"/>
-                <button className="bg-[#00123a] text-white px-6 rounded-r-lg hover:opacity-90 transition-all flex items-center gap-2 font-bold whitespace-nowrap">
-                  <span className="material-symbols-outlined text-xl">search</span> Search
+              <div className="flex w-full">
+                <input className="flex-1 min-w-0 border-[#c5c6cf] focus:border-[#00123a] focus:ring-[#00123a] rounded-l-lg bg-[#f3f3f4] text-[#1a1c1c] py-2.5 px-3 sm:px-4 outline-none border text-sm sm:text-base" placeholder="Search events..." type="text"/>
+                <button className="bg-[#00123a] text-white px-3 sm:px-6 rounded-r-lg hover:opacity-90 transition-all flex items-center gap-1 sm:gap-2 font-bold whitespace-nowrap text-sm sm:text-base">
+                  <span className="material-symbols-outlined text-lg sm:text-xl">search</span> <span className="hidden sm:inline">Search</span>
                 </button>
               </div>
             </div>

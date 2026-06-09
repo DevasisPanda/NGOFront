@@ -26,13 +26,13 @@ const ViewBeneficiary: React.FC = () => {
     <div className="page-section fade-in-section" id="beneficiaries">
       <section className="bg-[#00123a] text-white py-16 mb-12">
         <div className="container-main text-center">
-          <h1 className="text-[#ed8901] mb-4 text-6xl font-bold">Active Beneficiary</h1>
+          <h1 className="text-[#ed8901] mb-4 text-4xl md:text-6xl font-bold">Active Beneficiary</h1>
           <p className="opacity-90 max-w-2xl mx-auto text-xl">Glimpses of our mission in action, showcasing our impact and the communities we serve.</p>
         </div>
       </section>
 
       <div className="container-main">
-        <div className="flex flex-col items-center w-full mb-12 bg-white rounded-xl shadow-sm border border-[#e2e2e2] p-8">
+        <div className="flex flex-col items-center w-full mb-12 bg-white rounded-xl shadow-sm border border-[#e2e2e2] p-4 sm:p-8">
           <h2 className="text-[#061941] text-3xl font-bold mb-8">Beneficiary List</h2>
           <div className="w-full flex flex-wrap gap-4 items-center justify-center mb-6">
             <div className="flex-1 min-w-[280px] max-w-sm">

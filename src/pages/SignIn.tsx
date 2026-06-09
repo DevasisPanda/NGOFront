@@ -11,7 +11,7 @@ const SignIn: React.FC = () => {
       <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-[#fed813] rounded-full blur-[120px] opacity-10 pointer-events-none"></div>
       
       {/* Login Card */}
-      <div className="bg-white rounded-xl shadow-md w-full max-w-[480px] p-12 relative z-10 border border-[#c5c6cf]/30">
+      <div className="bg-white rounded-xl shadow-md w-full max-w-[480px] p-6 sm:p-12 relative z-10 border border-[#c5c6cf]/30">
         {/* Brand & Heading */}
         <div className="w-full flex flex-col items-center justify-center bg-white mb-8">
           <img alt="Valmiki Samaj Trust Logo" className="h-[80px] w-[80px] mx-auto mb-4 rounded-full border border-[#c5c6cf] shadow-sm object-cover" src="/logo.jpg" />
