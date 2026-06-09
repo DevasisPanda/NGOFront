@@ -23,7 +23,7 @@ const AboutUs: React.FC = () => {
   }, []);
 
   return (
-    <div className="page-section fade-in-section" id="about-us">
+    <div className="page-section fade-in-section overflow-x-hidden w-full" id="about-us">
       {/* About Header */}
       <section className="bg-[#00123a] text-white py-20 relative overflow-hidden">
         <div className="absolute inset-0 opacity-10 pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/stardust.png')]"></div>
@@ -34,7 +34,7 @@ const AboutUs: React.FC = () => {
           <p className="opacity-90 max-w-3xl mx-auto text-xl md:text-2xl font-medium italic">
             "Every human life deserves dignity, hope, opportunity, and a future."
           </p>
-          <div className="mt-8 inline-flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2 bg-white/10 backdrop-blur-sm px-6 py-3 rounded-2xl sm:rounded-full border border-white/20 shadow-lg text-sm md:text-base">
+          <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2 bg-white/10 backdrop-blur-sm px-4 sm:px-6 py-3 rounded-2xl sm:rounded-full border border-white/20 shadow-lg text-sm md:text-base mx-auto w-fit max-w-full">
              <span className="text-[#ed8901] font-bold">Our Motto:</span> <span>"Service to Humanity is Service to God."</span>
           </div>
         </div>
@@ -93,9 +93,9 @@ const AboutUs: React.FC = () => {
               </div>
               
               <div className="lg:w-[450px] shrink-0 order-1 lg:order-2 lg:sticky lg:top-8 w-full">
-                <div className="relative group mx-auto max-w-[350px] lg:max-w-none">
-                  <div className="absolute inset-0 bg-[#ed8901] rounded-[2rem] transform translate-x-4 translate-y-4 transition-transform duration-500 group-hover:translate-x-2 group-hover:translate-y-2"></div>
-                  <img alt="Valmiki Samaj Trust Logo" className="w-full h-auto rounded-[2rem] shadow-2xl border-8 border-white relative z-10 bg-white p-8 md:p-12 object-contain aspect-square" src="/logo.jpg" />
+                <div className="relative group mx-auto max-w-[280px] sm:max-w-[350px] lg:max-w-none">
+                  <div className="absolute inset-0 bg-[#ed8901] rounded-[2rem] transform translate-x-3 translate-y-3 sm:translate-x-4 sm:translate-y-4 transition-transform duration-500 group-hover:translate-x-2 group-hover:translate-y-2"></div>
+                  <img alt="Valmiki Samaj Trust Logo" className="w-full h-auto rounded-[2rem] shadow-2xl border-4 sm:border-8 border-white relative z-10 bg-white p-6 sm:p-8 md:p-12 object-contain aspect-square" src="/logo.jpg" />
                   
                   {/* Decorative element */}
                   <div className="absolute -bottom-6 -left-6 bg-[#00123a] text-white card-content rounded-2xl shadow-xl z-20 w-56 hidden md:block border-2 border-white/10 backdrop-blur-md">
@@ -166,14 +166,14 @@ const AboutUs: React.FC = () => {
           </div>
 
           {/* Vision Section */}
-          <div className="mb-24 bg-[#00123a] rounded-[2.5rem] p-8 md:p-14 lg:p-16 text-white relative overflow-hidden fade-in-section opacity-0 translate-y-5 transition-all duration-800 ease-out [&.is-visible]:opacity-100 [&.is-visible]:translate-y-0 shadow-2xl">
+          <div className="mb-24 bg-[#00123a] rounded-[2.5rem] p-6 sm:p-8 md:p-14 lg:p-16 text-white relative overflow-hidden fade-in-section opacity-0 translate-y-5 transition-all duration-800 ease-out [&.is-visible]:opacity-100 [&.is-visible]:translate-y-0 shadow-2xl">
             {/* Background elements */}
             <div className="absolute top-0 right-0 w-96 h-96 bg-[#ed8901] rounded-full mix-blend-multiply filter blur-3xl opacity-20 transform translate-x-1/2 -translate-y-1/3"></div>
             <div className="absolute bottom-0 left-0 w-80 h-80 bg-[#ed8901] rounded-full mix-blend-multiply filter blur-3xl opacity-20 transform -translate-x-1/3 translate-y-1/3"></div>
             
             <div className="relative z-10 flex flex-col lg:flex-row gap-16 items-center">
               <div className="lg:w-1/3">
-                <h2 className="text-[36px] md:text-[46px] font-bold text-white mb-6 leading-tight">Our Vision for the Future</h2>
+                <h2 className="text-[28px] sm:text-[36px] md:text-[46px] font-bold text-white mb-6 leading-tight">Our Vision for the Future</h2>
                 <div className="w-20 h-1.5 bg-[#ed8901] mb-8 rounded-full"></div>
                 <p className="text-gray-300 text-[18px] leading-relaxed">
                   Our vision extends beyond addressing immediate needs. We dream of building a society free from fear, discrimination, and deprivation. We envision a future where:
@@ -212,26 +212,26 @@ const AboutUs: React.FC = () => {
                 These principles form the foundation of every project we undertake. We ensure every contribution is utilized responsibly and effectively to create meaningful impact.
               </p>
             </div>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 lg:gap-8">
-              <div className="bg-[#f8f9fa] p-8 rounded-2xl text-center border-b-4 border-[#ed8901] hover:-translate-y-2 transition-all duration-300 hover:shadow-xl group">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
+              <div className="bg-[#f8f9fa] p-6 sm:p-8 rounded-2xl text-center border-b-4 border-[#ed8901] hover:-translate-y-2 transition-all duration-300 hover:shadow-xl group">
                 <div className="bg-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 shadow-sm group-hover:scale-110 transition-transform">
                   <span className="material-symbols-outlined text-3xl text-[#00123a]">visibility</span>
                 </div>
                 <h3 className="text-[20px] font-bold text-[#00123a]">Transparency</h3>
               </div>
-              <div className="bg-[#f8f9fa] p-8 rounded-2xl text-center border-b-4 border-[#ed8901] hover:-translate-y-2 transition-all duration-300 hover:shadow-xl group">
+              <div className="bg-[#f8f9fa] p-6 sm:p-8 rounded-2xl text-center border-b-4 border-[#ed8901] hover:-translate-y-2 transition-all duration-300 hover:shadow-xl group">
                 <div className="bg-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 shadow-sm group-hover:scale-110 transition-transform">
                   <span className="material-symbols-outlined text-3xl text-[#00123a]">fact_check</span>
                 </div>
                 <h3 className="text-[20px] font-bold text-[#00123a]">Accountability</h3>
               </div>
-              <div className="bg-[#f8f9fa] p-8 rounded-2xl text-center border-b-4 border-[#ed8901] hover:-translate-y-2 transition-all duration-300 hover:shadow-xl group">
+              <div className="bg-[#f8f9fa] p-6 sm:p-8 rounded-2xl text-center border-b-4 border-[#ed8901] hover:-translate-y-2 transition-all duration-300 hover:shadow-xl group">
                 <div className="bg-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 shadow-sm group-hover:scale-110 transition-transform">
                   <span className="material-symbols-outlined text-3xl text-[#00123a]">gavel</span>
                 </div>
                 <h3 className="text-[20px] font-bold text-[#00123a]">Integrity</h3>
               </div>
-              <div className="bg-[#f8f9fa] p-8 rounded-2xl text-center border-b-4 border-[#ed8901] hover:-translate-y-2 transition-all duration-300 hover:shadow-xl group">
+              <div className="bg-[#f8f9fa] p-6 sm:p-8 rounded-2xl text-center border-b-4 border-[#ed8901] hover:-translate-y-2 transition-all duration-300 hover:shadow-xl group">
                 <div className="bg-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 shadow-sm group-hover:scale-110 transition-transform">
                   <span className="material-symbols-outlined text-3xl text-[#00123a]">volunteer_activism</span>
                 </div>
@@ -241,7 +241,7 @@ const AboutUs: React.FC = () => {
           </div>
 
           {/* Our Promise & Join Us CTA */}
-          <div className="bg-[#f8f9fa] rounded-[2.5rem] p-8 md:p-16 border border-gray-100 fade-in-section opacity-0 translate-y-5 transition-all duration-800 ease-out [&.is-visible]:opacity-100 [&.is-visible]:translate-y-0 shadow-sm relative overflow-hidden">
+          <div className="bg-[#f8f9fa] rounded-[2.5rem] p-6 sm:p-8 md:p-16 border border-gray-100 fade-in-section opacity-0 translate-y-5 transition-all duration-800 ease-out [&.is-visible]:opacity-100 [&.is-visible]:translate-y-0 shadow-sm relative overflow-hidden">
             {/* Decoration */}
             <div className="absolute top-0 right-0 w-32 h-32 bg-[#ed8901]/10 rounded-full blur-3xl"></div>
             <div className="absolute bottom-0 left-0 w-32 h-32 bg-[#00123a]/5 rounded-full blur-3xl"></div>
