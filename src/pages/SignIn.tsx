@@ -1,8 +1,36 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { trpc } from '../lib/trpc';
 
 const SignIn: React.FC = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [errorMsg, setErrorMsg] = useState('');
+  
+  const navigate = useNavigate();
+  const loginMutation = trpc.auth.login.useMutation({
+    onSuccess: (data) => {
+      // Store the token
+      localStorage.setItem('token', data.token);
+      
+      // Redirect based on role
+      if (data.user.role === 'admin') {
+        navigate('/admin-panel');
+      } else {
+        navigate('/member-panel');
+      }
+    },
+    onError: (error) => {
+      setErrorMsg(error.message);
+    }
+  });
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setErrorMsg('');
+    loginMutation.mutate({ email, password });
+  };
 
   return (
     <div className="flex-grow flex items-center justify-center card-content md:p-12 relative overflow-hidden min-h-screen bg-[#f9f9f9]">
@@ -20,7 +48,12 @@ const SignIn: React.FC = () => {
         </div>
         
         {/* Login Form */}
-        <form action="#" className="space-y-6" method="POST">
+        <form onSubmit={handleSubmit} className="space-y-6">
+          {errorMsg && (
+            <div className="p-3 bg-red-100 text-red-700 rounded-md text-sm text-center">
+              {errorMsg}
+            </div>
+          )}
           {/* Email Field */}
           <div>
             <label className="block text-[14px] font-semibold text-[#1a1c1c] mb-1" htmlFor="email">Email or Username</label>
@@ -28,7 +61,16 @@ const SignIn: React.FC = () => {
               <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                 <span className="material-symbols-outlined text-[#75777f] text-[20px]">person</span>
               </div>
-              <input className="block w-full pl-[40px] pr-3 py-2 border border-[#c5c6cf] rounded-lg bg-white text-[#1a1c1c] focus:outline-none focus:ring-2 focus:ring-[#061941] focus:border-transparent transition-colors text-[16px] placeholder-[#64748B]" id="email" name="email" placeholder="Enter your email" required type="text" />
+              <input 
+                className="block w-full pl-[40px] pr-3 py-2 border border-[#c5c6cf] rounded-lg bg-white text-[#1a1c1c] focus:outline-none focus:ring-2 focus:ring-[#061941] focus:border-transparent transition-colors text-[16px] placeholder-[#64748B]" 
+                id="email" 
+                name="email" 
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="Enter your email" 
+                required 
+                type="text" 
+              />
             </div>
           </div>
           
@@ -39,7 +81,16 @@ const SignIn: React.FC = () => {
               <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                 <span className="material-symbols-outlined text-[#75777f] text-[20px]">lock</span>
               </div>
-              <input className="block w-full pl-[40px] pr-[40px] py-2 border border-[#c5c6cf] rounded-lg bg-white text-[#1a1c1c] focus:outline-none focus:ring-2 focus:ring-[#061941] focus:border-transparent transition-colors text-[16px] placeholder-[#64748B]" id="password" name="password" placeholder="••••••••" required type={showPassword ? "text" : "password"} />
+              <input 
+                className="block w-full pl-[40px] pr-[40px] py-2 border border-[#c5c6cf] rounded-lg bg-white text-[#1a1c1c] focus:outline-none focus:ring-2 focus:ring-[#061941] focus:border-transparent transition-colors text-[16px] placeholder-[#64748B]" 
+                id="password" 
+                name="password" 
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder="••••••••" 
+                required 
+                type={showPassword ? "text" : "password"} 
+              />
               <button className="absolute inset-y-0 right-0 pr-3 flex items-center text-[#75777f] hover:text-[#1a1c1c] transition-colors" onClick={() => setShowPassword(!showPassword)} type="button">
                 <span className="material-symbols-outlined text-[20px]">{showPassword ? 'visibility_off' : 'visibility'}</span>
               </button>
@@ -56,8 +107,12 @@ const SignIn: React.FC = () => {
           </div>
           
           {/* Submit Button */}
-          <button className="w-full flex justify-center items-center py-3 px-6 border border-transparent rounded-lg shadow-sm text-[14px] font-bold text-[#00123a] bg-[#ed8901] hover:bg-opacity-90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#ed8901] transition-colors duration-200" type="submit">
-            Sign In
+          <button 
+            className="w-full flex justify-center items-center py-3 px-6 border border-transparent rounded-lg shadow-sm text-[14px] font-bold text-[#00123a] bg-[#ed8901] hover:bg-opacity-90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#ed8901] transition-colors duration-200 disabled:opacity-50" 
+            type="submit"
+            disabled={loginMutation.isPending}
+          >
+            {loginMutation.isPending ? 'Signing In...' : 'Sign In'}
           </button>
         </form>
         

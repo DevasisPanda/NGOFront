@@ -1,7 +1,7 @@
 import { createTRPCReact } from '@trpc/react-query';
-import type { AnyRouter } from '@trpc/server';
+import type { AppRouter } from '../../../ngo-management-system/server/routers';
 
-export const trpc = createTRPCReact<AnyRouter>();
+export const trpc = createTRPCReact<AppRouter>();
 
 
 

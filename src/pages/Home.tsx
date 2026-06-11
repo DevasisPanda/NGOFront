@@ -1,21 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import HomepageImg from '../assets/Homepage.jpeg';
 
 const Home: React.FC = () => {
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  
-  const heroImages = [
-    "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=1000&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=1000&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=1000&auto=format&fit=crop"
-  ];
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % heroImages.length);
-    }, 5000);
-    return () => clearInterval(interval);
-  }, [heroImages.length]);
+  const heroImages = [HomepageImg];
 
   useEffect(() => {
     const observerOptions = {
@@ -41,24 +29,16 @@ const Home: React.FC = () => {
     <div className="flex-grow bg-[#f8f9fa] pb-20">
       
       {/* Hero Section */}
-      <section className="relative w-full min-h-[60vh] flex items-center justify-center fade-in-section opacity-0 translate-y-5 transition-all duration-800 ease-out [&.is-visible]:opacity-100 [&.is-visible]:translate-y-0 bg-[#00123a] text-white overflow-hidden" id="home">
-        <div 
-          className="absolute inset-0 z-0 opacity-40 bg-cover bg-center transition-all duration-1000 ease-in-out" 
-          style={{ backgroundImage: `url("${heroImages[currentImageIndex]}")` }}
+      <section className="relative w-full flex items-center justify-center fade-in-section opacity-0 translate-y-5 transition-all duration-800 ease-out [&.is-visible]:opacity-100 [&.is-visible]:translate-y-0 bg-white overflow-hidden" id="home">
+        <img 
+          src={HomepageImg} 
+          alt="Valmiki Samaj Charitable Trust" 
+          className="w-full h-auto object-cover max-h-[80vh]"
         />
-        <div className="relative z-10 container-main text-center py-20">
-          <h1 className="text-[36px] sm:text-[48px] md:text-[64px] font-extrabold mb-6 leading-tight tracking-tight text-white">
-            Serving Humanity <br />
-            <span className="text-[#ed8901]">with Compassion</span>
-          </h1>
-          <p className="text-[18px] max-w-2xl mx-auto mb-10 text-white/90">
-            From food distribution to health support — we extend care to those in need, ensuring every individual lives with dignity.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Link to="/donate" className="bg-[#ed8901] text-[#00123a] px-8 py-4 rounded-full font-bold text-[14px] hover:opacity-90 transition-transform hover:-translate-y-1 active:scale-95 duration-200 w-full sm:w-auto text-center shadow-md">
-              Donate Now
-            </Link>
-          </div>
+        <div className="absolute bottom-1 left-0 w-full z-10 flex justify-center">
+          <Link to="/donate" className="bg-[#ed8901] text-[#00123a] px-10 py-4 rounded-full font-bold text-[16px] hover:bg-[#d67b00] hover:scale-105 transition-all duration-200 shadow-xl border-2 border-white/20">
+            Donate Now
+          </Link>
         </div>
       </section>
 
