@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import HomepageImg from '../assets/Homepage.jpeg';
 
 const Home: React.FC = () => {
-  const heroImages = [HomepageImg];
 
   useEffect(() => {
     const observerOptions = {
