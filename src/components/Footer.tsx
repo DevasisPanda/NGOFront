@@ -25,9 +25,10 @@ const Footer: React.FC = () => {
         <div>
           <h3 className="text-[24px] font-bold text-[#ed8901] border-b border-gray-700 pb-2 inline-block">Quick Links</h3>
           <ul className="space-y-3 mt-6 text-gray-400">
-            <li><Link className="nav-link" to="/programs"><span className="material-symbols-outlined text-sm">chevron_right</span> Our Projects</Link></li>
+            <li><Link className="nav-link" to="/projects"><span className="material-symbols-outlined text-sm">chevron_right</span> Our Projects</Link></li>
+            <li><Link className="nav-link" to="/events"><span className="material-symbols-outlined text-sm">chevron_right</span> Programs & Events</Link></li>
             <li><Link className="nav-link" to="/gallery"><span className="material-symbols-outlined text-sm">chevron_right</span> Activity Gallery</Link></li>
-            <li><Link className="nav-link" to="/"><span className="material-symbols-outlined text-sm">chevron_right</span> Campaigns</Link></li>
+            <li><Link className="nav-link" to="/campaigns"><span className="material-symbols-outlined text-sm">chevron_right</span> Campaigns</Link></li>
           </ul>
           <h3 className="text-[24px] font-bold text-[#ed8901] border-b border-gray-700 pb-2 inline-block mt-8">Policies</h3>
           <ul className="space-y-3 mt-6 text-gray-400">
@@ -52,7 +53,7 @@ const Footer: React.FC = () => {
           <ul className="space-y-4 mt-6 text-gray-400">
             <li className="flex items-start gap-3">
               <span className="material-symbols-outlined text-[#ed8901]">call</span>
-              <span>+91 85648 53303</span>
+              <span>+91 82003 15792</span>
             </li>
             <li className="flex items-start gap-3">
               <span className="material-symbols-outlined text-[#ed8901]">mail</span>
@@ -60,7 +61,7 @@ const Footer: React.FC = () => {
             </li>
             <li className="flex items-start gap-3">
               <span className="material-symbols-outlined text-[#ed8901]">location_on</span>
-              <span>Lucknow, Uttar Pradesh, India</span>
+              <span>President Narayan Rathod  Ramji mandir Road, Nr. Police Station At & Post Tintoi - 383250, Tal:- Modasa Dist. Aravalli North Gujrat</span>
             </li>
           </ul>
         </div>

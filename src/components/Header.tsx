@@ -64,7 +64,7 @@ const Header: React.FC = () => {
           </div>
           {/* Phone */}
           <div className="h-full font-bold flex items-center gap-2 text-white shrink-0 text-sm">
-            <span className="material-symbols-outlined text-[18px]">call</span> +91 85648 53303
+            <span className="material-symbols-outlined text-[18px]">call</span> +91 82003 15792
           </div>
         </div>
       </div>

@@ -15,8 +15,9 @@ export function TRPCProvider({ children }: { children: React.ReactNode }) {
           transformer: superjson, // Provide transformer to the link
           // You can pass any headers here if needed
           async headers() {
+            const token = localStorage.getItem('token');
             return {
-              // authorization: getAuthCookie(),
+              ...(token ? { authorization: `Bearer ${token}` } : {}),
             };
           },
         }),

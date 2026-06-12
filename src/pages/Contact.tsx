@@ -31,28 +31,28 @@ const Contact: React.FC = () => {
               <span className="material-symbols-outlined icon-white-lg">location_on</span>
             </div>
             <h3 className="text-[#00123a] text-2xl font-bold mb-2">Address</h3>
-            <p className="text-[#45464e] font-medium text-base">Daliganj, Lucknow, UP 226020</p>
+            <p className="text-[#45464e] font-medium text-base">Head Office :- President Narayan Rathod  Ramji mandir Road, Nr. Police Station At & Post Tintoi - 383250, Tal:- Modasa Dist. Aravalli North Gujrat</p>
           </div>
           <div className="border-2 border-[#00123a] rounded-xl p-8 flex flex-col items-center text-center group hover:bg-[#f3f3f4] transition-colors">
             <div className="bg-[#ed8901] w-14 h-14 rounded-full flex items-center justify-center mb-4 shadow-md group-hover:scale-110 transition-transform">
               <span className="material-symbols-outlined icon-white-lg">call</span>
             </div>
             <h3 className="text-[#00123a] text-2xl font-bold mb-2">Call Us</h3>
-            <p className="text-[#45464e] font-medium text-base">+91 85648 53303</p>
+            <p className="text-[#45464e] font-medium text-base">+91 82003 15792</p>
           </div>
           <div className="border-2 border-[#00123a] rounded-xl p-8 flex flex-col items-center text-center group hover:bg-[#f3f3f4] transition-colors">
             <div className="bg-[#ed8901] w-14 h-14 rounded-full flex items-center justify-center mb-4 shadow-md group-hover:scale-110 transition-transform">
               <span className="material-symbols-outlined icon-white-lg">chat</span>
             </div>
             <h3 className="text-[#00123a] text-2xl font-bold mb-2">WhatsApp</h3>
-            <p className="text-[#45464e] font-medium text-base">+91 85648 53303</p>
+            <p className="text-[#45464e] font-medium text-base">+91 82003 15792</p>
           </div>
           <div className="border-2 border-[#00123a] rounded-xl p-8 flex flex-col items-center text-center group hover:bg-[#f3f3f4] transition-colors">
             <div className="bg-[#ed8901] w-14 h-14 rounded-full flex items-center justify-center mb-4 shadow-md group-hover:scale-110 transition-transform">
               <span className="material-symbols-outlined icon-white-lg">mail</span>
             </div>
             <h3 className="text-[#00123a] text-2xl font-bold mb-2">Email Us</h3>
-            <p className="text-[#45464e] font-medium text-base break-all">shriramnavyugtrust@gmail.com</p>
+            <p className="text-[#45464e] font-medium text-base break-all">valmikisamajtrust@gmail.com</p>
           </div>
         </div>
       </section>

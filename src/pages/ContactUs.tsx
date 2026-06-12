@@ -33,7 +33,7 @@ const ContactUs: React.FC = () => {
               <span className="material-symbols-outlined icon-white-lg">location_on</span>
             </div>
             <h3 className="text-[#00123a] text-2xl font-bold mb-2">Address</h3>
-            <p className="text-[#45464e] font-medium text-base">Daliganj, Lucknow, UP 226020</p>
+            <p className="text-[#45464e] font-medium text-base">Head Office :- President Narayan Rathod  Ramji mandir Road, Nr. Police Station At & Post Tintoi - 383250, Tal:- Modasa Dist. Aravalli North Gujrat</p>
           </div>
           {/* Call Us Card */}
           <div className="border-2 border-[#00123a] rounded-xl p-8 flex flex-col items-center text-center group hover:bg-[#f3f3f4] transition-colors">
@@ -41,7 +41,7 @@ const ContactUs: React.FC = () => {
               <span className="material-symbols-outlined icon-white-lg">call</span>
             </div>
             <h3 className="text-[#00123a] text-2xl font-bold mb-2">Call Us</h3>
-            <p className="text-[#45464e] font-medium text-base">+91 85648 53303</p>
+            <p className="text-[#45464e] font-medium text-base">+91 82003 15792</p>
           </div>
           {/* WhatsApp Card */}
           <div className="border-2 border-[#00123a] rounded-xl p-8 flex flex-col items-center text-center group hover:bg-[#f3f3f4] transition-colors">
@@ -49,7 +49,7 @@ const ContactUs: React.FC = () => {
               <span className="material-symbols-outlined icon-white-lg">chat</span>
             </div>
             <h3 className="text-[#00123a] text-2xl font-bold mb-2">WhatsApp</h3>
-            <p className="text-[#45464e] font-medium text-base">+91 85648 53303</p>
+            <p className="text-[#45464e] font-medium text-base">+91 82003 15792</p>
           </div>
           {/* Email Card */}
           <div className="border-2 border-[#00123a] rounded-xl p-8 flex flex-col items-center text-center group hover:bg-[#f3f3f4] transition-colors">

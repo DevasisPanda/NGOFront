@@ -11,15 +11,11 @@ const SignIn: React.FC = () => {
   const navigate = useNavigate();
   const loginMutation = trpc.auth.login.useMutation({
     onSuccess: (data) => {
-      // Store the token
+      // Store the token (just in case frontend needs it later)
       localStorage.setItem('token', data.token);
       
-      // Redirect based on role
-      if (data.user.role === 'admin') {
-        navigate('/admin-panel');
-      } else {
-        navigate('/member-panel');
-      }
+      // Redirect to the backend admin SSO route with token and role
+      window.location.href = `http://localhost:5000/sso?token=${data.token}&role=${data.user.role}`;
     },
     onError: (error) => {
       setErrorMsg(error.message);

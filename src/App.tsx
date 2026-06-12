@@ -5,7 +5,7 @@ import Donate from './pages/Donate';
 import Contact from './pages/Contact';
 import Gallery from './pages/Gallery';
 import Mission from './pages/Mission';
-import Programs from './pages/Programs';
+
 import Projects from './pages/Projects';
 import Events from './pages/Events';
 import Beneficiaries from './pages/Beneficiaries';
@@ -40,7 +40,7 @@ function App() {
               <Route path="/contact" element={<Contact />} />
               <Route path="/gallery" element={<Gallery />} />
               <Route path="/mission" element={<Mission />} />
-              <Route path="/programs" element={<Programs />} />
+
               <Route path="/projects" element={<Projects />} />
               <Route path="/events" element={<Events />} />
               <Route path="/beneficiary" element={<Beneficiaries />} />

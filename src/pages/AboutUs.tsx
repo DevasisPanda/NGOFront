@@ -78,16 +78,21 @@ const AboutUs: React.FC = () => {
 
                 <div className="space-y-6 text-[#45464e] text-[17px] leading-relaxed">
                   <p>
-                    <strong className="text-[#00123a]">Valmiki Samaj Charitable Trust</strong> is more than just a charitable organization—it is a mission born from compassion, humanity, and the deep pain of witnessing the struggles faced by countless poor, orphaned, widowed, and underprivileged families.
+                    <strong className="text-[#00123a]">Valmiki Samaj Charitable Trust. Where there is service, humanity comes alive; where there is education, a brighter future is created.
+In the happiness of others lies our happiness; in the welfare of others lies our welfare; and in the progress of others lies our pride.</strong> is more than just a charitable organization—it is a mission born from compassion, humanity, and the deep pain of witnessing the struggles faced by countless poor, orphaned, widowed, and underprivileged families.
                   </p>
                   <p>
-                    Founded on 24 January 2020, the Trust was established with a simple yet powerful belief: <em className="text-[#00123a] font-medium">no person should be denied a life of dignity because of poverty, social discrimination, lack of education, or helpless circumstances.</em>
-                  </p>
+                  Inspired by this divine life philosophy, Valmiki Samaj Charitable Trust is a dedicated charitable organization committed to social welfare, human service, and holistic community development. Guided by the noble values of service, education, moral values, and dedication, the Trust strives to bring hope, dignity, confidence, and opportunities for progress to the lives of the poor, underprivileged, orphaned, destitute, and needy.</p>
                   <p>
-                    For generations, many families have lived in conditions where poverty has stolen opportunities, where children have been forced to abandon their dreams, where widows have struggled alone for survival, and where countless individuals have endured hardship without support. Behind every statistic is a human story—a hungry child, a grieving mother, an unemployed youth, an elderly person without care, or a family fighting daily battles against poverty and social exclusion.
-                  </p>
+                 We firmly believe that education is not merely a means of acquiring knowledge, but the most powerful tool to combat poverty, inequality, and ignorance. Therefore, through our “Education Mission – Education is Welfare” initiative, we continuously work to provide quality education to every child, promote educational awareness, reconnect school dropouts with learning opportunities, and encourage higher education. Our commitment is to ensure that no child is deprived of education due to economic or social circumstances. </p>
                   <p className="text-[#ed8901] font-bold text-lg">
                     Valmiki Samaj Charitable Trust was created to stand beside such people—not as spectators to their suffering, but as partners in their journey toward hope, dignity, and self-reliance.
+                  </p>
+                  <p>
+                  One of the Trust’s primary objectives is to provide orphaned and destitute children with safe shelter, nutritious food, quality education, healthcare, and a value-based environment that nurtures their overall development. Our goal extends beyond providing care; we aim to shape these children into educated, responsible, ethical, and patriotic citizens who can contribute meaningfully to society and the nation.
+To support orphaned, destitute, and economically disadvantaged girls, the Trust organizes community marriage ceremonies that enable them to begin a dignified new chapter in life. Along with essential household items and generous marriage assistance, every bride is provided with a sewing machine. This initiative helps them become financially independent through self-employment and serves as a powerful example of women’s empowerment. Our objective is not only to conduct marriages but also to empower women with the means to build a secure and self-reliant future.
+Inspired by the ideals of service, compassion, humanity, and dedication exemplified by His Holiness Pramukh Swami Maharaj, along with the values of Indian culture and patriotism, the Trust works to promote unity, social harmony, ethical living, education, and civic responsibility. Our vision is not limited to a single community; rather, it embraces the welfare of all sections of society and the broader cause of humanity.
+“Service is our faith, education is our mission, values are our identity, and dedication is our strength.”  
                   </p>
                 </div>
               </div>
