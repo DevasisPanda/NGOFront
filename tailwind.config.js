@@ -17,20 +17,13 @@ export default {
         "on-error": "#ffffff",
         "surface-variant": "#e2e2e2",
         "tertiary-container": "#410004",
-<<<<<<< HEAD
-=======
         muted: "#64748B",
->>>>>>> e8b91e6 (first commit)
         "text-muted": "#64748B",
         "on-tertiary-fixed-variant": "#930014",
         "on-error-container": "#93000a",
         surface: "#f9f9f9",
         "surface-container-high": "#e8e8e8",
-<<<<<<< HEAD
-        secondary: "#6f5d00",
-=======
         secondary: "#ed8901",
->>>>>>> e8b91e6 (first commit)
         "surface-dim": "#dadada",
         "on-surface-variant": "#45464e",
         "secondary-fixed": "#ffe16a",

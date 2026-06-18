@@ -1,8 +1,4 @@
 import React, { useEffect } from 'react';
-<<<<<<< HEAD
-
-const Gallery: React.FC = () => {
-=======
 import { trpc } from '../lib/trpc';
 import AG1 from '../assets/AG1.jpeg';
 import AG2 from '../assets/AG2.jpeg';
@@ -15,7 +11,6 @@ import AG7 from '../assets/AG7.jpeg';
 const Gallery: React.FC = () => {
   const { data: galleryItems, isLoading } = trpc.gallery.getPublic.useQuery();
 
->>>>>>> e8b91e6 (first commit)
   useEffect(() => {
     const observerOptions = {
       threshold: 0.1
@@ -34,38 +29,6 @@ const Gallery: React.FC = () => {
     });
 
     return () => observer.disconnect();
-<<<<<<< HEAD
-  }, []);
-
-  return (
-    <div className="page-section fade-in-section" id="gallery">
-      <div className="container-main">
-        <section className="bg-[#00123a] text-white py-16 mb-12">
-          <div className="container-main text-center">
-            <h1 className="text-[#ed8901] mb-4 text-6xl font-bold">Our Gallery</h1>
-            <p className="opacity-90 max-w-2xl mx-auto text-xl">Glimpses of our mission in action, showcasing our impact and the communities we serve.</p>
-          </div>
-        </section>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          <div className="col-span-2 row-span-2 rounded-xl overflow-hidden shadow-sm relative group">
-            <img alt="Gallery Activity" className="w-full h-full object-cover aspect-[1.47] group-hover:scale-105 transition-transform duration-500" src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=1000&auto=format&fit=crop" />
-          </div>
-          <div className="col-span-2 rounded-xl overflow-hidden shadow-sm relative group">
-            <img alt="Gallery Activity" className="w-full h-full object-cover aspect-[1.79] group-hover:scale-105 transition-transform duration-500" src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=1000&auto=format&fit=crop" />
-          </div>
-          <div className="rounded-xl overflow-hidden shadow-sm relative group">
-            <img alt="Gallery Activity" className="w-full h-full object-cover aspect-square group-hover:scale-105 transition-transform duration-500" src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=1000&auto=format&fit=crop" />
-          </div>
-          <div className="rounded-xl overflow-hidden shadow-sm relative group">
-            <img alt="Gallery Activity" className="w-full h-full object-cover aspect-square group-hover:scale-105 transition-transform duration-500" src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=1000&auto=format&fit=crop" />
-          </div>
-        </div>
-        <div className="flex justify-center mt-12">
-          <a className="flex items-center gap-2 bg-[#ed8901] text-[#00123a] px-8 py-3 rounded-full font-bold text-lg hover:opacity-90 transition-opacity" href="#">
-            <span className="material-symbols-outlined">collections</span> See More Images
-          </a>
-        </div>
-=======
   }, [galleryItems]);
 
   const hasLiveItems = galleryItems && galleryItems.length > 0;
@@ -191,7 +154,6 @@ const Gallery: React.FC = () => {
             </div>
           </div>
         )}
->>>>>>> e8b91e6 (first commit)
       </div>
     </div>
   );

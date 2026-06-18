@@ -1,19 +1,4 @@
 import React from 'react';
-<<<<<<< HEAD
-
-const Certifications: React.FC = () => {
-  return (
-    <div className="flex-grow bg-[#f8f9fa] pb-20">
-      <section className="bg-[#00123a] text-white py-20 relative overflow-hidden">
-        <div className="absolute inset-0 opacity-10 pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/stardust.png')]"></div>
-        <div className="container-main text-center relative z-10">
-          <h1 className="text-[#ed8901] mb-6 text-5xl md:text-6xl font-extrabold tracking-tight">Certifications</h1>
-          <p className="opacity-90 max-w-2xl mx-auto text-xl md:text-2xl font-medium">Coming Soon...</p>
-        </div>
-      </section>
-      <section className="py-16 bg-white min-h-[40vh] flex items-center justify-center">
-        <p className="text-gray-500 text-lg">Content is being updated. Please check back later.</p>
-=======
 import { trpc } from '../lib/trpc';
 import Cer1 from '../assets/Cer1.jpeg';
 import Cer2 from '../assets/NGO Darpan_pages-to-jpg-0001.jpg';
@@ -88,7 +73,6 @@ const Certifications: React.FC = () => {
             ))}
           </div>
         )}
->>>>>>> e8b91e6 (first commit)
       </section>
     </div>
   );

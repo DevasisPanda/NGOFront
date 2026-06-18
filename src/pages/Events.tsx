@@ -33,15 +33,6 @@ const Events: React.FC = () => {
 
   return (
     <div className="page-section fade-in-section" id="programs">
-<<<<<<< HEAD
-      <section className="bg-[#00123a] text-white py-20 relative overflow-hidden">
-        <div className="absolute inset-0 opacity-10 pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/stardust.png')]"></div>
-        <div className="container-main text-center relative z-10 px-4">
-          <h1 className="text-[#ed8901] mb-6 text-5xl md:text-6xl font-extrabold tracking-tight flex items-center justify-center gap-4 text-center">
-            Programs & Events
-          </h1>
-          <p className="opacity-90 max-w-3xl mx-auto text-xl md:text-2xl font-medium italic">
-=======
       <section className="bg-primary text-white py-20 relative overflow-hidden">
         <div className="absolute inset-0 opacity-10 pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/stardust.png')]"></div>
         <div className="container-main text-center relative z-10 px-4">
@@ -49,7 +40,6 @@ const Events: React.FC = () => {
             Programs & Events
           </h1>
           <p className="max-w-3xl mx-auto text-xl md:text-2xl font-medium italic text-white">
->>>>>>> e8b91e6 (first commit)
             "Discover our programs and join our community events to be a part of the change we're making."
           </p>
         </div>
@@ -64,19 +54,11 @@ const Events: React.FC = () => {
                 <input 
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-<<<<<<< HEAD
-                  className="flex-1 min-w-0 border-[#c5c6cf] focus:border-[#00123a] focus:ring-[#00123a] rounded-l-lg bg-[#f3f3f4] text-[#1a1c1c] py-2.5 px-4 outline-none border" 
-                  placeholder="Search by title or description..." 
-                  type="text"
-                />
-                <button className="bg-[#00123a] text-white px-6 rounded-r-lg hover:opacity-90 transition-all flex items-center gap-2 font-bold whitespace-nowrap">
-=======
                   className="flex-1 min-w-0 border-[#c5c6cf] focus:border-primary focus:ring-primary rounded-l-lg bg-[#f3f3f4] text-[#1a1c1c] py-2.5 px-4 outline-none border" 
                   placeholder="Search by title or description..." 
                   type="text"
                 />
                 <button className="bg-primary text-white px-6 rounded-r-lg hover:opacity-90 transition-all flex items-center gap-2 font-bold whitespace-nowrap">
->>>>>>> e8b91e6 (first commit)
                   <span className="material-symbols-outlined text-xl">search</span> Search
                 </button>
               </div>
@@ -88,11 +70,7 @@ const Events: React.FC = () => {
                 <select 
                   value={category}
                   onChange={(e) => setCategory(e.target.value)}
-<<<<<<< HEAD
-                  className="w-full appearance-none border border-[#c5c6cf] focus:border-[#00123a] focus:ring-[#00123a] rounded-lg bg-[#f3f3f4] text-[#1a1c1c] py-2.5 px-4 outline-none"
-=======
                   className="w-full appearance-none border border-[#c5c6cf] focus:border-primary focus:ring-primary rounded-lg bg-[#f3f3f4] text-[#1a1c1c] py-2.5 px-4 outline-none"
->>>>>>> e8b91e6 (first commit)
                 >
                   <option>All Categories</option>
                   <option>Education</option>
@@ -110,11 +88,7 @@ const Events: React.FC = () => {
                 <select 
                   value={status}
                   onChange={(e) => setStatus(e.target.value)}
-<<<<<<< HEAD
-                  className="w-full appearance-none border border-[#c5c6cf] focus:border-[#00123a] focus:ring-[#00123a] rounded-lg bg-[#f3f3f4] text-[#1a1c1c] py-2.5 px-4 outline-none"
-=======
                   className="w-full appearance-none border border-[#c5c6cf] focus:border-primary focus:ring-primary rounded-lg bg-[#f3f3f4] text-[#1a1c1c] py-2.5 px-4 outline-none"
->>>>>>> e8b91e6 (first commit)
                 >
                   <option>All Statuses</option>
                   <option>Upcoming</option>
@@ -131,24 +105,12 @@ const Events: React.FC = () => {
       <section className="container-main mb-20 px-4">
         {isLoading ? (
           <div className="flex justify-center py-20">
-<<<<<<< HEAD
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#00123a]"></div>
-=======
             <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
->>>>>>> e8b91e6 (first commit)
           </div>
         ) : filteredEvents && filteredEvents.length > 0 ? (
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredEvents.map(event => (
               <div key={event.id} className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition flex flex-col">
-<<<<<<< HEAD
-                <div className="bg-gray-100 h-48 w-full flex items-center justify-center">
-                  <span className="material-symbols-outlined text-6xl text-gray-300">event</span>
-                </div>
-                <div className="p-6 flex flex-col flex-grow">
-                  <div className="flex justify-between items-start mb-4">
-                    <h3 className="text-xl font-bold text-[#00123a]">{event.title}</h3>
-=======
                 {event.eventImage ? (
                   <img src={event.eventImage} alt={event.title} className="w-full h-48 object-cover" />
                 ) : (
@@ -159,7 +121,6 @@ const Events: React.FC = () => {
                 <div className="p-6 flex flex-col flex-grow">
                   <div className="flex justify-between items-start mb-4">
                     <h3 className="text-xl font-bold text-primary">{event.title}</h3>
->>>>>>> e8b91e6 (first commit)
                   </div>
                   <div className="space-y-2 mb-4 text-sm text-gray-600">
                     <p className="flex items-center gap-2"><span className="material-symbols-outlined text-base">calendar_today</span> {format(new Date(event.eventDate), "PPP")}</p>
@@ -167,11 +128,7 @@ const Events: React.FC = () => {
                     <p className="flex items-center gap-2"><span className="material-symbols-outlined text-base">location_on</span> {event.location}</p>
                   </div>
                   <p className="text-gray-700 mb-6 line-clamp-3 text-sm flex-grow">{event.description}</p>
-<<<<<<< HEAD
-                  <Link to="/contact" className="w-full bg-[#ed8901] text-white font-bold py-3 rounded-lg hover:bg-[#d87c00] transition-colors text-center block mt-auto">
-=======
                   <Link to="/contact" className="w-full bg-secondary text-white font-bold py-3 rounded-lg hover:bg-[#d87c00] transition-colors text-center block mt-auto">
->>>>>>> e8b91e6 (first commit)
                     Register Interest
                   </Link>
                 </div>
@@ -187,17 +144,10 @@ const Events: React.FC = () => {
         )}
       </section>
 
-<<<<<<< HEAD
-      <section className="bg-[#00123a] py-12 fade-in-section opacity-0 translate-y-5 transition-all duration-800 ease-out [&.is-visible]:opacity-100 [&.is-visible]:translate-y-0">
-        <div className="container-main text-center flex flex-col md:flex-row items-center justify-between">
-          <h2 className="text-[32px] font-bold text-white mb-4 md:mb-0">Ready to make a difference?</h2>
-          <Link to="/contact" className="bg-[#ed8901] text-[#00123a] px-8 py-4 rounded-full font-bold text-lg hover:opacity-90 transition-opacity inline-flex items-center gap-2">
-=======
       <section className="bg-primary py-12 fade-in-section opacity-0 translate-y-5 transition-all duration-800 ease-out [&.is-visible]:opacity-100 [&.is-visible]:translate-y-0">
         <div className="container-main text-center flex flex-col md:flex-row items-center justify-between">
           <h2 className="text-[32px] font-bold text-white mb-4 md:mb-0">Ready to make a difference?</h2>
           <Link to="/contact" className="bg-secondary text-primary px-8 py-4 rounded-full font-bold text-lg hover:opacity-90 transition-opacity inline-flex items-center gap-2">
->>>>>>> e8b91e6 (first commit)
             <span className="material-symbols-outlined">mail</span> Contact Us Now
           </Link>
         </div>

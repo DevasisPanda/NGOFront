@@ -1,35 +1,22 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { trpc } from '../lib/trpc';
-<<<<<<< HEAD
-=======
 import { toast } from 'sonner';
->>>>>>> e8b91e6 (first commit)
 
 const SignIn: React.FC = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errorMsg, setErrorMsg] = useState('');
-<<<<<<< HEAD
-  
-  const navigate = useNavigate();
-=======
   const [isRedirecting, setIsRedirecting] = useState(false);
   
   const navigate = useNavigate();
   const createHandoffMutation = trpc.auth.createHandoff.useMutation();
 
->>>>>>> e8b91e6 (first commit)
   const loginMutation = trpc.auth.login.useMutation({
     onSuccess: (data) => {
       // Store the token (just in case frontend needs it later)
       localStorage.setItem('token', data.token);
-<<<<<<< HEAD
-      
-      // Redirect to the backend admin SSO route with token and role
-      window.location.href = `http://localhost:5000/sso?token=${data.token}&role=${data.user.role}`;
-=======
       setIsRedirecting(true);
       
       // Request SSO handoff code securely using the newly stored token
@@ -43,7 +30,6 @@ const SignIn: React.FC = () => {
           setIsRedirecting(false);
         }
       });
->>>>>>> e8b91e6 (first commit)
     },
     onError: (error) => {
       setErrorMsg(error.message);
@@ -67,11 +53,7 @@ const SignIn: React.FC = () => {
         {/* Brand & Heading */}
         <div className="w-full flex flex-col items-center justify-center bg-white mb-8">
           <img alt="Valmiki Samaj Trust Logo" className="h-[80px] w-[80px] mx-auto mb-4 rounded-full border border-[#c5c6cf] shadow-sm object-cover" src="/logo.jpg" />
-<<<<<<< HEAD
-          <h2 className="text-3xl font-extrabold text-[#00123a] mb-2 text-center">Welcome Back</h2>
-=======
           <h2 className="text-3xl font-extrabold text-primary mb-2 text-center">Welcome Back</h2>
->>>>>>> e8b91e6 (first commit)
           <p className="text-body text-center">Sign in to your administration dashboard.</p>
         </div>
         
@@ -90,11 +72,7 @@ const SignIn: React.FC = () => {
                 <span className="material-symbols-outlined text-[#75777f] text-[20px]">person</span>
               </div>
               <input 
-<<<<<<< HEAD
-                className="block w-full pl-[40px] pr-3 py-2 border border-[#c5c6cf] rounded-lg bg-white text-[#1a1c1c] focus:outline-none focus:ring-2 focus:ring-[#061941] focus:border-transparent transition-colors text-[16px] placeholder-[#64748B]" 
-=======
                 className="block w-full pl-[40px] pr-3 py-2 border border-[#c5c6cf] rounded-lg bg-white text-[#1a1c1c] focus:outline-none focus:ring-2 focus:ring-[#061941] focus:border-transparent transition-colors text-[16px] placeholder-muted" 
->>>>>>> e8b91e6 (first commit)
                 id="email" 
                 name="email" 
                 value={email}
@@ -114,11 +92,7 @@ const SignIn: React.FC = () => {
                 <span className="material-symbols-outlined text-[#75777f] text-[20px]">lock</span>
               </div>
               <input 
-<<<<<<< HEAD
-                className="block w-full pl-[40px] pr-[40px] py-2 border border-[#c5c6cf] rounded-lg bg-white text-[#1a1c1c] focus:outline-none focus:ring-2 focus:ring-[#061941] focus:border-transparent transition-colors text-[16px] placeholder-[#64748B]" 
-=======
                 className="block w-full pl-[40px] pr-[40px] py-2 border border-[#c5c6cf] rounded-lg bg-white text-[#1a1c1c] focus:outline-none focus:ring-2 focus:ring-[#061941] focus:border-transparent transition-colors text-[16px] placeholder-muted" 
->>>>>>> e8b91e6 (first commit)
                 id="password" 
                 name="password" 
                 value={password}
@@ -139,28 +113,16 @@ const SignIn: React.FC = () => {
               <input className="h-4 w-4 text-[#061941] border-[#c5c6cf] rounded focus:ring-[#061941]" id="remember-me" name="remember-me" type="checkbox" />
               <label className="ml-2 block text-[12px] font-medium text-[#45464e]" htmlFor="remember-me">Remember me</label>
             </div>
-<<<<<<< HEAD
-            <a className="text-[12px] font-medium text-[#061941] hover:text-[#ed8901] transition-colors hover:underline" href="#">Forgot Password?</a>
-=======
             <a className="text-[12px] font-medium text-[#061941] hover:text-secondary transition-colors hover:underline" href="#">Forgot Password?</a>
->>>>>>> e8b91e6 (first commit)
           </div>
           
           {/* Submit Button */}
           <button 
-<<<<<<< HEAD
-            className="w-full flex justify-center items-center py-3 px-6 border border-transparent rounded-lg shadow-sm text-[14px] font-bold text-[#00123a] bg-[#ed8901] hover:bg-opacity-90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#ed8901] transition-colors duration-200 disabled:opacity-50" 
-            type="submit"
-            disabled={loginMutation.isPending}
-          >
-            {loginMutation.isPending ? 'Signing In...' : 'Sign In'}
-=======
             className="w-full flex justify-center items-center py-3 px-6 border border-transparent rounded-lg shadow-sm text-[14px] font-bold text-primary bg-secondary hover:bg-opacity-90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-secondary transition-colors duration-200 disabled:opacity-50" 
             type="submit"
             disabled={loginMutation.isPending || isRedirecting}
           >
             {loginMutation.isPending ? 'Signing In...' : isRedirecting ? 'Connecting...' : 'Sign In'}
->>>>>>> e8b91e6 (first commit)
           </button>
         </form>
         
@@ -168,11 +130,7 @@ const SignIn: React.FC = () => {
         <div className="mt-12 text-center">
           <p className="text-body">
             Don't have an account?{' '}
-<<<<<<< HEAD
-            <Link className="text-[14px] font-semibold text-[#061941] hover:text-[#ed8901] transition-colors hover:underline" to="/signup">Request Access</Link>
-=======
             <Link className="text-[14px] font-semibold text-[#061941] hover:text-secondary transition-colors hover:underline" to="/register">Request Access</Link>
->>>>>>> e8b91e6 (first commit)
           </p>
         </div>
       </div>

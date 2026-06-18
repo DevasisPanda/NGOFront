@@ -1,9 +1,5 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-<<<<<<< HEAD
-
-const Header: React.FC = () => {
-=======
 import { useAuth } from '../contexts/AuthContext';
 import { trpc } from '../lib/trpc';
 import { toast } from 'sonner';
@@ -75,7 +71,6 @@ const Header: React.FC = () => {
       setIsRedirecting(false);
     }
   };
->>>>>>> e8b91e6 (first commit)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const [isLangDropdownOpen, setIsLangDropdownOpen] = useState(false);
@@ -98,15 +93,9 @@ const Header: React.FC = () => {
   };
 
   return (
-<<<<<<< HEAD
-    <header className="w-full bg-white flex flex-col z-50 shadow-sm font-['Plus_Jakarta_Sans']">
-      {/* Top Bar - Hidden on Mobile to save space */}
-      <div className="bg-[#ed8901] text-white hidden md:flex items-center h-10 w-full">
-=======
     <header className="w-full bg-white flex flex-col z-50 shadow-sm">
       {/* Top Bar - Hidden on Mobile to save space */}
       <div className="bg-secondary text-white hidden md:flex items-center h-10 w-full">
->>>>>>> e8b91e6 (first commit)
         <div className="max-w-[1536px] w-full mx-auto px-4 lg:px-8 flex items-center justify-between h-full">
           {/* Social Icons */}
           <div className="flex items-center gap-2 h-full shrink-0">
@@ -126,27 +115,12 @@ const Header: React.FC = () => {
               <span className="material-symbols-outlined text-[16px]">bolt</span> News & Updates
             </div>
             <div className="overflow-hidden flex-1 text-[#061941] h-full flex items-center font-medium px-4 text-sm whitespace-nowrap">
-<<<<<<< HEAD
-              <div className="flex animate-marquee w-max">
-                <div className="flex shrink-0">
-                  <span className="px-8">"Stay Connected and Informed: Empowering Lives, Transforming Communities!"</span>
-                  <span className="px-8">●</span>
-                  <span className="px-8">"Stay Connected and Informed: Empowering Lives, Transforming Communities!"</span>
-                  <span className="px-8">●</span>
-                </div>
-                <div className="flex shrink-0">
-                  <span className="px-8">"Stay Connected and Informed: Empowering Lives, Transforming Communities!"</span>
-                  <span className="px-8">●</span>
-                  <span className="px-8">"Stay Connected and Informed: Empowering Lives, Transforming Communities!"</span>
-                  <span className="px-8">●</span>
-=======
               <div className="flex animate-marquee w-max" style={{ animationDuration: marqueeDuration }}>
                 <div className="flex shrink-0">
                   {renderMarqueeContent()}
                 </div>
                 <div className="flex shrink-0">
                   {renderMarqueeContent()}
->>>>>>> e8b91e6 (first commit)
                 </div>
               </div>
             </div>
@@ -165,26 +139,11 @@ const Header: React.FC = () => {
             <img alt="Valmiki Samaj Trust Logo" className="h-[70px] w-[70px] md:h-[90px] md:w-[90px] object-contain" src="/logo.jpg" />
             <div>
               <h1 className="text-[#061941] text-[22px] sm:text-[28px] lg:text-[36px] font-extrabold tracking-tight leading-tight">Valmiki Samaj Charitable Trust</h1>
-<<<<<<< HEAD
-              <p className="text-[#ed8901] font-bold text-[13px] sm:text-[15px] lg:text-lg mt-1">( संस्कृति,शिक्षा,स्वास्थ्य और जागरूकता पर केंद्रित )</p>
-=======
               <p className="text-secondary font-bold text-[13px] sm:text-[15px] lg:text-lg mt-1">( संस्कृति,शिक्षा,स्वास्थ्य और जागरूकता पर केंद्रित )</p>
->>>>>>> e8b91e6 (first commit)
             </div>
           </Link>
           <div className="flex flex-col sm:flex-row items-center gap-4">
             <div className="flex flex-wrap justify-center gap-2 sm:gap-3">
-<<<<<<< HEAD
-              <Link to="/register" className="bg-[#061941] text-white px-4 sm:px-6 py-2 sm:py-2.5 rounded-full font-bold flex items-center gap-2 hover:bg-black transition-colors text-[12px] sm:text-sm shadow-md">
-                Apply For Membership <span className="material-symbols-outlined text-[16px] sm:text-[18px]">account_circle</span>
-              </Link>
-              <Link to="/login" className="bg-[#061941] text-white px-4 sm:px-6 py-2 sm:py-2.5 rounded-full font-bold flex items-center gap-2 hover:bg-black transition-colors text-[12px] sm:text-sm shadow-md">
-                Login <span className="material-symbols-outlined text-[16px] sm:text-[18px]">how_to_reg</span>
-              </Link>
-            </div>
-            <div className="flex flex-col items-center sm:ml-2 sm:border-l border-gray-200 sm:pl-4 relative">
-              <div className="bg-[#ed8901] text-white px-3 py-0.5 rounded text-[10px] sm:text-[11px] font-bold mb-1.5">Translate This Website</div>
-=======
               {isAuthenticated ? (
                 <>
                   <button 
@@ -214,7 +173,6 @@ const Header: React.FC = () => {
             </div>
             <div className="flex flex-col items-center sm:ml-2 sm:border-l border-gray-200 sm:pl-4 relative">
               <div className="bg-secondary text-white px-3 py-0.5 rounded text-[10px] sm:text-[11px] font-bold mb-1.5">Translate This Website</div>
->>>>>>> e8b91e6 (first commit)
               <div 
                 className="border border-gray-300 rounded px-3 py-1 flex items-center gap-2 text-[12px] sm:text-[13px] bg-white cursor-pointer w-[110px] sm:w-[120px] justify-between hover:bg-gray-50 transition-colors"
                 onClick={() => setIsLangDropdownOpen(!isLangDropdownOpen)}
@@ -239,11 +197,7 @@ const Header: React.FC = () => {
                       }}
                     >
                       <img alt={`${lang.name} Flag`} className="w-5 h-3.5 object-cover rounded-sm shadow-sm" src={lang.flag} />
-<<<<<<< HEAD
-                      <span className={`font-medium ${selectedLang === lang.name ? 'text-[#ed8901]' : 'text-gray-700'}`}>{lang.name}</span>
-=======
                       <span className={`font-medium ${selectedLang === lang.name ? 'text-secondary' : 'text-gray-700'}`}>{lang.name}</span>
->>>>>>> e8b91e6 (first commit)
                     </div>
                   ))}
                 </div>
@@ -267,15 +221,6 @@ const Header: React.FC = () => {
 
           {/* Desktop Nav */}
           <nav className="hidden xl:flex items-center justify-between flex-1 gap-1.5 xl:gap-3 2xl:gap-5 text-[11px] xl:text-[12px] 2xl:text-[14px] font-bold text-white whitespace-nowrap">
-<<<<<<< HEAD
-            <Link to="/" className="hover:text-[#ed8901] transition-colors py-4">Home</Link>
-            
-            <div className="flex items-center gap-1 cursor-pointer hover:text-[#ed8901] transition-colors relative group py-4">
-              <span>About Us</span>
-              <span className="material-symbols-outlined text-[14px] lg:text-[16px]">expand_more</span>
-              <div className="absolute top-full left-0 pt-2 hidden group-hover:block z-50">
-                <div className="bg-white text-[#00123a] shadow-lg rounded-b py-2 w-48 border-t-2 border-[#ed8901]">
-=======
             <Link to="/" className="hover:text-secondary transition-colors py-4">Home</Link>
             
             <div className="flex items-center gap-1 cursor-pointer hover:text-secondary transition-colors relative group py-4">
@@ -283,51 +228,26 @@ const Header: React.FC = () => {
               <span className="material-symbols-outlined text-[14px] lg:text-[16px]">expand_more</span>
               <div className="absolute top-full left-0 pt-2 hidden group-hover:block z-50">
                 <div className="bg-white text-primary shadow-lg rounded-b py-2 w-48 border-t-2 border-secondary">
->>>>>>> e8b91e6 (first commit)
                   <Link to="/about" className="dropdown-link">About Us</Link>
                   <Link to="/mission" className="dropdown-link">Mission & Vision</Link>
                   <Link to="/achievements" className="dropdown-link">Achievements</Link>
                   <Link to="/certifications" className="dropdown-link">Certifications</Link>
-<<<<<<< HEAD
-=======
                   <Link to="/audit" className="dropdown-link">Audit</Link>
->>>>>>> e8b91e6 (first commit)
                 </div>
               </div>
             </div>
 
-<<<<<<< HEAD
-            <div className="flex items-center gap-1 cursor-pointer hover:text-[#ed8901] transition-colors relative group py-4">
-              <span>Organization Members</span>
-              <span className="material-symbols-outlined text-[14px] lg:text-[16px]">expand_more</span>
-              <div className="absolute top-full left-0 pt-2 hidden group-hover:block z-50">
-                <div className="bg-white text-[#00123a] shadow-lg rounded-b py-2 w-48 border-t-2 border-[#ed8901]">
-=======
             <div className="flex items-center gap-1 cursor-pointer hover:text-secondary transition-colors relative group py-4">
               <span>Organization Members</span>
               <span className="material-symbols-outlined text-[14px] lg:text-[16px]">expand_more</span>
               <div className="absolute top-full left-0 pt-2 hidden group-hover:block z-50">
                 <div className="bg-white text-primary shadow-lg rounded-b py-2 w-48 border-t-2 border-secondary">
->>>>>>> e8b91e6 (first commit)
                   <Link to="/management-body" className="dropdown-link">Management Body</Link>
                   <Link to="/general-members" className="dropdown-link">General Members</Link>
                 </div>
               </div>
             </div>
 
-<<<<<<< HEAD
-            <Link to="/projects" className="hover:text-[#ed8901] transition-colors py-4">Our Projects</Link>
-            <Link to="/gallery" className="hover:text-[#ed8901] transition-colors py-4">Activity Gallery</Link>
-            <Link to="/campaigns" className="hover:text-[#ed8901] transition-colors py-4">Campaigns</Link>
-            <Link to="/events" className="hover:text-[#ed8901] transition-colors py-4">Program & Events</Link>
-            <Link to="/expenses" className="hover:text-[#ed8901] transition-colors py-4">Project Expenses</Link>
-
-            <div className="flex items-center gap-1 cursor-pointer hover:text-[#ed8901] transition-colors relative group py-4">
-              <span>Internships</span>
-              <span className="material-symbols-outlined text-[14px] lg:text-[16px]">expand_more</span>
-              <div className="absolute top-full left-0 pt-2 hidden group-hover:block z-50">
-                <div className="bg-white text-[#00123a] shadow-lg rounded-b py-2 w-48 border-t-2 border-[#ed8901]">
-=======
             <Link to="/projects" className="hover:text-secondary transition-colors py-4">Our Projects</Link>
             <Link to="/gallery" className="hover:text-secondary transition-colors py-4">Activity Gallery</Link>
             <Link to="/campaigns" className="hover:text-secondary transition-colors py-4">Campaigns</Link>
@@ -339,43 +259,27 @@ const Header: React.FC = () => {
               <span className="material-symbols-outlined text-[14px] lg:text-[16px]">expand_more</span>
               <div className="absolute top-full left-0 pt-2 hidden group-hover:block z-50">
                 <div className="bg-white text-primary shadow-lg rounded-b py-2 w-48 border-t-2 border-secondary">
->>>>>>> e8b91e6 (first commit)
                   <Link to="/internship" className="dropdown-link">Apply for Internship</Link>
                   <Link to="/view-internship" className="dropdown-link">View Certificate</Link>
                 </div>
               </div>
             </div>
 
-<<<<<<< HEAD
-            <div className="flex items-center gap-1 cursor-pointer hover:text-[#ed8901] transition-colors relative group py-4">
-              <span>Beneficiaries</span>
-              <span className="material-symbols-outlined text-[14px] lg:text-[16px]">expand_more</span>
-              <div className="absolute top-full left-0 pt-2 hidden group-hover:block z-50">
-                <div className="bg-white text-[#00123a] shadow-lg rounded-b py-2 w-48 border-t-2 border-[#ed8901]">
-=======
             <div className="flex items-center gap-1 cursor-pointer hover:text-secondary transition-colors relative group py-4">
               <span>Beneficiaries</span>
               <span className="material-symbols-outlined text-[14px] lg:text-[16px]">expand_more</span>
               <div className="absolute top-full left-0 pt-2 hidden group-hover:block z-50">
                 <div className="bg-white text-primary shadow-lg rounded-b py-2 w-48 border-t-2 border-secondary">
->>>>>>> e8b91e6 (first commit)
                   <Link to="/beneficiary" className="dropdown-link">Apply Beneficiary</Link>
                   <Link to="/view-beneficiary" className="dropdown-link">View Beneficiary</Link>
                 </div>
               </div>
             </div>
 
-<<<<<<< HEAD
-            <Link to="/contact" className="hover:text-[#ed8901] transition-colors py-4">Contact Us</Link>
-          </nav>
-
-          <Link to="/donate" className="bg-[#ed8901] text-white px-5 lg:px-8 py-1.5 lg:py-2.5 rounded-full font-bold hover:bg-[#d67b00] transition-colors text-[12px] lg:text-sm tracking-wide shrink-0 shadow-md">
-=======
             <Link to="/contact" className="hover:text-secondary transition-colors py-4">Contact Us</Link>
           </nav>
 
           <Link to="/donate" className="bg-secondary text-white px-5 lg:px-8 py-1.5 lg:py-2.5 rounded-full font-bold hover:bg-[#d67b00] transition-colors text-[12px] lg:text-sm tracking-wide shrink-0 shadow-md">
->>>>>>> e8b91e6 (first commit)
             Donate Us
           </Link>
         </div>
@@ -396,10 +300,7 @@ const Header: React.FC = () => {
                   <Link to="/mission" className="nav-link-padding" onClick={() => setIsMobileMenuOpen(false)}>Mission & Vision</Link>
                   <Link to="/achievements" className="nav-link-padding" onClick={() => setIsMobileMenuOpen(false)}>Achievements</Link>
                   <Link to="/certifications" className="nav-link-padding" onClick={() => setIsMobileMenuOpen(false)}>Certifications</Link>
-<<<<<<< HEAD
-=======
                   <Link to="/audit" className="nav-link-padding" onClick={() => setIsMobileMenuOpen(false)}>Audit</Link>
->>>>>>> e8b91e6 (first commit)
                 </div>
               )}
             </div>
