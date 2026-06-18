@@ -8,11 +8,19 @@ const Internship: React.FC = () => {
 
   return (
     <div className="flex-grow bg-[#f8f9fa] pb-20">
+<<<<<<< HEAD
       <section className="bg-[#00123a] text-white py-20 relative overflow-hidden">
         <div className="absolute inset-0 opacity-10 pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/stardust.png')]"></div>
         <div className="container-main text-center relative z-10 px-4">
           <h1 className="text-[#ed8901] mb-6 text-5xl md:text-6xl font-extrabold tracking-tight">Open Internships</h1>
           <p className="opacity-90 max-w-2xl mx-auto text-xl font-medium">
+=======
+      <section className="bg-primary text-white py-20 relative overflow-hidden">
+        <div className="absolute inset-0 opacity-10 pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/stardust.png')]"></div>
+        <div className="container-main text-center relative z-10 px-4">
+          <h1 className="text-secondary mb-6 text-5xl md:text-6xl font-extrabold tracking-tight">Open Internships</h1>
+          <p className="text-white opacity-90 max-w-2xl mx-auto text-xl font-medium">
+>>>>>>> e8b91e6 (first commit)
             Join our team and make a difference. Explore our current internship opportunities below.
           </p>
         </div>
@@ -21,11 +29,16 @@ const Internship: React.FC = () => {
       <section className="py-16 px-4 max-w-5xl mx-auto min-h-[40vh]">
         {isLoading ? (
           <div className="flex justify-center items-center py-20">
+<<<<<<< HEAD
             <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#00123a]"></div>
+=======
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
+>>>>>>> e8b91e6 (first commit)
           </div>
         ) : internships && internships.length > 0 ? (
           <div className="grid gap-6 md:grid-cols-2">
             {internships.map((internship) => (
+<<<<<<< HEAD
               <div key={internship.id} className="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition">
                 <div className="flex justify-between items-start mb-4">
                   <h3 className="text-xl font-bold text-[#00123a]">{internship.title}</h3>
@@ -33,6 +46,19 @@ const Internship: React.FC = () => {
                     {internship.type}
                   </span>
                 </div>
+=======
+              <div key={internship.id} className="bg-white rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition overflow-hidden flex flex-col">
+                {internship.image && (
+                  <img src={internship.image} alt={internship.title} className="w-full h-48 object-cover border-b" />
+                )}
+                <div className="p-6 flex-grow flex flex-col">
+                  <div className="flex justify-between items-start mb-4">
+                    <h3 className="text-xl font-bold text-primary">{internship.title}</h3>
+                    <span className="bg-blue-50 text-blue-700 text-xs px-3 py-1 rounded-full font-medium capitalize">
+                      {internship.type}
+                    </span>
+                  </div>
+>>>>>>> e8b91e6 (first commit)
                 <div className="space-y-2 mb-6">
                   <p className="text-gray-600 text-sm flex items-center gap-2">
                     <span className="material-symbols-outlined text-base">domain</span>
@@ -50,11 +76,19 @@ const Internship: React.FC = () => {
                 <p className="text-gray-700 mb-6 line-clamp-3">{internship.description}</p>
                 <button 
                   onClick={() => navigate(`/view-internship?id=${internship.id}`)}
+<<<<<<< HEAD
                   className="w-full bg-[#ed8901] text-white font-bold py-3 rounded-lg hover:bg-[#d87c00] transition-colors"
+=======
+                  className="w-full bg-secondary text-white font-bold py-3 rounded-lg hover:bg-[#d87c00] transition-colors"
+>>>>>>> e8b91e6 (first commit)
                 >
                   View Details & Apply
                 </button>
               </div>
+<<<<<<< HEAD
+=======
+            </div>
+>>>>>>> e8b91e6 (first commit)
             ))}
           </div>
         ) : (

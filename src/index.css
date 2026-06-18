@@ -149,6 +149,7 @@ main {
   padding-right: var(--spacing-gutter);
 }
 
+<<<<<<< HEAD
 /* Primary Button */
 .btn-primary {
   background-color: var(--midnight-blue);
@@ -197,6 +198,9 @@ main {
   .heading-section {
     @apply text-[#061941] text-[32px] font-extrabold tracking-tight leading-tight uppercase;
   }
+=======
+@layer components {
+>>>>>>> e8b91e6 (first commit)
   .card-title {
     @apply text-[24px] font-semibold text-[#00123a] mb-2;
   }
@@ -229,6 +233,7 @@ main {
     @apply p-6;
   }
 
+<<<<<<< HEAD
   /* Icons */
   .icon-primary {
     @apply text-[#00123a]/70;
@@ -237,6 +242,8 @@ main {
     @apply text-white text-3xl;
   }
 
+=======
+>>>>>>> e8b91e6 (first commit)
   /* Navigation & Links */
   .nav-link {
     @apply hover:text-[#ed8901] transition-colors flex items-center gap-2;
@@ -244,6 +251,7 @@ main {
   .dropdown-link {
     @apply block px-4 py-2 hover:bg-gray-100 transition-colors text-[13px];
   }
+<<<<<<< HEAD
   .nav-link-padding {
     @apply px-8 py-2 hover:text-[#ed8901] transition-colors;
   }
@@ -255,6 +263,8 @@ main {
   .input-icon-container {
     @apply bg-[#f3f3f4] px-4 flex items-center justify-center border-r border-[#c5c6cf];
   }
+=======
+>>>>>>> e8b91e6 (first commit)
 }
 
 @keyframes marquee {

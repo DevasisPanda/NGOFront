@@ -25,11 +25,19 @@ const Mission: React.FC = () => {
   return (
     <div className="page-section fade-in-section overflow-x-hidden" id="mission">
       {/* Hero Section */}
+<<<<<<< HEAD
       <section className="bg-[#00123a] text-white py-16 mb-12 relative">
         <div className="container-main text-center relative z-10">
           <h1 className="text-[#ed8901] mb-4 text-4xl md:text-6xl font-bold">Mission & Vision</h1>
           <p className="opacity-90 max-w-2xl mx-auto text-xl">Valmiki Samaj Charitable Trust</p>
           <p className="opacity-90 max-w-2xl mx-auto text-lg mt-2 font-medium">Education • Service • Equality • Empowerment</p>
+=======
+      <section className="bg-primary text-white py-16 mb-12 relative">
+        <div className="container-main text-center relative z-10">
+          <h1 className="text-secondary mb-4 text-4xl md:text-6xl font-bold">Mission & Vision</h1>
+          <p className="text-white opacity-90 max-w-2xl mx-auto text-xl">Valmiki Samaj Charitable Trust</p>
+          <p className="text-white opacity-90 max-w-2xl mx-auto text-lg mt-2 font-medium">Education • Service • Equality • Empowerment</p>
+>>>>>>> e8b91e6 (first commit)
         </div>
       </section>
 
@@ -37,14 +45,26 @@ const Mission: React.FC = () => {
         {/* Intro & Logo */}
         <div className="flex flex-col lg:flex-row gap-12 items-center mb-16 fade-in-section opacity-0 translate-y-5 transition-all duration-800 ease-out [&.is-visible]:opacity-100 [&.is-visible]:translate-y-0">
           <div className="lg:w-1/3 flex justify-center">
+<<<<<<< HEAD
             <img src="/logo.jpg" alt="Valmiki Samaj Trust Logo" className="w-64 h-64 object-contain rounded-full shadow-lg border-4 border-white" />
+=======
+            <img
+              src="/logo.jpg"
+              alt="Valmiki Samaj Trust Logo"
+              className="w-64 h-64 object-contain rounded-full border-4 border-[#f8f9fa] shadow-none bg-[#f8f9fa]"
+            />
+>>>>>>> e8b91e6 (first commit)
           </div>
           <div className="lg:w-2/3 space-y-6">
             <div>
               <h2 className="text-3xl font-bold text-[#061941] flex items-center gap-2 mb-4">
                 <span>🌐</span> Mission for Education – Education is Welfare
               </h2>
+<<<<<<< HEAD
               <div className="bg-[#f8f9fa] border-l-4 border-[#ed8901] p-4 italic text-lg text-[#1a1c1c] font-medium mb-4">
+=======
+              <div className="bg-[#f8f9fa] border-l-4 border-secondary p-4 italic text-lg text-[#1a1c1c] font-medium mb-4">
+>>>>>>> e8b91e6 (first commit)
                 ✨ “Where there is Service, there is God; Where there is Education, there is a Bright Future.”
               </div>
               <p className="text-[#45464e] leading-relaxed text-lg">
@@ -78,7 +98,11 @@ const Mission: React.FC = () => {
             <h2 className="text-2xl font-bold text-[#061941] flex items-center gap-2 mb-4">
               <span>📖</span> Educational Revolution
             </h2>
+<<<<<<< HEAD
             <div className="bg-[#f8f9fa] border-l-4 border-[#ed8901] p-3 italic text-md text-[#1a1c1c] font-medium mb-4">
+=======
+            <div className="bg-[#f8f9fa] border-l-4 border-secondary p-3 italic text-md text-[#1a1c1c] font-medium mb-4">
+>>>>>>> e8b91e6 (first commit)
               📢 “No discrimination of caste, creed, or religion; every child deserves the right to education.”
             </div>
             <p className="text-[#45464e] leading-relaxed mb-6">
@@ -109,8 +133,13 @@ const Mission: React.FC = () => {
 
         {/* Child Labour & Underprivileged Families */}
         <div className="mb-16 fade-in-section opacity-0 translate-y-5 transition-all duration-800 ease-out [&.is-visible]:opacity-100 [&.is-visible]:translate-y-0">
+<<<<<<< HEAD
           <div className="bg-[#00123a] text-white rounded-2xl p-8 md:p-12 shadow-lg mb-8">
             <h2 className="text-3xl font-bold text-[#ed8901] flex items-center gap-2 mb-6">
+=======
+          <div className="bg-primary text-white rounded-2xl p-8 md:p-12 shadow-lg mb-8">
+            <h2 className="text-3xl font-bold text-secondary flex items-center gap-2 mb-6">
+>>>>>>> e8b91e6 (first commit)
             Reducing School Dropouts and Eliminating Child Labour
             </h2>
             <div className="bg-white/10 border-l-4 border-white p-4 italic text-lg font-medium mb-6">
@@ -140,6 +169,7 @@ const Mission: React.FC = () => {
             <p className="text-[#061941] font-bold mb-3">In such circumstances, the Trust stands as a pillar of support by providing:</p>
             <ul className="space-y-3 mb-6">
               <li className="flex items-start gap-2">
+<<<<<<< HEAD
                 <span className="text-[#ed8901] mt-1">•</span>
                 <span className="text-[#45464e]">Educational assistance and guidance to orphaned and underprivileged children.</span>
               </li>
@@ -153,12 +183,31 @@ const Mission: React.FC = () => {
               </li>
               <li className="flex items-start gap-2">
                 <span className="text-[#ed8901] mt-1">•</span>
+=======
+                <span className="text-secondary mt-1">•</span>
+                <span className="text-[#45464e]">Educational assistance and guidance to orphaned and underprivileged children.</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-secondary mt-1">•</span>
+                <span className="text-[#45464e]">Support for children of widowed mothers.</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-secondary mt-1">•</span>
+                <span className="text-[#45464e]">Programs that promote dignity, self-respect, and confidence.</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-secondary mt-1">•</span>
+>>>>>>> e8b91e6 (first commit)
                 <span className="text-[#45464e]">Mentorship and encouragement for higher education and career development.</span>
               </li>
             </ul>
             
             <div className="bg-white border border-[#e2e2e2] p-4 rounded-lg">
+<<<<<<< HEAD
               <div className="font-bold text-[#ed8901] italic mb-2">✨ “A daughter is the light of a family.”</div>
+=======
+              <div className="font-bold text-secondary italic mb-2">✨ “A daughter is the light of a family.”</div>
+>>>>>>> e8b91e6 (first commit)
               <p className="text-[#45464e] text-sm leading-relaxed mb-2">
                 For economically weaker families, marriage expenses can be a significant burden. To ease this challenge, the Trust organizes annual mass marriage ceremonies.
               </p>
@@ -206,7 +255,11 @@ const Mission: React.FC = () => {
               <h3 className="font-bold text-[#061941] flex items-center gap-2 mb-3">
                 <span>🌺</span> Gratitude to Our Donors
               </h3>
+<<<<<<< HEAD
               <div className="italic text-[#ed8901] font-medium text-sm mb-3">
+=======
+              <div className="italic text-secondary font-medium text-sm mb-3">
+>>>>>>> e8b91e6 (first commit)
                 🙏 “A contribution towards education and service is a true offering to humanity.”
               </div>
               <p className="text-[#45464e] text-sm leading-relaxed">
@@ -218,6 +271,7 @@ const Mission: React.FC = () => {
 
         {/* Vision & Objectives */}
         <div className="mb-16 fade-in-section opacity-0 translate-y-5 transition-all duration-800 ease-out [&.is-visible]:opacity-100 [&.is-visible]:translate-y-0">
+<<<<<<< HEAD
           <div className="bg-[#00123a] text-white rounded-2xl overflow-hidden shadow-xl">
             <div className="grid md:grid-cols-5">
               <div className="md:col-span-2 bg-[#ed8901] p-8 md:p-12 flex flex-col justify-center">
@@ -225,15 +279,29 @@ const Mission: React.FC = () => {
                   <span>🌟</span> Our Vision
                 </h2>
                 <p className="text-[#00123a] text-xl leading-relaxed italic font-medium">
+=======
+          <div className="bg-primary text-white rounded-2xl overflow-hidden shadow-xl">
+            <div className="grid md:grid-cols-5">
+              <div className="md:col-span-2 bg-secondary p-8 md:p-12 flex flex-col justify-center">
+                <h2 className="text-3xl font-bold text-primary flex items-center gap-2 mb-6">
+                  <span>🌟</span> Our Vision
+                </h2>
+                <p className="text-primary text-xl leading-relaxed italic font-medium">
+>>>>>>> e8b91e6 (first commit)
                   "A society where every child is educated, every childhood is protected, and every woman is empowered—regardless of caste, religion, community, or economic status—is a society that truly reflects progress, equality, and humanity."
                 </p>
               </div>
               <div className="md:col-span-3 p-8 md:p-12">
+<<<<<<< HEAD
                 <h2 className="text-2xl font-bold text-[#ed8901] flex items-center gap-2 mb-6">
+=======
+                <h2 className="text-2xl font-bold text-secondary flex items-center gap-2 mb-6">
+>>>>>>> e8b91e6 (first commit)
                   <span>🎯</span> Our Long-Term Objectives
                 </h2>
                 <ul className="space-y-4">
                   <li className="flex items-start gap-3">
+<<<<<<< HEAD
                     <span className="text-[#ed8901] mt-1">•</span>
                     <span className="opacity-90">Ensure that no child is deprived of education due to lack of resources.</span>
                   </li>
@@ -255,6 +323,29 @@ const Mission: React.FC = () => {
                   </li>
                   <li className="flex items-start gap-3">
                     <span className="text-[#ed8901] mt-1">•</span>
+=======
+                    <span className="text-secondary mt-1">•</span>
+                    <span className="opacity-90">Ensure that no child is deprived of education due to lack of resources.</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <span className="text-secondary mt-1">•</span>
+                    <span className="opacity-90">Eliminate child labour and encourage school enrollment.</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <span className="text-secondary mt-1">•</span>
+                    <span className="opacity-90">Create 100% educational awareness among marginalized and disadvantaged communities.</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <span className="text-secondary mt-1">•</span>
+                    <span className="opacity-90">Empower girls and women through education and self-reliance.</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <span className="text-secondary mt-1">•</span>
+                    <span className="opacity-90">Promote dropout-free schools and equal educational opportunities.</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <span className="text-secondary mt-1">•</span>
+>>>>>>> e8b91e6 (first commit)
                     <span className="opacity-90">Build a strong and progressive nation through education, empowerment, and social responsibility.</span>
                   </li>
                 </ul>
@@ -272,7 +363,11 @@ const Mission: React.FC = () => {
           <p className="text-lg text-[#45464e] mb-8 max-w-3xl mx-auto">
             Become a partner in nation-building by supporting children, women, and underprivileged families with education, dignity, equality, and empowerment. Together, we can create a future where every child learns, every family thrives, and every individual lives with dignity.
           </p>
+<<<<<<< HEAD
           <Link to="/contact" className="bg-[#061941] text-white px-10 py-4 rounded-full font-bold text-xl inline-flex items-center gap-3 hover:bg-[#ed8901] transition-all shadow-lg hover:-translate-y-1">
+=======
+          <Link to="/contact" className="bg-[#061941] text-white px-10 py-4 rounded-full font-bold text-xl inline-flex items-center gap-3 hover:bg-secondary transition-all shadow-lg hover:-translate-y-1">
+>>>>>>> e8b91e6 (first commit)
             Contact Us Now <span className="material-symbols-outlined">arrow_forward</span>
           </Link>
         </div>
