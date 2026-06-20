@@ -135,11 +135,11 @@ const Header: React.FC = () => {
       {/* Branding Row */}
       <div className="w-full bg-white py-4">
         <div className="max-w-[1536px] w-full mx-auto px-4 lg:px-8 flex flex-col lg:flex-row items-center justify-between gap-4 lg:gap-6">
-          <Link to="/" className="flex flex-col md:flex-row items-center gap-3 md:gap-4 text-center md:text-left">
-            <img alt="Valmiki Samaj Trust Logo" className="h-[70px] w-[70px] md:h-[90px] md:w-[90px] object-contain" src="/logo.jpg" />
-            <div>
-              <h1 className="text-[#061941] text-[22px] sm:text-[28px] lg:text-[36px] font-extrabold tracking-tight leading-tight">Valmiki Samaj Charitable Trust</h1>
-              <p className="text-secondary font-bold text-[13px] sm:text-[15px] lg:text-lg mt-1">( संस्कृति,शिक्षा,स्वास्थ्य और जागरूकता पर केंद्रित )</p>
+          <Link to="/" className="flex flex-row items-center gap-3 md:gap-4 w-full md:w-auto">
+            <img alt="Valmiki Samaj Trust Logo" className="h-[45px] w-[45px] md:h-[60px] md:w-[60px] object-contain shrink-0" src="/logo.jpg" />
+            <div className="flex-1 text-center md:text-left">
+              <h1 className="text-[#061941] text-[18px] sm:text-[22px] lg:text-[28px] font-extrabold tracking-tight leading-tight">Valmiki Samaj Charitable Trust</h1>
+              <p className="text-secondary font-bold text-[10px] sm:text-[12px] lg:text-[14px] mt-0.5">( संस्कृति,शिक्षा,स्वास्थ्य और जागरूकता पर केंद्रित )</p>
             </div>
           </Link>
           <div className="flex flex-col sm:flex-row items-center gap-4">
