@@ -119,7 +119,7 @@ const Contact: React.FC = () => {
               <span className="material-symbols-outlined icon-white-lg">mail</span>
             </div>
             <h3 className="text-primary text-2xl font-bold mb-2">Email Us</h3>
-            <p className="text-[#45464e] font-medium text-base break-all">valmikisamajtrust@gmail.com</p>
+            <p className="text-[#45464e] font-medium text-base break-all">valmikisamajchiritabletrust@gmail.com</p>
           </div>
         </div>
       </section>
@@ -134,7 +134,7 @@ const Contact: React.FC = () => {
                 <h2 className="text-primary text-2xl font-extrabold tracking-wide text-center">Contact Us</h2>
               </div>
               <div className="border-2 border-t-0 border-[#e2e2e2] rounded-b-xl overflow-hidden shadow-sm h-[600px]">
-                <iframe allowFullScreen className="w-full h-full grayscale hover:grayscale-0 transition-all duration-700" loading="lazy" referrerPolicy="no-referrer-when-downgrade" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d113911.33230626354!2d80.87114175317663!3d26.848596482161676!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x399bfd991f32b16b%3A0x93ccba8909978be7!2sLucknow%2C%20Uttar%20Pradesh!5e0!3m2!1sen!2sin!4v1711234567890!5m2!1sen!2sin"></iframe>
+                <iframe allowFullScreen className="w-full h-full grayscale hover:grayscale-0 transition-all duration-700" loading="lazy" referrerPolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?q=23.6136122,73.33269&t=&z=15&ie=UTF8&iwloc=&output=embed"></iframe>
               </div>
             </div>
             {/* Right Column: Enquiry Form */}

@@ -1,4 +1,5 @@
 import React, { useState, useRef } from 'react';
+import { Navigate, useLocation } from 'react-router-dom';
 import { trpc } from '../lib/trpc';
 import { toast } from 'sonner';
 import { useAuth } from '../contexts/AuthContext';
@@ -86,6 +87,11 @@ const Beneficiaries: React.FC = () => {
     });
   };
 
+  // Redirect unauthenticated users to login
+  if (!isAuthenticated) {
+    return <Navigate to="/login" replace />;
+  }
+
   return (
     <div className="flex-grow bg-[#f9fafb] pb-24 font-['Plus_Jakarta_Sans']">
       {/* Banner */}
@@ -106,32 +112,6 @@ const Beneficiaries: React.FC = () => {
       {/* Form Content */}
       <section className="max-w-[720px] mx-auto px-6 mt-[-40px] relative z-20">
         <div className="bg-white rounded-2xl shadow-lg border border-gray-100 p-8 sm:p-12 relative overflow-hidden">
-          
-          {/* Authenticated Overlay */}
-          {!isAuthenticated && (
-            <div className="absolute inset-0 bg-white/90 backdrop-blur-[5px] z-50 flex flex-col items-center justify-center p-8 text-center">
-              <span className="material-symbols-outlined text-6xl text-rose-500 mb-4 animate-pulse">lock</span>
-              <h3 className="text-2xl font-bold text-[#061941] mb-2">Member Authentication Required</h3>
-              <p className="text-gray-500 max-w-sm mb-6 text-sm leading-relaxed">
-                Only registered members of the Valmiki Samaj Charitable Trust can submit beneficiary assistance applications.
-              </p>
-              <div className="flex flex-wrap justify-center gap-3">
-                <a 
-                  href="/login" 
-                  className="px-6 py-2.5 bg-[#061941] text-white font-bold rounded-lg hover:bg-black transition text-sm shadow-md"
-                >
-                  Log In
-                </a>
-                <a 
-                  href="/register" 
-                  className="px-6 py-2.5 bg-gray-100 text-gray-700 font-bold rounded-lg hover:bg-gray-200 transition text-sm border border-gray-200"
-                >
-                  Apply Membership
-                </a>
-              </div>
-            </div>
-          )}
-
           <form onSubmit={handleSubmit} className="space-y-6">
             
             {/* Header info */}

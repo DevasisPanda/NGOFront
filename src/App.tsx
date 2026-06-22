@@ -64,7 +64,7 @@ function App() {
       <Toaster richColors position="top-right" />
       <ScrollToTop />
       <div className="app-container flex flex-col min-h-screen">
-        <Header />
+        <ErrorBoundary><Header /></ErrorBoundary>
         <main className="flex-1 flex flex-col">
           <ErrorBoundary>
             <Suspense fallback={<PageLoader />}>
@@ -101,7 +101,7 @@ function App() {
             </Suspense>
           </ErrorBoundary>
         </main>
-        <Footer />
+        <ErrorBoundary><Footer /></ErrorBoundary>
       </div>
     </Router>
   );

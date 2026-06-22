@@ -1,6 +1,17 @@
 import React, { useEffect } from 'react';
 import { trpc } from '../lib/trpc';
 import AG1 from '../assets/AG1.jpeg';
+
+// Only allow safe URLs (http/https) to prevent open redirects
+function isSafeUrl(url: string | null | undefined): boolean {
+  if (!url) return false;
+  try {
+    const parsed = new URL(url);
+    return parsed.protocol === 'http:' || parsed.protocol === 'https:';
+  } catch {
+    return false;
+  }
+}
 import AG2 from '../assets/AG2.jpeg';
 import AG3 from '../assets/AG3.jpeg';
 import AG4 from '../assets/AG4.jpeg';
@@ -104,7 +115,7 @@ const Gallery: React.FC = () => {
                 isLarge ? 'sm:col-span-2 sm:row-span-2' : 'col-span-1'
               } rounded-xl overflow-hidden shadow-sm relative group bg-white border border-gray-100 min-h-[220px]`;
 
-              if (item.redirectUrl) {
+              if (isSafeUrl(item.redirectUrl)) {
                 return (
                   <a 
                     key={item.id} 

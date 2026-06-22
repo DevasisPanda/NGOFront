@@ -9,9 +9,10 @@ const Footer: React.FC = () => {
         <div className="lg:col-span-2 space-y-6">
           <h3 className="text-[24px] font-bold text-secondary border-b border-gray-700 pb-2 inline-block">About</h3>
           <div className="flex gap-4">
-            <a className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-secondary hover:text-primary transition-colors" href="#">F</a>
-            <a className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-secondary hover:text-primary transition-colors" href="#">I</a>
-            <a className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-secondary hover:text-primary transition-colors" href="#">Y</a>
+            <a className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-secondary hover:text-primary transition-colors" href="https://www.facebook.com/share/19A2tuUpJN/" target="_blank" rel="noreferrer">F</a>
+            <a className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-secondary hover:text-primary transition-colors" href="https://www.instagram.com/valmikisamajcharitable" target="_blank" rel="noreferrer">I</a>
+            <a className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-secondary hover:text-primary transition-colors" href="https://youtube.com/@valmikisamajarvalli" target="_blank" rel="noreferrer">Y</a>
+            <a className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-secondary hover:text-primary transition-colors" href="https://www.linkedin.com/in/valmiki-samaj-charitable-trust-valmiki-samaj-arvalli-919415355" target="_blank" rel="noreferrer">L</a>
           </div>
           <ul className="space-y-3 mt-4 text-gray-400">
             <li><Link className="nav-link" to="/"><span className="material-symbols-outlined text-sm">chevron_right</span> Home</Link></li>
@@ -57,7 +58,7 @@ const Footer: React.FC = () => {
             </li>
             <li className="flex items-start gap-3">
               <span className="material-symbols-outlined text-secondary">mail</span>
-              <span>valmikisamajtrust@gmail.com</span>
+              <span>valmikisamajchiritabletrust@gmail.com</span>
             </li>
             <li className="flex items-start gap-3">
               <span className="material-symbols-outlined text-secondary">location_on</span>
@@ -74,4 +75,4 @@ const Footer: React.FC = () => {
   );
 };
 
-export default Footer;
+export default React.memo(Footer);
