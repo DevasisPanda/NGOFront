@@ -18,10 +18,34 @@ const Audit: React.FC = () => {
     { name: "Audit Report 2026-2027", image: null }
   ];
 
-  // Use dynamic db entries if available, otherwise fallback to defaults
-  const reports = auditsData && auditsData.length > 0
-    ? auditsData.map(a => ({ name: a.name, image: a.imageUrl }))
-    : defaultAudits;
+  // Merge backend audits with defaults
+  const mergedAudits = [...defaultAudits];
+  if (auditsData) {
+    auditsData.forEach((dbAudit) => {
+      const cleanDbName = dbAudit.name.trim().toLowerCase().replace(/\s+/g, '');
+      const matchIndex = mergedAudits.findIndex(
+        (def) => def.name.trim().toLowerCase().replace(/\s+/g, '') === cleanDbName
+      );
+      if (matchIndex !== -1) {
+        mergedAudits[matchIndex] = {
+          name: dbAudit.name,
+          image: dbAudit.imageUrl || mergedAudits[matchIndex].image
+        };
+      } else {
+        mergedAudits.push({
+          name: dbAudit.name,
+          image: dbAudit.imageUrl || null
+        });
+      }
+    });
+  }
+
+  const getStartYear = (name: string): number => {
+    const match = name.match(/(\d{4})/);
+    return match ? parseInt(match[1], 10) : 0;
+  };
+
+  const reports = mergedAudits.sort((a, b) => getStartYear(b.name) - getStartYear(a.name));
 
   return (
     <div className="flex-grow bg-[#f8f9fa] pb-20">

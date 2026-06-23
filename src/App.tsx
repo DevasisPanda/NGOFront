@@ -28,10 +28,10 @@ const Certifications = lazy(() => import('./pages/Certifications'));
 const Audit = lazy(() => import('./pages/Audit'));
 const GeneralMembers = lazy(() => import('./pages/GeneralMembers'));
 const Campaigns = lazy(() => import('./pages/Campaigns'));
-const ProjectExpenses = lazy(() => import('./pages/ProjectExpenses'));
 const Internship = lazy(() => import('./pages/Internship'));
 const ViewInternship = lazy(() => import('./pages/ViewInternship'));
 const ManagementBody = lazy(() => import('./pages/ManagementBody'));
+const ProjectDetail = lazy(() => import('./pages/ProjectDetail'));
 const CertificateVerification = lazy(() => import('./pages/CertificateVerification'));
 const IDCardVerification = lazy(() => import('./pages/IDCardVerification'));
 const AppointmentLetterVerification = lazy(() => import('./pages/AppointmentLetterVerification'));
@@ -87,10 +87,10 @@ function App() {
                   <Route path="/audit" element={<Audit />} />
                   <Route path="/general-members" element={<GeneralMembers />} />
                   <Route path="/campaigns" element={<Campaigns />} />
-                  <Route path="/expenses" element={<ProjectExpenses />} />
                   <Route path="/internship" element={<Internship />} />
                   <Route path="/view-internship" element={<ViewInternship />} />
                   <Route path="/management-body" element={<ManagementBody />} />
+                  <Route path="/project/:id" element={<ProjectDetail />} />
                   <Route path="/member/:id" element={<MemberProfile />} />
                   <Route path="/verify/certificate/:code" element={<CertificateVerification />} />
                   <Route path="/verify/idcard/:code" element={<IDCardVerification />} />

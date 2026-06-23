@@ -161,6 +161,9 @@ const IDCardVerification: React.FC = () => {
                   <h4 className="font-extrabold text-[12px] sm:text-[16px] text-red-600 uppercase tracking-wide line-clamp-1">
                     {member?.name}
                   </h4>
+                  <p className="text-[8px] sm:text-[11px] font-bold text-teal-700 uppercase tracking-wider mt-0.5 line-clamp-1">
+                    {member?.designation || 'Trust Member'}
+                  </p>
                 </div>
 
                 {/* Left Side Details */}

@@ -82,6 +82,50 @@ const Header: React.FC = () => {
     { code: 'gu', name: 'Gujarati', flag: 'https://flagcdn.com/w20/in.png' }
   ];
 
+  // Helper function to read cookie value
+  const getCookie = (name: string): string | null => {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop()?.split(';').shift() || null;
+    return null;
+  };
+
+  // Sync with cookies on mount
+  React.useEffect(() => {
+    const googtrans = getCookie('googtrans');
+    if (googtrans) {
+      const parts = googtrans.split('/');
+      const targetLang = parts[parts.length - 1]; // e.g. hi, gu, en
+      const matched = languages.find(l => l.code === targetLang);
+      if (matched) {
+        setSelectedLang(matched.name);
+      }
+    }
+  }, []);
+
+  const handleLanguageChange = (lang: { code: string; name: string }) => {
+    setSelectedLang(lang.name);
+    setIsLangDropdownOpen(false);
+
+    // Set cookie for Google Translate
+    // Standard format for googtrans is: /original_language/target_language
+    const cookieValue = `/en/${lang.code}`;
+    
+    // Set cookie on main domain and paths
+    document.cookie = `googtrans=${cookieValue}; path=/;`;
+    document.cookie = `googtrans=${cookieValue}; path=/; domain=${window.location.hostname};`;
+    
+    // Try to trigger the Google Translate dropdown directly if present
+    const selectEl = document.querySelector('.goog-te-combo') as HTMLSelectElement;
+    if (selectEl) {
+      selectEl.value = lang.code;
+      selectEl.dispatchEvent(new Event('change'));
+    }
+    
+    // Reload the page to ensure complete and clean translation across React virtual DOM
+    window.location.reload();
+  };
+
   const currentLang = languages.find(l => l.name === selectedLang) || languages[0];
 
   const toggleDropdown = (menu: string) => {
@@ -145,46 +189,48 @@ const Header: React.FC = () => {
               <p className="text-secondary font-bold text-[10px] sm:text-[12px] lg:text-[14px] mt-0.5">( संस्कृति,शिक्षा,स्वास्थ्य और जागरूकता पर केंद्रित )</p>
             </div>
           </Link>
-          <div className="flex flex-col sm:flex-row items-center gap-4">
-            <div className="flex flex-wrap justify-center gap-2 sm:gap-3">
+          <div className="flex flex-row items-center justify-between sm:justify-end w-full sm:w-auto gap-2 sm:gap-4">
+            <div className="flex flex-row items-center justify-start gap-1.5 sm:gap-3">
               {isAuthenticated ? (
                 <>
                   <button 
                     onClick={handleDashboardRedirect}
                     disabled={isRedirecting}
-                    className="bg-[#061941] text-white px-4 sm:px-6 py-2 sm:py-2.5 rounded-full font-bold flex items-center gap-2 hover:bg-black transition-colors text-[12px] sm:text-sm shadow-md disabled:opacity-50"
+                    className="bg-[#061941] text-white px-3 sm:px-6 py-2 sm:py-2.5 rounded-full font-bold flex items-center gap-1.5 sm:gap-2 hover:bg-black transition-colors text-[12px] sm:text-sm shadow-md disabled:opacity-50"
                   >
-                    {isRedirecting ? 'Connecting...' : 'Dashboard'} <span className="material-symbols-outlined text-[16px] sm:text-[18px]">dashboard</span>
+                    {isRedirecting ? 'Connecting...' : 'Dashboard'} <span className="material-symbols-outlined text-[14px] sm:text-[18px]">dashboard</span>
                   </button>
                   <button 
                     onClick={logout}
-                    className="bg-red-600 text-white px-4 sm:px-6 py-2 sm:py-2.5 rounded-full font-bold flex items-center gap-2 hover:bg-red-700 transition-colors text-[12px] sm:text-sm shadow-md"
+                    className="bg-red-600 text-white px-3 sm:px-6 py-2 sm:py-2.5 rounded-full font-bold flex items-center gap-1.5 sm:gap-2 hover:bg-red-700 transition-colors text-[12px] sm:text-sm shadow-md"
                   >
-                    Logout <span className="material-symbols-outlined text-[16px] sm:text-[18px]">logout</span>
+                    Logout <span className="material-symbols-outlined text-[14px] sm:text-[18px]">logout</span>
                   </button>
                 </>
               ) : (
                 <>
-                  <Link to="/register" className="bg-[#061941] text-white px-4 sm:px-6 py-2 sm:py-2.5 rounded-full font-bold flex items-center gap-2 hover:bg-black transition-colors text-[12px] sm:text-sm shadow-md">
-                    Apply For Membership <span className="material-symbols-outlined text-[16px] sm:text-[18px]">account_circle</span>
+                  <Link to="/register" className="bg-[#061941] text-white px-3 sm:px-6 py-2 sm:py-2.5 rounded-full font-bold flex items-center gap-1.5 sm:gap-2 hover:bg-black transition-colors text-[12px] sm:text-sm shadow-md">
+                    <span className="hidden sm:inline">Apply For Membership</span>
+                    <span className="sm:hidden">Apply</span>
+                    <span className="material-symbols-outlined text-[14px] sm:text-[18px]">account_circle</span>
                   </Link>
-                  <Link to="/login" className="bg-[#061941] text-white px-4 sm:px-6 py-2 sm:py-2.5 rounded-full font-bold flex items-center gap-2 hover:bg-black transition-colors text-[12px] sm:text-sm shadow-md">
-                    Login <span className="material-symbols-outlined text-[16px] sm:text-[18px]">how_to_reg</span>
+                  <Link to="/login" className="bg-[#061941] text-white px-3 sm:px-6 py-2 sm:py-2.5 rounded-full font-bold flex items-center gap-1.5 sm:gap-2 hover:bg-black transition-colors text-[12px] sm:text-sm shadow-md">
+                    Login <span className="material-symbols-outlined text-[14px] sm:text-[18px]">how_to_reg</span>
                   </Link>
                 </>
               )}
             </div>
             <div className="flex flex-col items-center sm:ml-2 sm:border-l border-gray-200 sm:pl-4 relative">
-              <div className="bg-secondary text-white px-3 py-0.5 rounded text-[10px] sm:text-[11px] font-bold mb-1.5">Translate This Website</div>
+              <div className="hidden sm:block bg-secondary text-white px-3 py-0.5 rounded text-[10px] sm:text-[11px] font-bold mb-1.5">Translate This Website</div>
               <div 
-                className="border border-gray-300 rounded px-3 py-1 flex items-center gap-2 text-[12px] sm:text-[13px] bg-white cursor-pointer w-[110px] sm:w-[120px] justify-between hover:bg-gray-50 transition-colors"
+                className="border border-gray-300 rounded px-2 sm:px-3 py-1 flex items-center gap-1 sm:gap-2 text-[11px] sm:text-[13px] bg-white cursor-pointer w-[90px] sm:w-[120px] justify-between hover:bg-gray-50 transition-colors"
                 onClick={() => setIsLangDropdownOpen(!isLangDropdownOpen)}
               >
-                <div className="flex items-center gap-2">
-                  <img alt={`${currentLang.name} Flag`} className="w-5 h-3.5 object-cover rounded-sm shadow-sm" src={currentLang.flag} />
+                <div className="flex items-center gap-1.5 sm:gap-2">
+                  <img alt={`${currentLang.name} Flag`} className="w-4 sm:w-5 h-3 sm:h-3.5 object-cover rounded-sm shadow-sm" src={currentLang.flag} />
                   <span className="font-medium text-gray-700">{currentLang.name}</span>
                 </div>
-                <span className="material-symbols-outlined text-[16px] sm:text-[18px] text-gray-500">{isLangDropdownOpen ? 'expand_less' : 'expand_more'}</span>
+                <span className="material-symbols-outlined text-[14px] sm:text-[18px] text-gray-500">{isLangDropdownOpen ? 'expand_less' : 'expand_more'}</span>
               </div>
               
               {/* Language Dropdown Menu */}
@@ -194,10 +240,7 @@ const Header: React.FC = () => {
                     <div 
                       key={lang.code}
                       className="px-3 py-2 flex items-center gap-2 hover:bg-gray-50 cursor-pointer text-[12px] sm:text-[13px] transition-colors"
-                      onClick={() => {
-                        setSelectedLang(lang.name);
-                        setIsLangDropdownOpen(false);
-                      }}
+                      onClick={() => handleLanguageChange(lang)}
                     >
                       <img alt={`${lang.name} Flag`} className="w-5 h-3.5 object-cover rounded-sm shadow-sm" src={lang.flag} />
                       <span className={`font-medium ${selectedLang === lang.name ? 'text-secondary' : 'text-gray-700'}`}>{lang.name}</span>
@@ -255,7 +298,6 @@ const Header: React.FC = () => {
             <Link to="/gallery" className="hover:text-secondary transition-colors py-4">Activity Gallery</Link>
             <Link to="/campaigns" className="hover:text-secondary transition-colors py-4">Campaigns</Link>
             <Link to="/events" className="hover:text-secondary transition-colors py-4">Program & Events</Link>
-            <Link to="/expenses" className="hover:text-secondary transition-colors py-4">Project Expenses</Link>
 
             <div className="flex items-center gap-1 cursor-pointer hover:text-secondary transition-colors relative group py-4">
               <span>Internships</span>
@@ -325,7 +367,6 @@ const Header: React.FC = () => {
             <Link to="/gallery" className="px-6 py-3 border-b border-gray-700/50 font-bold hover:bg-gray-800 transition-colors" onClick={() => setIsMobileMenuOpen(false)}>Activity Gallery</Link>
             <Link to="/campaigns" className="px-6 py-3 border-b border-gray-700/50 font-bold hover:bg-gray-800 transition-colors" onClick={() => setIsMobileMenuOpen(false)}>Campaigns</Link>
             <Link to="/events" className="px-6 py-3 border-b border-gray-700/50 font-bold hover:bg-gray-800 transition-colors" onClick={() => setIsMobileMenuOpen(false)}>Program & Events</Link>
-            <Link to="/expenses" className="px-6 py-3 border-b border-gray-700/50 font-bold hover:bg-gray-800 transition-colors" onClick={() => setIsMobileMenuOpen(false)}>Project Expenses</Link>
 
             <div className="flex flex-col border-b border-gray-700/50">
               <button className="flex items-center justify-between px-6 py-3 font-bold hover:bg-gray-800 transition-colors" onClick={() => toggleDropdown('intern')}>

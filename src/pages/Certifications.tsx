@@ -1,19 +1,12 @@
 import React from 'react';
 import { trpc } from '../lib/trpc';
-import Cer1 from '../assets/Cer1.jpeg';
-import Cer2 from '../assets/NGO Darpan_pages-to-jpg-0001.jpg';
-import Cer3 from '../assets/Cer3.jpeg';
-import Cer4 from '../assets/Cer4.jpeg';
-import Cer5 from '../assets/Cer5.jpeg';
-import Cer6 from '../assets/TAN Letter Certificate_page-0001.jpg';
-
 const staticCertificates = [
-  { name: "Registration Certificate", imageUrl: Cer3, description: "" },
-  { name: "80G", imageUrl: Cer4, description: "" },
-  { name: "12A", imageUrl: Cer1, description: "" },
-  { name: "CSR Registration", imageUrl: Cer5, description: "" },
-  { name: "NGO Drapan", imageUrl: Cer2, description: "" },
-  { name: "TAN Number", imageUrl: Cer6, description: "" }
+  { name: "Registration Certificate", imageUrl: "https://res.cloudinary.com/dxmovdiru/image/upload/v1781614777/ngo-management/certifications/nmiy3jwfewhywgydk7yg.jpg", description: "" },
+  { name: "80G", imageUrl: "https://res.cloudinary.com/dxmovdiru/image/upload/v1781614779/ngo-management/certifications/lmwl1sitjjgyzjfxvytb.jpg", description: "" },
+  { name: "12A", imageUrl: "https://res.cloudinary.com/dxmovdiru/image/upload/v1781621765/ngo-management/Cer1_34d3ab3e.jpg", description: "" },
+  { name: "CSR Registration", imageUrl: "https://res.cloudinary.com/dxmovdiru/image/upload/v1781614783/ngo-management/certifications/bti7eoijve9otpfjn7zz.jpg", description: "" },
+  { name: "NGO Drapan", imageUrl: "https://res.cloudinary.com/dxmovdiru/image/upload/v1781614784/ngo-management/certifications/mlfgupo83nc37ojjavjc.jpg", description: "" },
+  { name: "TAN Number", imageUrl: "https://res.cloudinary.com/dxmovdiru/image/upload/v1781614785/ngo-management/certifications/w2uyxs9vc9hicbqu5csy.jpg", description: "" }
 ];
 
 const Certifications: React.FC = () => {

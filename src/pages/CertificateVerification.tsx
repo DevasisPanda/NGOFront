@@ -133,50 +133,89 @@ const CertificateVerification: React.FC = () => {
               <h3 className="w-full font-bold text-slate-700 text-sm uppercase tracking-wider flex items-center gap-2">
                 <Award className="w-4 h-4 text-orange-500" /> Digital Certificate Document
               </h3>
-              <div 
-                ref={certificateRef}
-                className="relative w-full aspect-[1/1.414] bg-white print:m-0 print:border-none print:shadow-none"
-                style={{ 
-                  fontFamily: "'Times New Roman', Times, serif" 
-                }}
-              >
-                <img 
-                  src={certificate?.certificateType === 'achievement' ? achievementCertificateTemplate : membershipCertificateTemplate} 
-                  alt="Certificate Document" 
-                  className="w-full h-full object-contain" 
-                  crossOrigin="anonymous"
-                />
-                
-                {/* Dynamic Overlays adjusted for new local templates */}
-                
-                {/* Recipient Name - Sat on the first red line */}
-                <div className="absolute top-[34.5%] left-0 right-0 text-center px-12">
-                  <span className="text-[20px] sm:text-[28px] md:text-[34px] text-[#2c3e50] font-bold tracking-wide inline-block">
-                    {recipient?.name}
-                  </span>
-                </div>
+              {certificate?.certificateType === 'achievement' ? (
+                /* Achievement Template (Landscape) */
+                <div 
+                  ref={certificateRef}
+                  className="relative w-full max-w-xl aspect-[1.414/1] bg-white print:m-0 print:border-none print:shadow-none rounded-xl overflow-hidden border border-slate-200"
+                  style={{ 
+                    fontFamily: "'Times New Roman', Times, serif" 
+                  }}
+                >
+                  <img 
+                    src={achievementCertificateTemplate} 
+                    alt="Achievement Certificate" 
+                    className="w-full h-full object-cover" 
+                    crossOrigin="anonymous"
+                  />
+                  
+                  {/* Recipient Name */}
+                  <div className="absolute top-[48%] left-0 right-0 text-center px-8">
+                    <span className="text-[18px] sm:text-[24px] md:text-[28px] text-slate-800 font-bold tracking-wide italic inline-block">
+                      {recipient?.name}
+                    </span>
+                  </div>
 
-                {/* Membership/Certificate No. */}
-                <div className="absolute top-[52.5%] left-[8%] w-[30%] text-center">
-                  <span className="text-[12px] sm:text-[16px] md:text-[18px] text-[#2c3e50] font-bold">
-                    {certificate?.certificateNumber}
-                  </span>
-                </div>
+                  {/* Description */}
+                  <div className="absolute top-[61%] left-1/2 -translate-x-1/2 w-[80%] text-center text-slate-600 text-[8px] sm:text-[11px] leading-relaxed max-w-lg">
+                    {certificate?.description || `This certificate is officially presented to acknowledge their dedication and valuable service as a registered achievement recipient of the Valmiki Samaj Charitable Trust.`}
+                  </div>
 
-                {/* Issue Date */}
-                <div className="absolute top-[52.5%] left-1/2 -translate-x-1/2 w-[30%] text-center">
-                  <span className="text-[12px] sm:text-[16px] md:text-[18px] text-[#2c3e50] font-bold">
+                  {/* Issue Date */}
+                  <div className="absolute bottom-[13%] left-[17%] text-[7px] sm:text-[9.5px] text-slate-600 font-medium font-mono">
                     {certificate?.issueDate ? new Date(certificate.issueDate).toLocaleDateString() : ""}
-                  </span>
-                </div>
+                  </div>
 
-                {/* Expiry/Valid Until */}
-                <div className="absolute top-[52.5%] right-[8%] w-[30%] text-center">
-                  <span className="text-[12px] sm:text-[16px] md:text-[18px] text-[#2c3e50] font-bold">
-                    {certificate?.expiryDate ? new Date(certificate.expiryDate).toLocaleDateString() : "Lifetime"}
-                  </span>
+                  {/* Certificate Number */}
+                  <div className="absolute bottom-[13%] right-[17%] text-[7px] sm:text-[9.5px] text-slate-600 font-medium font-mono">
+                    {certificate?.certificateNumber}
+                  </div>
                 </div>
-              </div>
+              ) : (
+                /* Membership/Volunteer/Other Templates (Portrait) */
+                <div 
+                  ref={certificateRef}
+                  className="relative w-full max-w-md aspect-[904/1354] bg-white print:m-0 print:border-none print:shadow-none rounded-xl overflow-hidden border border-slate-200"
+                  style={{ 
+                    fontFamily: "'Times New Roman', Times, serif" 
+                  }}
+                >
+                  <img 
+                    src={membershipCertificateTemplate} 
+                    alt="Membership Certificate" 
+                    className="w-full h-full object-cover" 
+                    crossOrigin="anonymous"
+                  />
+                  
+                  {/* Recipient Name */}
+                  <div className="absolute left-0 right-0 text-center px-12" style={{ top: '39.14%' }}>
+                    <span className="text-[15px] sm:text-[20px] text-slate-800 font-bold tracking-wide inline-block">
+                      {recipient?.name}
+                    </span>
+                  </div>
+
+                  {/* Membership Number */}
+                  <div className="absolute text-center" style={{ top: '54.65%', left: '17.7%', transform: 'translateX(-50%)', width: '30%' }}>
+                    <span className="text-[9px] sm:text-[12px] text-slate-800 font-bold">
+                      {certificate?.certificateNumber}
+                    </span>
+                  </div>
+
+                  {/* Issue Date */}
+                  <div className="absolute text-center" style={{ top: '54.65%', left: '51.44%', transform: 'translateX(-50%)', width: '30%' }}>
+                    <span className="text-[9px] sm:text-[12px] text-slate-800 font-bold">
+                      {certificate?.issueDate ? new Date(certificate.issueDate).toLocaleDateString() : ""}
+                    </span>
+                  </div>
+
+                  {/* Expiry Date */}
+                  <div className="absolute text-center" style={{ top: '54.65%', left: '82.41%', transform: 'translateX(-50%)', width: '30%' }}>
+                    <span className="text-[9px] sm:text-[12px] text-slate-800 font-bold">
+                      {certificate?.expiryDate ? new Date(certificate.expiryDate).toLocaleDateString() : "Lifetime"}
+                    </span>
+                  </div>
+                </div>
+              )}
             </div>
           )}
 

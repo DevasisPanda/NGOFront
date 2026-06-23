@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { trpc } from '../lib/trpc';
-import AG1 from '../assets/AG1.jpeg';
 
 // Only allow safe URLs (http/https) to prevent open redirects
 function isSafeUrl(url: string | null | undefined): boolean {
@@ -12,12 +11,6 @@ function isSafeUrl(url: string | null | undefined): boolean {
     return false;
   }
 }
-import AG2 from '../assets/AG2.jpeg';
-import AG3 from '../assets/AG3.jpeg';
-import AG4 from '../assets/AG4.jpeg';
-import AG5 from '../assets/AG5.jpeg';
-import AG6 from '../assets/AG6.jpeg';
-import AG7 from '../assets/AG7.jpeg';
 
 const Gallery: React.FC = () => {
   const { data: galleryItems, isLoading } = trpc.gallery.getPublic.useQuery();
@@ -143,25 +136,25 @@ const Gallery: React.FC = () => {
           /* Static Fallback Grid */
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 fade-in-section opacity-0 translate-y-5 transition-all duration-800 ease-out [&.is-visible]:opacity-100 [&.is-visible]:translate-y-0">
             <div className="col-span-2 row-span-2 rounded-xl overflow-hidden shadow-sm relative group">
-              <img alt="Gallery Activity" className="w-full h-full object-cover aspect-[1.47] group-hover:scale-105 transition-transform duration-500" src={AG1} />
+              <img alt="Gallery Activity" className="w-full h-full object-cover aspect-[1.47] group-hover:scale-105 transition-transform duration-500" src="https://res.cloudinary.com/dxmovdiru/image/upload/v1782201378/ngo-management/gallery/jdvvh5bzzyoe471evp2m.jpg" />
             </div>
             <div className="col-span-2 rounded-xl overflow-hidden shadow-sm relative group">
-              <img alt="Gallery Activity" className="w-full h-full object-cover aspect-[1.79] group-hover:scale-105 transition-transform duration-500" src={AG2} />
+              <img alt="Gallery Activity" className="w-full h-full object-cover aspect-[1.79] group-hover:scale-105 transition-transform duration-500" src="https://res.cloudinary.com/dxmovdiru/image/upload/v1782201380/ngo-management/gallery/d0hudeefvvobgxorpo5s.jpg" />
             </div>
             <div className="rounded-xl overflow-hidden shadow-sm relative group">
-              <img alt="Gallery Activity" className="w-full h-full object-cover aspect-square group-hover:scale-105 transition-transform duration-500" src={AG3} />
+              <img alt="Gallery Activity" className="w-full h-full object-cover aspect-square group-hover:scale-105 transition-transform duration-500" src="https://res.cloudinary.com/dxmovdiru/image/upload/v1782201382/ngo-management/gallery/tdcv74ahvmuqwxhykg6h.jpg" />
             </div>
             <div className="rounded-xl overflow-hidden shadow-sm relative group">
-              <img alt="Gallery Activity" className="w-full h-full object-cover aspect-square group-hover:scale-105 transition-transform duration-500" src={AG4} />
+              <img alt="Gallery Activity" className="w-full h-full object-cover aspect-square group-hover:scale-105 transition-transform duration-500" src="https://res.cloudinary.com/dxmovdiru/image/upload/v1782201383/ngo-management/gallery/rkkljgzdfqiqvbkv6tcz.jpg" />
             </div>
             <div className="rounded-xl overflow-hidden shadow-sm relative group">
-              <img alt="Gallery Activity" className="w-full h-full object-cover aspect-square group-hover:scale-105 transition-transform duration-500" src={AG5} />
+              <img alt="Gallery Activity" className="w-full h-full object-cover aspect-square group-hover:scale-105 transition-transform duration-500" src="https://res.cloudinary.com/dxmovdiru/image/upload/v1782201385/ngo-management/gallery/b7mesu2lthmji1sdn9mz.jpg" />
             </div>
             <div className="rounded-xl overflow-hidden shadow-sm relative group">
-              <img alt="Gallery Activity" className="w-full h-full object-cover aspect-square group-hover:scale-105 transition-transform duration-500" src={AG6} />
+              <img alt="Gallery Activity" className="w-full h-full object-cover aspect-square group-hover:scale-105 transition-transform duration-500" src="https://res.cloudinary.com/dxmovdiru/image/upload/v1782201386/ngo-management/gallery/s3qgyumjvumgk34yccs7.jpg" />
             </div>
             <div className="rounded-xl overflow-hidden shadow-sm relative group">
-              <img alt="Gallery Activity" className="w-full h-full object-cover aspect-square group-hover:scale-105 transition-transform duration-500" src={AG7} />
+              <img alt="Gallery Activity" className="w-full h-full object-cover aspect-square group-hover:scale-105 transition-transform duration-500" src="https://res.cloudinary.com/dxmovdiru/image/upload/v1782201387/ngo-management/gallery/rr5xccuqlwxbpov7ydoo.jpg" />
             </div>
           </div>
         )}

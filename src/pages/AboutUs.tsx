@@ -64,13 +64,34 @@ const DEFAULT_CORE_VALUES = [
   { icon: "volunteer_activism", title: "Compassion" }
 ];
 
+const safeParseJSON = <T,>(val: any, fallback: T): T => {
+  if (val === null || val === undefined) return fallback;
+  let parsed = val;
+  while (typeof parsed === 'string') {
+    try {
+      const prev = parsed;
+      parsed = JSON.parse(parsed);
+      if (parsed === prev) break;
+    } catch (e) {
+      console.error("Failed to parse JSON:", e);
+      return fallback;
+    }
+  }
+  if (Array.isArray(fallback)) {
+    if (!Array.isArray(parsed) || parsed.length === 0) {
+      return fallback;
+    }
+  }
+  return (parsed as T) || fallback;
+};
+
 const AboutUs: React.FC = () => {
   const { data: settings, isLoading } = trpc.aboutUs.getSettings.useQuery(undefined, {
     staleTime: 5 * 60 * 1000, // 5 minutes cache
     refetchOnWindowFocus: false,
   });
 
-  useFadeInOnScroll();
+  useFadeInOnScroll([isLoading]);
 
   if (isLoading) {
     return (
@@ -89,14 +110,14 @@ const AboutUs: React.FC = () => {
   const founder = settings?.founder || "Shri Narayanbhai M. Rathod";
   const logoUrl = settings?.logoUrl || "/logo.jpg";
 
-  const introParagraphs = (settings?.introParagraphs as any[]) || DEFAULT_INTRO;
-  const commitments = (settings?.commitments as any[]) || DEFAULT_COMMITMENTS;
+  const introParagraphs = safeParseJSON(settings?.introParagraphs, DEFAULT_INTRO);
+  const commitments = safeParseJSON(settings?.commitments, DEFAULT_COMMITMENTS);
 
   const visionTitle = settings?.visionTitle || "Our Vision for the Future";
   const visionDescription = settings?.visionDescription || "Our vision extends beyond addressing immediate needs. We dream of building a society free from fear, discrimination, and deprivation. We envision a future where:";
-  const visionPoints = (settings?.visionPoints as string[]) || DEFAULT_VISION_POINTS;
+  const visionPoints = safeParseJSON(settings?.visionPoints, DEFAULT_VISION_POINTS);
 
-  const coreValues = (settings?.coreValues as any[]) || DEFAULT_CORE_VALUES;
+  const coreValues = safeParseJSON(settings?.coreValues, DEFAULT_CORE_VALUES);
 
   const promiseTitle = settings?.promiseTitle || "Our Promise";
   const promiseText = settings?.promiseText || "We will continue working until every child can dream without fear, every widow can live with dignity, every family can stand on its own feet, and every human being can experience the respect, opportunity, and hope they deserve.";
