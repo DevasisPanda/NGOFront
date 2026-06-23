@@ -10,7 +10,9 @@ export function TRPCProvider({ children }: { children: React.ReactNode }) {
     trpc.createClient({
       links: [
         httpBatchLink({
-          url: `${import.meta.env.VITE_API_URL || '/api/trpc'}`,
+          url: import.meta.env.VITE_API_URL
+            ? `${import.meta.env.VITE_API_URL}/api/trpc`
+            : '/api/trpc',
           transformer: superjson,
           async headers() {
             const token = localStorage.getItem('token');
