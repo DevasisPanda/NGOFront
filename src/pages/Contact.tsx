@@ -176,7 +176,7 @@ const Contact: React.FC = () => {
                   <label className="form-label" htmlFor="phone">Phone Number</label>
                   <div className="relative">
                     <span className="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-muted">call</span>
-                    <input value={formData.phone} onChange={handleChange} className="w-full pl-10 pr-4 py-3 border-2 border-[#e2e2e2] rounded-lg focus:border-secondary focus:ring-0 outline-none transition-colors" id="phone" placeholder="Enter your phone number" type="tel" />
+                    <input value={formData.phone} onChange={handleChange} className="w-full pl-10 pr-4 py-3 border-2 border-[#e2e2e2] rounded-lg focus:border-secondary focus:ring-0 outline-none transition-colors" id="phone" placeholder="Enter your 10-digit phone number" type="tel" pattern="[0-9]{10}" maxLength={10} title="Phone number must be exactly 10 digits" />
                   </div>
                 </div>
                 <div className="space-y-1">

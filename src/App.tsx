@@ -22,6 +22,8 @@ const Events = lazy(() => import('./pages/Events'));
 const Beneficiaries = lazy(() => import('./pages/Beneficiaries'));
 const ViewBeneficiary = lazy(() => import('./pages/ViewBeneficiary'));
 const SignIn = lazy(() => import('./pages/SignIn'));
+const ForgotPassword = lazy(() => import('./pages/ForgotPassword'));
+const ResetPassword = lazy(() => import('./pages/ResetPassword'));
 const SignUp = lazy(() => import('./pages/SignUp'));
 const Achievements = lazy(() => import('./pages/Achievements'));
 const Certifications = lazy(() => import('./pages/Certifications'));
@@ -81,6 +83,8 @@ function App() {
                   <Route path="/beneficiary" element={<Beneficiaries />} />
                   <Route path="/view-beneficiary" element={<ViewBeneficiary />} />
                   <Route path="/login" element={<SignIn />} />
+                  <Route path="/forgot-password" element={<ForgotPassword />} />
+                  <Route path="/reset-password" element={<ResetPassword />} />
                   <Route path="/register" element={<SignUp />} />
                   <Route path="/achievements" element={<Achievements />} />
                   <Route path="/certifications" element={<Certifications />} />

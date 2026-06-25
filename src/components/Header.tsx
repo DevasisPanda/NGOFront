@@ -157,11 +157,11 @@ const Header: React.FC = () => {
             </a>
           </div>
           {/* Ticker */}
-          <div className="flex-1 flex items-center overflow-hidden bg-white h-full mx-6 lg:mx-12">
+          <div className="flex-1 min-w-0 flex items-center overflow-hidden bg-white h-full mx-6 lg:mx-12">
             <div className="bg-[#061941] text-white px-4 h-full flex items-center gap-2 whitespace-nowrap z-10 shrink-0 font-bold text-[13px]">
               <span className="material-symbols-outlined text-[16px]">bolt</span> News & Updates
             </div>
-            <div className="overflow-hidden flex-1 text-[#061941] h-full flex items-center font-medium px-4 text-sm whitespace-nowrap">
+            <div className="overflow-hidden flex-1 min-w-0 text-[#061941] h-full flex items-center font-medium px-4 text-sm whitespace-nowrap">
               <div className="flex animate-marquee w-max" style={{ animationDuration: marqueeDuration }}>
                 <div className="flex shrink-0">
                   {renderMarqueeContent()}

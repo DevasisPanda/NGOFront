@@ -276,10 +276,13 @@ const Donate = () => {
                 <input
                   className="flex-1 bg-white border-none px-4 py-[12px] focus:ring-0 outline-none"
                   name="donorPhone"
-                  placeholder="Enter Mobile Number"
+                  placeholder="Enter 10-digit Mobile Number"
                   type="tel"
                   value={form.donorPhone}
                   onChange={handleChange}
+                  pattern="[0-9]{10}"
+                  maxLength={10}
+                  title="Phone number must be exactly 10 digits"
                 />
               </div>
 

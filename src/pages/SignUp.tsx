@@ -100,7 +100,7 @@ const SignUp: React.FC = () => {
               <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                 <span className="material-symbols-outlined text-[#75777f] text-[20px]">call</span>
               </div>
-              <input value={phone} onChange={(e) => setPhone(e.target.value)} className="block w-full pl-[40px] pr-3 py-2 border border-[#c5c6cf] rounded-lg bg-white text-[#1a1c1c] focus:outline-none focus:ring-2 focus:ring-[#061941] focus:border-transparent transition-colors text-[16px] placeholder-muted" id="phone" name="phone" placeholder="Enter your mobile number" required type="tel" />
+              <input value={phone} onChange={(e) => setPhone(e.target.value)} className="block w-full pl-[40px] pr-3 py-2 border border-[#c5c6cf] rounded-lg bg-white text-[#1a1c1c] focus:outline-none focus:ring-2 focus:ring-[#061941] focus:border-transparent transition-colors text-[16px] placeholder-muted" id="phone" name="phone" placeholder="Enter 10-digit mobile number" required type="tel" pattern="[0-9]{10}" maxLength={10} title="Phone number must be exactly 10 digits" />
             </div>
           </div>
           

@@ -113,7 +113,7 @@ const SignIn: React.FC = () => {
               <input className="h-4 w-4 text-[#061941] border-[#c5c6cf] rounded focus:ring-[#061941]" id="remember-me" name="remember-me" type="checkbox" />
               <label className="ml-2 block text-[12px] font-medium text-[#45464e]" htmlFor="remember-me">Remember me</label>
             </div>
-            <a className="text-[12px] font-medium text-[#061941] hover:text-secondary transition-colors hover:underline" href="#">Forgot Password?</a>
+            <Link className="text-[12px] font-medium text-[#061941] hover:text-secondary transition-colors hover:underline" to="/forgot-password">Forgot Password?</Link>
           </div>
           
           {/* Submit Button */}
