@@ -6,15 +6,20 @@ const ForgotPassword: React.FC = () => {
   const [email, setEmail] = useState('');
   const [successMsg, setSuccessMsg] = useState('');
   const [errorMsg, setErrorMsg] = useState('');
+  const [devLink, setDevLink] = useState('');
 
   const forgotPasswordMutation = trpc.auth.forgotPassword.useMutation({
     onSuccess: (data: any) => {
       setSuccessMsg(data.message || 'Reset link sent successfully!');
       setErrorMsg('');
+      if (data.devLink) {
+        setDevLink(data.devLink);
+      }
     },
     onError: (error: any) => {
       setErrorMsg(error.message || 'An error occurred. Please try again.');
       setSuccessMsg('');
+      setDevLink('');
     },
   });
 
@@ -22,6 +27,7 @@ const ForgotPassword: React.FC = () => {
     e.preventDefault();
     setSuccessMsg('');
     setErrorMsg('');
+    setDevLink('');
     forgotPasswordMutation.mutate({ email });
   };
 
@@ -61,6 +67,21 @@ const ForgotPassword: React.FC = () => {
               </span>
               {successMsg}
             </div>
+
+            {devLink && (
+              <div className="p-4 text-left bg-amber-50 border border-amber-200 text-amber-900 rounded-lg text-sm space-y-2 shadow-sm">
+                <p className="font-bold flex items-center gap-1">
+                  <span className="material-symbols-outlined text-amber-600 text-[20px] font-bold">info</span>
+                  [Sandbox / Dev Link]
+                </p>
+                <p className="text-xs text-slate-500">
+                  Since the server is in development mode or sandbox email restrictions apply, you can click this link directly to reset your password:
+                </p>
+                <a href={devLink} className="text-blue-600 underline font-semibold break-all text-xs block">
+                  {devLink}
+                </a>
+              </div>
+            )}
             <p className="text-sm text-slate-500">
               Be sure to check your spam/junk folder if you don't receive the email within a couple of minutes.
             </p>

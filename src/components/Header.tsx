@@ -186,7 +186,7 @@ const Header: React.FC = () => {
             <img alt="Valmiki Samaj Trust Logo" className="h-[45px] w-[45px] md:h-[60px] md:w-[60px] object-contain shrink-0" src="/logo.jpg" />
             <div className="flex-1 text-center md:text-left">
               <h1 className="text-[#061941] text-[18px] sm:text-[22px] lg:text-[28px] font-extrabold tracking-tight leading-tight">Valmiki Samaj Charitable Trust</h1>
-              <p className="text-secondary font-bold text-[10px] sm:text-[12px] lg:text-[14px] mt-0.5">( संस्कृति,शिक्षा,स्वास्थ्य और जागरूकता पर केंद्रित )</p>
+              <p className="text-secondary font-bold text-[10px] sm:text-[12px] lg:text-[14px] mt-0.5">( सेवा, शिक्षा, संस्कार और आत्मनिर्भरता। )</p>
             </div>
           </Link>
           <div className="flex flex-row items-center justify-between sm:justify-end w-full sm:w-auto gap-2 sm:gap-4">

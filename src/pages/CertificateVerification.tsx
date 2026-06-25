@@ -1,15 +1,13 @@
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { trpc } from '../lib/trpc';
-import { CheckCircle, XCircle, Award, Calendar, ShieldCheck, Printer, ArrowLeft, QrCode } from 'lucide-react';
+import { CheckCircle, XCircle, Award, Calendar, ShieldCheck, Printer, ArrowLeft } from 'lucide-react';
 import { Download } from 'lucide-react';
 import { Button } from '../components/ui/button';
 import { useRef, useState } from 'react';
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
-
-import membershipCertificateTemplate from '../assets/Membership Certificate .jpeg';
-import achievementCertificateTemplate from '../assets/Achivement Certificate .jpeg';
+import { VerifiableDocument } from '../components/VerifiableDocument';
 
 const CertificateVerification: React.FC = () => {
   const { code } = useParams<{ code: string }>();
@@ -19,6 +17,8 @@ const CertificateVerification: React.FC = () => {
     { qrCode: code || "" },
     { enabled: !!code }
   );
+
+  const { data: dbTemplates } = trpc.document.getTemplateConfigs.useQuery();
 
   const certificateRef = useRef<HTMLDivElement>(null);
   const [isDownloading, setIsDownloading] = useState(false);
@@ -31,7 +31,6 @@ const CertificateVerification: React.FC = () => {
     if (!certificateRef.current) return;
     setIsDownloading(true);
     try {
-      // Use a scale of 2 or 3 for high quality PDF rendering
       const canvas = await html2canvas(certificateRef.current, { scale: 3, useCORS: true });
       const imgData = canvas.toDataURL('image/jpeg', 1.0);
       
@@ -59,7 +58,7 @@ const CertificateVerification: React.FC = () => {
     );
   }
 
-  if (error || !verResult) {
+  if (error || !verResult || !verResult.certificate) {
     return (
       <div className="min-h-screen bg-slate-50 flex items-center justify-center p-6">
         <div className="max-w-md w-full bg-white rounded-2xl shadow-xl p-8 border border-red-100 text-center">
@@ -78,7 +77,6 @@ const CertificateVerification: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-100 to-slate-50 py-12 px-4 sm:px-6 lg:px-8 flex flex-col justify-center items-center">
-      {/* Verification Status Badge */}
       <div className="max-w-2xl w-full bg-white rounded-3xl shadow-xl border border-slate-200 overflow-hidden print:shadow-none print:border-none">
         
         {/* Banner */}
@@ -133,89 +131,30 @@ const CertificateVerification: React.FC = () => {
               <h3 className="w-full font-bold text-slate-700 text-sm uppercase tracking-wider flex items-center gap-2">
                 <Award className="w-4 h-4 text-orange-500" /> Digital Certificate Document
               </h3>
-              {certificate?.certificateType === 'achievement' ? (
-                /* Achievement Template (Landscape) */
-                <div 
-                  ref={certificateRef}
-                  className="relative w-full max-w-xl aspect-[1.414/1] bg-white print:m-0 print:border-none print:shadow-none rounded-xl overflow-hidden border border-slate-200"
-                  style={{ 
-                    fontFamily: "'Times New Roman', Times, serif" 
-                  }}
-                >
-                  <img 
-                    src={achievementCertificateTemplate} 
-                    alt="Achievement Certificate" 
-                    className="w-full h-full object-cover" 
-                    crossOrigin="anonymous"
-                  />
-                  
-                  {/* Recipient Name */}
-                  <div className="absolute top-[48%] left-0 right-0 text-center px-8">
-                    <span className="text-[18px] sm:text-[24px] md:text-[28px] text-slate-800 font-bold tracking-wide italic inline-block">
-                      {recipient?.name}
-                    </span>
-                  </div>
-
-                  {/* Description */}
-                  <div className="absolute top-[61%] left-1/2 -translate-x-1/2 w-[80%] text-center text-slate-600 text-[8px] sm:text-[11px] leading-relaxed max-w-lg">
-                    {certificate?.description || `This certificate is officially presented to acknowledge their dedication and valuable service as a registered achievement recipient of the Valmiki Samaj Charitable Trust.`}
-                  </div>
-
-                  {/* Issue Date */}
-                  <div className="absolute bottom-[13%] left-[17%] text-[7px] sm:text-[9.5px] text-slate-600 font-medium font-mono">
-                    {certificate?.issueDate ? new Date(certificate.issueDate).toLocaleDateString() : ""}
-                  </div>
-
-                  {/* Certificate Number */}
-                  <div className="absolute bottom-[13%] right-[17%] text-[7px] sm:text-[9.5px] text-slate-600 font-medium font-mono">
-                    {certificate?.certificateNumber}
-                  </div>
-                </div>
-              ) : (
-                /* Membership/Volunteer/Other Templates (Portrait) */
-                <div 
-                  ref={certificateRef}
-                  className="relative w-full max-w-md aspect-[904/1354] bg-white print:m-0 print:border-none print:shadow-none rounded-xl overflow-hidden border border-slate-200"
-                  style={{ 
-                    fontFamily: "'Times New Roman', Times, serif" 
-                  }}
-                >
-                  <img 
-                    src={membershipCertificateTemplate} 
-                    alt="Membership Certificate" 
-                    className="w-full h-full object-cover" 
-                    crossOrigin="anonymous"
-                  />
-                  
-                  {/* Recipient Name */}
-                  <div className="absolute left-0 right-0 text-center px-12" style={{ top: '39.14%' }}>
-                    <span className="text-[15px] sm:text-[20px] text-slate-800 font-bold tracking-wide inline-block">
-                      {recipient?.name}
-                    </span>
-                  </div>
-
-                  {/* Membership Number */}
-                  <div className="absolute text-center" style={{ top: '54.65%', left: '17.7%', transform: 'translateX(-50%)', width: '30%' }}>
-                    <span className="text-[9px] sm:text-[12px] text-slate-800 font-bold">
-                      {certificate?.certificateNumber}
-                    </span>
-                  </div>
-
-                  {/* Issue Date */}
-                  <div className="absolute text-center" style={{ top: '54.65%', left: '51.44%', transform: 'translateX(-50%)', width: '30%' }}>
-                    <span className="text-[9px] sm:text-[12px] text-slate-800 font-bold">
-                      {certificate?.issueDate ? new Date(certificate.issueDate).toLocaleDateString() : ""}
-                    </span>
-                  </div>
-
-                  {/* Expiry Date */}
-                  <div className="absolute text-center" style={{ top: '54.65%', left: '82.41%', transform: 'translateX(-50%)', width: '30%' }}>
-                    <span className="text-[9px] sm:text-[12px] text-slate-800 font-bold">
-                      {certificate?.expiryDate ? new Date(certificate.expiryDate).toLocaleDateString() : "Lifetime"}
-                    </span>
-                  </div>
-                </div>
-              )}
+              
+              <div className="w-full flex justify-center bg-white p-2 border border-slate-100 rounded-2xl shadow-sm">
+                <VerifiableDocument
+                  templateId={certificate?.certificateType || "membership"}
+                  fieldValues={
+                    certificate?.certificateType === 'achievement'
+                      ? {
+                          fullName: recipient?.name || "",
+                          description: certificate?.description || "",
+                          issueDate: certificate?.issueDate ? new Date(certificate.issueDate).toLocaleDateString() : "",
+                          certificateNumber: certificate?.certificateNumber || "",
+                        }
+                      : {
+                          fullName: recipient?.name || "",
+                          membershipNumber: certificate?.certificateNumber || "",
+                          joinDate: certificate?.issueDate ? new Date(certificate.issueDate).toLocaleDateString() : "",
+                          expiryDate: certificate?.expiryDate ? new Date(certificate.expiryDate).toLocaleDateString() : "Lifetime",
+                        }
+                  }
+                  dbTemplates={dbTemplates}
+                  cardRef={certificateRef}
+                  className="max-w-md w-full rounded-xl"
+                />
+              </div>
             </div>
           )}
 
