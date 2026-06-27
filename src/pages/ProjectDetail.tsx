@@ -1,8 +1,9 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams, Link, Navigate } from 'react-router-dom';
 import { trpc } from '../lib/trpc';
 
 const ProjectDetail: React.FC = () => {
+  const [showModal, setShowModal] = useState(false);
   const { id } = useParams<{ id: string }>();
   const projectId = id ? parseInt(id, 10) : null;
 
@@ -97,8 +98,21 @@ const ProjectDetail: React.FC = () => {
                 <span className="material-symbols-outlined text-secondary font-semibold">info</span> Project Overview
               </h3>
               <p className="text-gray-700 text-[18px] leading-relaxed whitespace-pre-wrap">
-                {project.description}
+                {project.description.length > 600
+                  ? `${project.description.substring(0, 600)}...`
+                  : project.description}
               </p>
+              {project.description.length > 600 && (
+                <button
+                  onClick={() => setShowModal(true)}
+                  className="mt-3 text-secondary font-bold hover:text-primary transition-colors flex items-center gap-1 text-[16px] focus:outline-none"
+                >
+                  Read More
+                  <span className="material-symbols-outlined text-[20px]">
+                    open_in_new
+                  </span>
+                </button>
+              )}
             </div>
 
             {/* Call to Actions */}
@@ -114,6 +128,51 @@ const ProjectDetail: React.FC = () => {
           </div>
         </div>
       </div>
+
+      {/* Scrollable Content Modal */}
+      {showModal && (
+        <div 
+          className="fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4 md:p-6 backdrop-blur-sm"
+          onClick={(e) => {
+            if (e.target === e.currentTarget) setShowModal(false);
+          }}
+        >
+          <div className="bg-white rounded-3xl w-full max-w-3xl max-h-[80vh] flex flex-col shadow-2xl border border-gray-100 overflow-hidden relative animate-in fade-in zoom-in duration-300">
+            {/* Close absolute top right button */}
+            <button
+              onClick={() => setShowModal(false)}
+              className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition-colors p-2 rounded-full hover:bg-gray-100"
+            >
+              <span className="material-symbols-outlined text-[24px]">close</span>
+            </button>
+
+            {/* Modal Header */}
+            <div className="p-6 md:p-8 border-b border-gray-100 pr-16 bg-[#f8f9fa]">
+              <span className="text-[13px] text-secondary font-bold uppercase tracking-wider block mb-1">
+                Project Detail View
+              </span>
+              <h2 className="text-[24px] md:text-[28px] font-bold text-primary leading-tight">
+                {project.title}
+              </h2>
+            </div>
+
+            {/* Modal Content - Scrollable */}
+            <div className="p-6 md:p-8 overflow-y-auto flex-1 text-gray-700 text-[16px] md:text-[18px] leading-relaxed whitespace-pre-wrap">
+              {project.description}
+            </div>
+
+            {/* Modal Footer */}
+            <div className="p-6 border-t border-gray-100 flex justify-end bg-gray-50">
+              <button
+                onClick={() => setShowModal(false)}
+                className="bg-primary text-white hover:bg-primary/90 font-bold px-6 py-2.5 rounded-full text-[15px] transition-colors"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

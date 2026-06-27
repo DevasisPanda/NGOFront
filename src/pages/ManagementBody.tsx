@@ -49,7 +49,7 @@ const ManagementBody: React.FC = () => {
 
           {managementMembers.map((member, index) => (
             <div key={member.id} className="bg-white rounded-3xl overflow-hidden shadow-[0_10px_40px_rgb(0,0,0,0.06)] border border-gray-100 mb-16 fade-in-section opacity-0 translate-y-5 transition-all duration-800 ease-out [&.is-visible]:opacity-100 [&.is-visible]:translate-y-0">
-              <div className={`flex flex-col ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'}`}>
+              <div className={`flex flex-col ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} w-full`}>
                 {/* Image Side */}
                 <div className="lg:w-[35%] relative h-[400px] lg:h-auto bg-primary cursor-pointer group hover:opacity-90 transition-opacity">
                   <Link to={`/member/${member.id}`} className="block w-full h-full">
@@ -73,8 +73,8 @@ const ManagementBody: React.FC = () => {
                     </p>
                   </div>
                   
-                  <p className="text-muted text-[16px] leading-relaxed mb-8">
-                    {member.bio}
+                  <p className="text-muted text-[16px] leading-relaxed mb-8 whitespace-pre-line">
+                    {member.bio.split('\n')[0]}
                   </p>
 
                   <div className="space-y-6 mb-10">
@@ -96,6 +96,9 @@ const ManagementBody: React.FC = () => {
                       <span className="material-symbols-outlined text-secondary text-[24px]">verified</span>
                       <span className="text-primary font-bold text-[15px]">{member.tag}</span>
                     </div>
+                    <Link to={`/member/${member.id}`} className="bg-[#061941] text-white hover:bg-secondary px-6 py-2.5 rounded-full font-bold text-[14px] inline-flex items-center gap-2 transition-all duration-300 shadow-sm hover:-translate-y-0.5">
+                      Read More <span className="material-symbols-outlined text-[16px]">arrow_forward</span>
+                    </Link>
                   </div>
                 </div>
               </div>

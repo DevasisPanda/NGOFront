@@ -66,7 +66,7 @@ const MemberProfile: React.FC = () => {
 
             <div className="mb-10">
               <h3 className="text-[20px] font-bold text-primary mb-4">About</h3>
-              <p className="text-muted text-[16px] leading-relaxed">
+              <p className="text-muted text-[16px] leading-relaxed whitespace-pre-line">
                 {member.bio}
               </p>
             </div>
