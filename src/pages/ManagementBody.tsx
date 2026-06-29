@@ -57,8 +57,8 @@ const ManagementBody: React.FC = () => {
                     <div className="absolute inset-0 bg-gradient-to-t from-primary via-transparent to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
                     <div className="absolute bottom-4 left-8 right-8 flex justify-center">
                       <div className="bg-white/15 backdrop-blur-xl rounded-[28px] px-7 py-2 text-center max-w-lg w-full shadow-[0_20px_50px_rgba(0,0,0,0.14)] border border-white/20 group-hover:bg-white/25 transition-colors">
-                        <h3 className="text-[24px] font-bold leading-tight mb-2 text-white">{member.name}</h3>
-                        <p className="text-secondary font-bold text-[18px] uppercase tracking-wide">{member.role}</p>
+                        <h3 className="text-[18px] md:text-[20px] font-bold leading-tight mb-1 text-white">{member.name}</h3>
+                        <p className="text-secondary font-bold text-[13px] md:text-[14px] uppercase tracking-wide">{member.role}</p>
                       </div>
                     </div>
                   </Link>

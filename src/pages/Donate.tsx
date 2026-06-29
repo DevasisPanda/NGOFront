@@ -21,6 +21,16 @@ interface FormData {
   campaignId?: number;
 }
 
+const normalizeNumerals = (str: string): string => {
+  const numeralsMap: Record<string, string> = {
+    // Hindi/Devanagari
+    '०': '0', '१': '1', '२': '2', '३': '3', '४': '4', '५': '5', '६': '6', '७': '7', '८': '8', '९': '9',
+    // Gujarati
+    '૦': '0', '૧': '1', '૨': '2', '૩': '3', '૪': '4', '૫': '5', '૬': '6', '૭': '7', '૮': '8', '૯': '9'
+  };
+  return str.replace(/[०-९૦-૯]/g, (char) => numeralsMap[char] || char);
+};
+
 const Donate = () => {
   const location = useLocation();
   const navigate = useNavigate();
@@ -79,7 +89,8 @@ const Donate = () => {
     e.preventDefault();
     setStep('processing');
 
-    const amount = parseFloat(form.amount);
+    const cleanAmountStr = normalizeNumerals(form.amount);
+    const amount = parseFloat(cleanAmountStr);
     if (!amount || amount < 1) {
       toast.error('Please enter a valid donation amount (minimum ₹1).');
       setStep('form');
@@ -94,6 +105,8 @@ const Donate = () => {
       return;
     }
 
+    const cleanPhone = form.donorPhone ? normalizeNumerals(form.donorPhone) : undefined;
+
     // Create order on backend
     createOrder.mutate(
       {
@@ -101,7 +114,7 @@ const Donate = () => {
         currency: 'INR',
         donorName: form.donorName,
         donorEmail: form.donorEmail,
-        donorPhone: form.donorPhone || undefined,
+        donorPhone: cleanPhone || undefined,
         purpose: form.purpose || undefined,
         campaignId: form.campaignId,
       },
@@ -170,18 +183,18 @@ const Donate = () => {
           <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
             <span className="material-symbols-outlined text-green-600 text-4xl">check_circle</span>
           </div>
-          <h1 className="text-[28px] font-bold text-[#00123a] mb-2">Thank You!</h1>
-          <p className="text-[#45464e] mb-6">Your generous donation has been received.</p>
+          <h1 className="text-[28px] font-bold text-[#00123a] mb-2"><span>Thank You!</span></h1>
+          <p className="text-[#45464e] mb-6"><span>Your generous donation has been received.</span></p>
           {receiptNumber && (
             <p className="text-sm text-[#64748b] mb-6">
-              Receipt No: <span className="font-bold text-[#00123a]">{receiptNumber}</span>
+              <span>Receipt No: </span><span className="font-bold text-[#00123a]">{receiptNumber}</span>
             </p>
           )}
           <button
             onClick={() => navigate('/')}
             className="w-full bg-[#f7d100] hover:bg-[#e8c400] text-[#00123a] font-bold py-3 px-6 rounded-lg transition-colors"
           >
-            Back to Home
+            <span>Back to Home</span>
           </button>
         </div>
       </div>
@@ -196,13 +209,13 @@ const Donate = () => {
           <div className="w-20 h-20 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-6">
             <span className="material-symbols-outlined text-red-600 text-4xl">error</span>
           </div>
-          <h1 className="text-[28px] font-bold text-[#00123a] mb-2">Payment Failed</h1>
-          <p className="text-[#45464e] mb-6">{paymentError || 'Something went wrong. Please try again.'}</p>
+          <h1 className="text-[28px] font-bold text-[#00123a] mb-2"><span>Payment Failed</span></h1>
+          <p className="text-[#45464e] mb-6"><span>{paymentError || 'Something went wrong. Please try again.'}</span></p>
           <button
             onClick={() => { setStep('form'); setPaymentError(''); }}
             className="w-full bg-[#f7d100] hover:bg-[#e8c400] text-[#00123a] font-bold py-3 px-6 rounded-lg transition-colors"
           >
-            Try Again
+            <span>Try Again</span>
           </button>
         </div>
       </div>
@@ -242,7 +255,8 @@ const Donate = () => {
                   <span className="material-symbols-outlined text-[#45464e]">person</span>
                 </div>
                 <input
-                  className="flex-1 bg-white border-none px-4 py-[12px] focus:ring-0 outline-none"
+                  className="flex-1 bg-white border-none px-4 py-[12px] focus:ring-0 outline-none notranslate"
+                  translate="no"
                   name="donorName"
                   placeholder="Enter Your Name *"
                   type="text"
@@ -274,7 +288,8 @@ const Donate = () => {
                   <span className="material-symbols-outlined text-[#45464e]">call</span>
                 </div>
                 <input
-                  className="flex-1 bg-white border-none px-4 py-[12px] focus:ring-0 outline-none"
+                  className="flex-1 bg-white border-none px-4 py-[12px] focus:ring-0 outline-none notranslate"
+                  translate="no"
                   name="donorPhone"
                   placeholder="Enter 10-digit Mobile Number"
                   type="tel"
@@ -292,7 +307,8 @@ const Donate = () => {
                   <span className="text-[#45464e] font-bold">₹</span>
                 </div>
                 <input
-                  className="flex-1 bg-white border-none px-4 py-[12px] focus:ring-0 outline-none"
+                  className="flex-1 bg-white border-none px-4 py-[12px] focus:ring-0 outline-none notranslate"
+                  translate="no"
                   name="amount"
                   placeholder="Enter Amount * (Min ₹1)"
                   type="number"
@@ -310,7 +326,8 @@ const Donate = () => {
                   <span className="material-symbols-outlined text-[#45464e]">volunteer_activism</span>
                 </div>
                 <select
-                  className="flex-1 bg-white border-none px-4 py-[12px] focus:ring-0 outline-none text-[#45464e] appearance-none"
+                  className="flex-1 bg-white border-none px-4 py-[12px] focus:ring-0 outline-none text-[#45464e] appearance-none notranslate"
+                  translate="no"
                   name="purpose"
                   value={form.purpose}
                   onChange={handleChange}
@@ -340,7 +357,8 @@ const Donate = () => {
                   <span className="material-symbols-outlined text-[#45464e]">badge</span>
                 </div>
                 <input
-                  className="flex-1 bg-white border-none px-4 py-[12px] focus:ring-0 outline-none"
+                  className="flex-1 bg-white border-none px-4 py-[12px] focus:ring-0 outline-none notranslate"
+                  translate="no"
                   name="panNumber"
                   placeholder="PAN Number (Optional)"
                   type="text"
@@ -353,18 +371,19 @@ const Donate = () => {
               <button
                 type="submit"
                 disabled={isLoading}
-                className="w-full flex justify-center items-center font-bold py-[14px] px-6 rounded-lg transition-colors duration-200 mt-4 bg-[#f7d100] hover:bg-[#e8c400] text-[#00123a] disabled:opacity-50 disabled:cursor-not-allowed"
+                translate="no"
+                className="w-full flex justify-center items-center font-bold py-[14px] px-6 rounded-lg transition-colors duration-200 mt-4 bg-[#f7d100] hover:bg-[#e8c400] text-[#00123a] disabled:opacity-50 disabled:cursor-not-allowed notranslate"
               >
                 {isLoading ? (
-                  <>
+                  <span className="flex items-center justify-center">
                     <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-[#00123a]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                       <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                       <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                     </svg>
-                    Processing...
-                  </>
+                    <span>Processing...</span>
+                  </span>
                 ) : (
-                  'Donate Now'
+                  <span>Donate Now</span>
                 )}
               </button>
             </div>
