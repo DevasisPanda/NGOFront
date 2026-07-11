@@ -35,6 +35,18 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   });
 
   useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('action') === 'logout' || params.get('logout') === 'true') {
+      localStorage.removeItem('token');
+      setToken(null);
+      setUser(null);
+      // Remove query param from URL so it doesn't keep logging out on refresh
+      const newUrl = window.location.pathname + window.location.hash;
+      window.history.replaceState({}, document.title, newUrl);
+    }
+  }, []);
+
+  useEffect(() => {
     if (token) {
       localStorage.setItem('token', token);
     } else {
@@ -67,6 +79,10 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     setUser(null);
     utils.clear();
     toast.info("Logged out successfully");
+    
+    // Redirect to dashboard logout endpoint to clear its localStorage too
+    const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+    window.location.href = `${apiUrl}/logout-sso?redirect=${encodeURIComponent(window.location.origin)}`;
   };
 
   return (

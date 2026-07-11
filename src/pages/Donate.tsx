@@ -2,6 +2,7 @@ import { useState, useEffect, useCallback } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { trpc } from '../lib/trpc';
 import { toast } from 'sonner';
+import { trackEvent } from '../utils/analytics';
 
 declare global {
   interface Window {
@@ -88,6 +89,7 @@ const Donate = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStep('processing');
+    trackEvent('donation_initiated', { amount: form.amount, purpose: form.purpose || 'general' });
 
     const cleanAmountStr = normalizeNumerals(form.amount);
     const amount = parseFloat(cleanAmountStr);

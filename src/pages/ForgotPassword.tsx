@@ -68,7 +68,7 @@ const ForgotPassword: React.FC = () => {
               {successMsg}
             </div>
 
-            {devLink && (
+            {devLink && import.meta.env.DEV && (
               <div className="p-4 text-left bg-amber-50 border border-amber-200 text-amber-900 rounded-lg text-sm space-y-2 shadow-sm">
                 <p className="font-bold flex items-center gap-1">
                   <span className="material-symbols-outlined text-amber-600 text-[20px] font-bold">info</span>

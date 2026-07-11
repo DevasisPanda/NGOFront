@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { trpc } from '../lib/trpc';
 import { useFadeInOnScroll } from '../hooks/useFadeInOnScroll';
+import { trackButtonClick } from '../utils/analytics';
 
 const imageMap: Record<string, string> = {};
 
@@ -136,7 +137,7 @@ const Home: React.FC = () => {
         <div className="absolute inset-0 flex flex-col justify-center px-6 sm:px-12 md:px-20 lg:px-28 xl:px-[8%] z-10 text-white">
           {showDonateButton && (
             <div className="mt-6 flex">
-              <Link to="/donate" className="bg-secondary text-primary px-5 py-2.5 sm:px-8 sm:py-3.5 md:px-10 md:py-4 rounded-full font-bold text-xs sm:text-sm md:text-lg hover:bg-[#d67b00] hover:scale-105 transition-all duration-300 shadow-xl border md:border-2 border-white whitespace-nowrap">
+              <Link to="/donate" onClick={() => trackButtonClick('donate_now_hero', '/home')} className="bg-secondary text-primary px-5 py-2.5 sm:px-8 sm:py-3.5 md:px-10 md:py-4 rounded-full font-bold text-xs sm:text-sm md:text-lg hover:bg-[#d67b00] hover:scale-105 transition-all duration-300 shadow-xl border md:border-2 border-white whitespace-nowrap">
                 Donate Now
               </Link>
             </div>
@@ -318,7 +319,7 @@ const Home: React.FC = () => {
                       <div className="p-6 flex-1 flex flex-col">
                         <h3 className="text-xl font-bold text-primary mb-3">{card.title}</h3>
                         <p className="text-sm text-muted mb-6 flex-1 line-clamp-4">{card.content}</p>
-                        <Link to="/donate" className="bg-secondary text-primary text-center py-3 rounded-lg font-bold text-sm hover:bg-[#d67b00] transition-colors mt-auto block">
+                        <Link to="/donate" onClick={() => trackButtonClick(`donate_card_${card.title}`, '/home')} className="bg-secondary text-primary text-center py-3 rounded-lg font-bold text-sm hover:bg-[#d67b00] transition-colors mt-auto block">
                           Donate Now
                         </Link>
                       </div>

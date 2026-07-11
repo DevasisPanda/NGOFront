@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { trpc } from '../lib/trpc';
+import { trackEvent } from '../utils/analytics';
 
 const faqs = [
   {
@@ -65,6 +66,7 @@ const Contact: React.FC = () => {
     e.preventDefault();
     setErrorMsg('');
     setSuccessMsg('');
+    trackEvent('contact_form_submit', { subject: formData.subject || 'no_subject' });
     submitEnquiry.mutate(formData);
   };
 

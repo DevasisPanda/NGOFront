@@ -266,7 +266,7 @@ const Header: React.FC = () => {
           </button>
 
           {/* Desktop Nav */}
-          <nav className="hidden xl:flex items-center justify-between flex-1 gap-1.5 xl:gap-3 2xl:gap-5 text-[11px] xl:text-[12px] 2xl:text-[14px] font-bold text-white whitespace-nowrap">
+          <nav className="hidden xl:flex items-center justify-between flex-1 gap-1 xl:gap-2.5 2xl:gap-4 text-[10.5px] xl:text-[11.5px] 2xl:text-[13.5px] font-bold text-white whitespace-nowrap">
             <Link to="/" className="hover:text-secondary transition-colors py-4">Home</Link>
             
             <div className="flex items-center gap-1 cursor-pointer hover:text-secondary transition-colors relative group py-4">
@@ -321,6 +321,17 @@ const Header: React.FC = () => {
               </div>
             </div>
 
+            <div className="flex items-center gap-1 cursor-pointer hover:text-secondary transition-colors relative group py-4">
+              <span>Get Involved</span>
+              <span className="material-symbols-outlined text-[14px] lg:text-[16px]">expand_more</span>
+              <div className="absolute top-full left-0 pt-2 hidden group-hover:block z-50">
+                <div className="bg-white text-primary shadow-lg rounded-b py-2 w-52 border-t-2 border-secondary">
+                  <Link to="/volunteer" className="dropdown-link">Become A Volunteer</Link>
+                  <Link to="/csr-partnership" className="dropdown-link">CSR Partnership</Link>
+                </div>
+              </div>
+            </div>
+
             <Link to="/contact" className="hover:text-secondary transition-colors py-4">Contact Us</Link>
           </nav>
 
@@ -367,6 +378,19 @@ const Header: React.FC = () => {
             <Link to="/gallery" className="px-6 py-3 border-b border-gray-700/50 font-bold hover:bg-gray-800 transition-colors" onClick={() => setIsMobileMenuOpen(false)}>Activity Gallery</Link>
             <Link to="/campaigns" className="px-6 py-3 border-b border-gray-700/50 font-bold hover:bg-gray-800 transition-colors" onClick={() => setIsMobileMenuOpen(false)}>Campaigns</Link>
             <Link to="/events" className="px-6 py-3 border-b border-gray-700/50 font-bold hover:bg-gray-800 transition-colors" onClick={() => setIsMobileMenuOpen(false)}>Program & Events</Link>
+
+            <div className="flex flex-col border-b border-gray-700/50">
+              <button className="flex items-center justify-between px-6 py-3 font-bold hover:bg-gray-800 transition-colors" onClick={() => toggleDropdown('involved')}>
+                <span>Get Involved</span>
+                <span className="material-symbols-outlined">{openDropdown === 'involved' ? 'expand_less' : 'expand_more'}</span>
+              </button>
+              {openDropdown === 'involved' && (
+                <div className="bg-[#0a2560] flex flex-col text-sm py-2">
+                  <Link to="/volunteer" className="nav-link-padding" onClick={() => setIsMobileMenuOpen(false)}>Become A Volunteer</Link>
+                  <Link to="/csr-partnership" className="nav-link-padding" onClick={() => setIsMobileMenuOpen(false)}>CSR Partnership</Link>
+                </div>
+              )}
+            </div>
 
             <div className="flex flex-col border-b border-gray-700/50">
               <button className="flex items-center justify-between px-6 py-3 font-bold hover:bg-gray-800 transition-colors" onClick={() => toggleDropdown('intern')}>

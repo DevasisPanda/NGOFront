@@ -37,8 +37,13 @@ const ResetPassword: React.FC = () => {
       return;
     }
 
-    if (password.length < 6) {
-      setErrorMsg('Password must be at least 6 characters long.');
+    if (password.length < 8) {
+      setErrorMsg('Password must be at least 8 characters long.');
+      return;
+    }
+
+    if (!/[A-Z]/.test(password) || !/[a-z]/.test(password) || !/[0-9]/.test(password)) {
+      setErrorMsg('Password must contain at least one uppercase letter, one lowercase letter, and one number.');
       return;
     }
 

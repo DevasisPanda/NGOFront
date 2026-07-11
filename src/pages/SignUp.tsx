@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { trpc } from '../lib/trpc';
+import { trackEvent } from '../utils/analytics';
 
 const SignUp: React.FC = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -31,11 +32,22 @@ const SignUp: React.FC = () => {
     setErrorMsg('');
     setSuccessMsg('');
     
+    if (password.length < 8) {
+      setErrorMsg('Password must be at least 8 characters long');
+      return;
+    }
+    
+    if (!/[A-Z]/.test(password) || !/[a-z]/.test(password) || !/[0-9]/.test(password)) {
+      setErrorMsg('Password must contain at least one uppercase letter, one lowercase letter, and one number');
+      return;
+    }
+
     if (password !== confirmPassword) {
       setErrorMsg('Passwords do not match');
       return;
     }
     
+    trackEvent('membership_register');
     registerMutation.mutate({
       name: fullName,
       email: email,

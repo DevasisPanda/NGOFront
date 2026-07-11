@@ -67,17 +67,23 @@ const Footer: React.FC = () => {
         <div>
           <h3 className="text-[24px] font-bold text-secondary border-b border-gray-700 pb-2 inline-block">Contact Details</h3>
           <ul className="space-y-4 mt-6 text-gray-400">
-            <li className="flex items-start gap-3">
-              <span className="material-symbols-outlined text-secondary">call</span>
-              <span>+91 82003 15792</span>
+            <li className="flex items-start gap-3 min-w-0">
+              <span className="material-symbols-outlined text-secondary shrink-0">call</span>
+              <a href="tel:+918200315792" className="hover:text-secondary transition-colors text-sm break-words">
+                +91 82003 15792
+              </a>
             </li>
-            <li className="flex items-start gap-3">
-              <span className="material-symbols-outlined text-secondary">mail</span>
-              <span>valmikisamajchiritabletrust@gmail.com</span>
+            <li className="flex items-start gap-3 min-w-0">
+              <span className="material-symbols-outlined text-secondary shrink-0">mail</span>
+              <a href="mailto:valmikisamajchiritabletrust@gmail.com" className="hover:text-secondary transition-colors text-sm break-all">
+                valmikisamajchiritabletrust@gmail.com
+              </a>
             </li>
-            <li className="flex items-start gap-3">
-              <span className="material-symbols-outlined text-secondary">location_on</span>
-              <span>President Narayan Rathod  Ramji mandir Road, Nr. Police Station At & Post Tintoi - 383250, Tal:- Modasa Dist. Aravalli North Gujrat</span>
+            <li className="flex items-start gap-3 min-w-0">
+              <span className="material-symbols-outlined text-secondary shrink-0">location_on</span>
+              <span className="text-sm text-gray-400 leading-relaxed">
+                President Narayan Rathod, Ramji mandir Road, Nr. Police Station, At & Post Tintoi - 383250, Tal:- Modasa, Dist. Aravalli, North Gujarat
+              </span>
             </li>
           </ul>
         </div>
@@ -85,6 +91,7 @@ const Footer: React.FC = () => {
       
       <div className="container-main pt-8 border-t border-gray-800 text-center text-gray-500 text-sm">
         <p>© {new Date().getFullYear()} Valmiki Samaj Charitable Trust. All Rights Reserved.</p>
+        <p className="text-xs text-gray-600 mt-2">Create by Star Marketing</p>
       </div>
 
       {/* Terms & Conditions / Privacy Policy Modal */}

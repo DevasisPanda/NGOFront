@@ -7,6 +7,7 @@ import { Toaster } from 'sonner';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
+import GA4PageTracker from './components/GA4PageTracker';
 import PageTransition from './components/PageTransition';
 import ErrorBoundary from './components/ErrorBoundary';
 
@@ -38,6 +39,8 @@ const CertificateVerification = lazy(() => import('./pages/CertificateVerificati
 const IDCardVerification = lazy(() => import('./pages/IDCardVerification'));
 const AppointmentLetterVerification = lazy(() => import('./pages/AppointmentLetterVerification'));
 const MemberProfile = lazy(() => import('./pages/MemberProfile'));
+const Volunteer = lazy(() => import('./pages/Volunteer'));
+const CsrPartnership = lazy(() => import('./pages/CsrPartnership'));
 const NotFound = lazy(() => import('./pages/NotFound'));
 
 // Simple loading indicator for Suspense fallback
@@ -65,6 +68,7 @@ function App() {
     <Router>
       <Toaster richColors position="top-right" />
       <ScrollToTop />
+      <GA4PageTracker />
       <div className="app-container flex flex-col min-h-screen">
         <ErrorBoundary><Header /></ErrorBoundary>
         <main className="flex-1 flex flex-col">
@@ -96,6 +100,8 @@ function App() {
                   <Route path="/management-body" element={<ManagementBody />} />
                   <Route path="/project/:id" element={<ProjectDetail />} />
                   <Route path="/member/:id" element={<MemberProfile />} />
+                  <Route path="/volunteer" element={<Volunteer />} />
+                  <Route path="/csr-partnership" element={<CsrPartnership />} />
                   <Route path="/verify/certificate/:code" element={<CertificateVerification />} />
                   <Route path="/verify/idcard/:code" element={<IDCardVerification />} />
                   <Route path="/verify/appointment/:code" element={<AppointmentLetterVerification />} />
