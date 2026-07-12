@@ -22,7 +22,18 @@ const SignIn: React.FC = () => {
       // Request SSO handoff code securely using the newly stored token
       createHandoffMutation.mutate(undefined, {
         onSuccess: (handoffData) => {
-          window.location.href = `${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/sso?code=${handoffData.handoffCode}&role=${data.user.role}`;
+          const getApiUrl = () => {
+            if (import.meta.env.VITE_API_URL) return import.meta.env.VITE_API_URL;
+            if (typeof window !== 'undefined') {
+              const { hostname, port } = window.location;
+              if ((hostname === 'localhost' || hostname === '127.0.0.1') && port === '5173') {
+                return 'http://localhost:5000';
+              }
+              return window.location.origin;
+            }
+            return 'http://localhost:5000';
+          };
+          window.location.href = `${getApiUrl()}/sso?code=${handoffData.handoffCode}&role=${data.user.role}`;
         },
         onError: (err) => {
           console.error("SSO Handoff generation failed:", err);
