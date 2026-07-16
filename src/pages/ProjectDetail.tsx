@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useParams, Link, Navigate } from 'react-router-dom';
 import { trpc } from '../lib/trpc';
 
 const ProjectDetail: React.FC = () => {
-  const [showModal, setShowModal] = useState(false);
   const { id } = useParams<{ id: string }>();
   const projectId = id ? parseInt(id, 10) : null;
 
@@ -23,7 +22,7 @@ const ProjectDetail: React.FC = () => {
   if (isLoading) {
     return (
       <div className="min-h-[70vh] flex flex-col items-center justify-center p-6 bg-gray-50">
-        <div className="w-12 h-12 border-4 border-t-orange-500 border-r-slate-200 border-b-slate-200 border-l-slate-200 rounded-full animate-spin mb-4"></div>
+        <div className="w-12 h-12 border-4 border-t-secondary border-r-slate-200 border-b-slate-200 border-l-slate-200 rounded-full animate-spin mb-4"></div>
         <p className="text-slate-500 font-semibold text-sm">Loading project details...</p>
       </div>
     );
@@ -47,33 +46,23 @@ const ProjectDetail: React.FC = () => {
   return (
     <div className="bg-gray-50 min-h-screen pb-20">
       {/* Header with Background */}
-      <section className="bg-primary text-white py-16 relative overflow-hidden">
+      <section className="bg-primary text-white py-12 relative overflow-hidden">
         <div className="absolute inset-0 opacity-10 pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/stardust.png')]"></div>
-        <div className="container-main relative z-10 flex items-center gap-4">
-          <Link to="/projects" className="flex items-center text-secondary hover:text-white transition-colors font-semibold">
+        <div className="container-main relative z-10 flex items-center px-4">
+          <Link to="/projects" className="flex items-center text-secondary hover:text-white transition-colors font-bold">
             <span className="material-symbols-outlined mr-2">arrow_back</span>
             Back to Projects
           </Link>
         </div>
       </section>
 
-      {/* Profile Content */}
-      <div className="container-main -mt-10 relative z-20">
-        <div className="bg-white rounded-3xl shadow-lg border border-gray-100 overflow-hidden flex flex-col lg:flex-row">
+      {/* Main Content Area: 65% / 35% Split Layout */}
+      <div className="container-main py-12 px-4">
+        <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-start">
           
-          {/* Left Column: Image */}
-          <div className="lg:w-[40%] relative min-h-[350px] lg:min-h-[500px] bg-primary flex items-stretch">
-            <img 
-              src={project.image || 'https://via.placeholder.com/800x600?text=No+Image'} 
-              alt={project.title} 
-              className="w-full h-full object-cover object-center absolute inset-0"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-primary/95 via-transparent to-transparent opacity-85 lg:opacity-75"></div>
-          </div>
-
-          {/* Right Column: Details */}
-          <div className="lg:w-[60%] p-8 md:p-12 lg:p-16 flex flex-col justify-center">
-            <div className="mb-8 border-b border-gray-100 pb-8">
+          {/* Left Column: Image & Content (65%) */}
+          <div className="w-full lg:w-[65%] space-y-6">
+            <div className="border-b border-gray-100 pb-6">
               <span className={`inline-flex items-center px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider ${
                 project.status === 'active' 
                   ? 'bg-emerald-100 text-emerald-800' 
@@ -81,98 +70,118 @@ const ProjectDetail: React.FC = () => {
                   ? 'bg-blue-100 text-blue-800' 
                   : 'bg-amber-100 text-amber-800'
               }`}>
-                <span className="w-2 h-2 rounded-full mr-2 bg-current"></span>
+                <span className="w-2 h-2 rounded-full mr-2 bg-current animate-pulse"></span>
                 {project.status} Project
               </span>
-              <h1 className="text-[32px] md:text-[40px] font-bold text-primary leading-tight mt-4 mb-3">
+              <h1 className="text-3xl md:text-4xl font-extrabold text-primary leading-tight mt-4 mb-3">
                 {project.title}
               </h1>
-              <p className="text-[14px] text-gray-400 font-mono flex items-center gap-1.5">
+              <p className="text-sm text-gray-400 font-mono flex items-center gap-1.5">
                 <span className="material-symbols-outlined text-[18px]">calendar_today</span>
                 Published: {new Date(project.createdAt).toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' })}
               </p>
             </div>
 
-            <div className="mb-10">
-              <h3 className="text-[20px] font-bold text-primary mb-4 flex items-center gap-2">
-                <span className="material-symbols-outlined text-secondary font-semibold">info</span> Project Overview
-              </h3>
-              <p className="text-gray-700 text-[18px] leading-relaxed whitespace-pre-wrap">
-                {project.description.length > 600
-                  ? `${project.description.substring(0, 600)}...`
-                  : project.description}
-              </p>
-              {project.description.length > 600 && (
-                <button
-                  onClick={() => setShowModal(true)}
-                  className="mt-3 text-secondary font-bold hover:text-primary transition-colors flex items-center gap-1 text-[16px] focus:outline-none"
-                >
-                  Read More
-                  <span className="material-symbols-outlined text-[20px]">
-                    open_in_new
-                  </span>
-                </button>
-              )}
+            {/* Proportional Project Image container */}
+            <div className="w-full aspect-[16/10] md:aspect-[16/9] rounded-3xl overflow-hidden shadow-md border border-gray-100 bg-white relative group">
+              <img 
+                src={project.image || 'https://via.placeholder.com/800x600?text=No+Image'} 
+                alt={project.title} 
+                className="w-full h-full object-cover object-center group-hover:scale-[1.02] transition-transform duration-500"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-primary/10 via-transparent to-transparent pointer-events-none"></div>
             </div>
 
-            {/* Call to Actions */}
-            <div className="pt-8 border-t border-gray-100 flex flex-wrap gap-4">
-              <Link to="/donate" className="bg-secondary text-primary font-extrabold px-8 py-4 rounded-full shadow-md hover:shadow-lg hover:brightness-105 transition-all flex items-center gap-2">
-                <span className="material-symbols-outlined text-[20px] fill-current">favorite</span> Support This Project
-              </Link>
-              <Link to="/contact" className="bg-primary text-white font-extrabold px-8 py-4 rounded-full shadow-md hover:bg-primary/95 transition-all flex items-center gap-2">
-                <span className="material-symbols-outlined text-[20px]">mail</span> Contact Us / Join In
-              </Link>
+            {/* Project description rendered fully inline (no scrollable modal required) */}
+            <div className="bg-white rounded-3xl border border-gray-100 p-8 md:p-10 shadow-sm">
+              <h3 className="text-xl font-bold text-primary mb-6 flex items-center gap-2 pb-3 border-b border-gray-100">
+                <span className="material-symbols-outlined text-secondary">description</span>
+                Project Description & Vision
+              </h3>
+              <div className="text-gray-700 text-[16px] md:text-[17px] leading-relaxed whitespace-pre-wrap">
+                {project.description}
+              </div>
+            </div>
+          </div>
+
+          {/* Right Column: Donation & Details Sidebar (35%) */}
+          <div className="w-full lg:w-[35%] lg:sticky lg:top-8 self-start space-y-6">
+            
+            {/* Donation Card */}
+            <div className="bg-white border border-gray-100 rounded-3xl p-8 shadow-md relative overflow-hidden">
+              <div className="absolute top-0 left-0 w-full h-2 bg-secondary"></div>
+              
+              <h3 className="text-2xl font-bold text-primary mb-3 flex items-center gap-2">
+                <span className="material-symbols-outlined text-secondary fill-current">favorite</span>
+                Support This Project
+              </h3>
+              <p className="text-gray-500 text-sm mb-6 leading-relaxed">
+                Your contributions bring immediate relief, education support, healthcare, and resources directly to this project's beneficiaries.
+              </p>
+
+              <div className="space-y-4">
+                <Link 
+                  to="/donate" 
+                  className="w-full bg-secondary text-primary font-extrabold py-4 px-6 rounded-full shadow-sm hover:shadow-md hover:brightness-[1.03] active:scale-[0.98] transition-all flex items-center justify-center gap-2 text-center text-sm uppercase tracking-wider cursor-pointer"
+                >
+                  <span className="material-symbols-outlined text-[20px] fill-current">volunteer_activism</span>
+                  Donate Now
+                </Link>
+                
+                <Link 
+                  to="/contact" 
+                  className="w-full bg-primary text-white font-extrabold py-4 px-6 rounded-full shadow-sm hover:bg-primary/95 active:scale-[0.98] transition-all flex items-center justify-center gap-2 text-center text-sm uppercase tracking-wider cursor-pointer"
+                >
+                  <span className="material-symbols-outlined text-[20px]">mail</span>
+                  Contact / Join Campaign
+                </Link>
+              </div>
+            </div>
+
+            {/* Quick Details Box */}
+            <div className="bg-white border border-gray-100 rounded-3xl p-8 shadow-sm">
+              <h3 className="text-lg font-bold text-primary mb-4 flex items-center gap-2">
+                <span className="material-symbols-outlined text-secondary">info</span>
+                Information
+              </h3>
+              <div className="space-y-4">
+                <div className="flex gap-3 items-start">
+                  <span className="material-symbols-outlined text-secondary bg-gray-50 p-2 rounded-xl text-[20px] shrink-0">
+                    check_circle
+                  </span>
+                  <div>
+                    <span className="block text-[11px] font-bold text-gray-400 uppercase tracking-wider">Project Status</span>
+                    <span className="text-[14px] text-primary font-semibold leading-tight capitalize">{project.status}</span>
+                  </div>
+                </div>
+                
+                <div className="flex gap-3 items-start">
+                  <span className="material-symbols-outlined text-secondary bg-gray-50 p-2 rounded-xl text-[20px] shrink-0">
+                    schedule
+                  </span>
+                  <div>
+                    <span className="block text-[11px] font-bold text-gray-400 uppercase tracking-wider">Date Published</span>
+                    <span className="text-[14px] text-primary font-semibold leading-tight">
+                      {new Date(project.createdAt).toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' })}
+                    </span>
+                  </div>
+                </div>
+                
+                <div className="flex gap-3 items-start">
+                  <span className="material-symbols-outlined text-secondary bg-gray-50 p-2 rounded-xl text-[20px] shrink-0">
+                    corporate_fare
+                  </span>
+                  <div>
+                    <span className="block text-[11px] font-bold text-gray-400 uppercase tracking-wider">Organization</span>
+                    <span className="text-[14px] text-primary font-semibold leading-tight">Valmiki Samaj Trust</span>
+                  </div>
+                </div>
+              </div>
             </div>
 
           </div>
         </div>
       </div>
-
-      {/* Scrollable Content Modal */}
-      {showModal && (
-        <div 
-          className="fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4 md:p-6 backdrop-blur-sm"
-          onClick={(e) => {
-            if (e.target === e.currentTarget) setShowModal(false);
-          }}
-        >
-          <div className="bg-white rounded-3xl w-full max-w-3xl max-h-[80vh] flex flex-col shadow-2xl border border-gray-100 overflow-hidden relative animate-in fade-in zoom-in duration-300">
-            {/* Close absolute top right button */}
-            <button
-              onClick={() => setShowModal(false)}
-              className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition-colors p-2 rounded-full hover:bg-gray-100"
-            >
-              <span className="material-symbols-outlined text-[24px]">close</span>
-            </button>
-
-            {/* Modal Header */}
-            <div className="p-6 md:p-8 border-b border-gray-100 pr-16 bg-[#f8f9fa]">
-              <span className="text-[13px] text-secondary font-bold uppercase tracking-wider block mb-1">
-                Project Detail View
-              </span>
-              <h2 className="text-[24px] md:text-[28px] font-bold text-primary leading-tight">
-                {project.title}
-              </h2>
-            </div>
-
-            {/* Modal Content - Scrollable */}
-            <div className="p-6 md:p-8 overflow-y-auto flex-1 text-gray-700 text-[16px] md:text-[18px] leading-relaxed whitespace-pre-wrap">
-              {project.description}
-            </div>
-
-            {/* Modal Footer */}
-            <div className="p-6 border-t border-gray-100 flex justify-end bg-gray-50">
-              <button
-                onClick={() => setShowModal(false)}
-                className="bg-primary text-white hover:bg-primary/90 font-bold px-6 py-2.5 rounded-full text-[15px] transition-colors"
-              >
-                Close
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   );
 };

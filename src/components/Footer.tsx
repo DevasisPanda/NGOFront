@@ -7,9 +7,9 @@ const Footer: React.FC = () => {
 
   return (
     <footer className="bg-[#1a1a1a] text-white pt-16 pb-8 border-t-4 border-secondary">
-      <div className="container-main grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+      <div className="container-main grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 mb-12">
         {/* About Column */}
-        <div className="lg:col-span-2 space-y-6">
+        <div className="lg:col-span-5 space-y-6">
           <h3 className="text-[24px] font-bold text-secondary border-b border-gray-700 pb-2 inline-block">About</h3>
           <div className="flex gap-4">
             <a className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-secondary hover:text-primary transition-colors" href="https://www.facebook.com/share/19A2tuUpJN/" target="_blank" rel="noreferrer">
@@ -34,7 +34,7 @@ const Footer: React.FC = () => {
         </div>
         
         {/* Quick Links Column */}
-        <div>
+        <div className="lg:col-span-3">
           <h3 className="text-[24px] font-bold text-secondary border-b border-gray-700 pb-2 inline-block">Quick Links</h3>
           <ul className="space-y-3 mt-6 text-gray-400">
             <li><Link className="nav-link" to="/projects"><span className="material-symbols-outlined text-sm">chevron_right</span> Our Projects</Link></li>
@@ -64,7 +64,7 @@ const Footer: React.FC = () => {
         </div>
         
         {/* Contact Details Column */}
-        <div>
+        <div className="lg:col-span-4">
           <h3 className="text-[24px] font-bold text-secondary border-b border-gray-700 pb-2 inline-block">Contact Details</h3>
           <ul className="space-y-4 mt-6 text-gray-400">
             <li className="flex items-start gap-3 min-w-0">
@@ -75,7 +75,7 @@ const Footer: React.FC = () => {
             </li>
             <li className="flex items-start gap-3 min-w-0">
               <span className="material-symbols-outlined text-secondary shrink-0">mail</span>
-              <a href="mailto:valmikisamajchiritabletrust@gmail.com" className="hover:text-secondary transition-colors text-sm break-all">
+              <a href="mailto:valmikisamajchiritabletrust@gmail.com" className="hover:text-secondary transition-colors text-[13px] md:text-sm whitespace-nowrap">
                 valmikisamajchiritabletrust@gmail.com
               </a>
             </li>

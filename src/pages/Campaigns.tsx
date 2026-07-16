@@ -52,10 +52,18 @@ const Campaigns: React.FC = () => {
 
               return (
                 <div key={campaign.id} className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition flex flex-col">
-                  <div className="bg-gray-100 h-48 w-full flex items-center justify-center relative">
-                    <span className="material-symbols-outlined text-6xl text-gray-300">
-                      {isVolunteer ? 'group' : 'volunteer_activism'}
-                    </span>
+                  <div className="bg-gray-100 h-48 w-full relative overflow-hidden flex items-center justify-center">
+                    {campaign.campaignImage ? (
+                      <img 
+                        src={campaign.campaignImage} 
+                        alt={campaign.title} 
+                        className="w-full h-full object-cover" 
+                      />
+                    ) : (
+                      <span className="material-symbols-outlined text-6xl text-gray-300">
+                        {isVolunteer ? 'group' : 'volunteer_activism'}
+                      </span>
+                    )}
                     <span className={`absolute top-3 right-3 text-[10px] font-extrabold uppercase px-2.5 py-1 rounded-full shadow-sm ${
                       isVolunteer ? 'bg-purple-100 text-purple-700' : 'bg-blue-100 text-blue-700'
                     }`}>
