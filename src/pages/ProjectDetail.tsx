@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useParams, Link, Navigate } from 'react-router-dom';
 import { trpc } from '../lib/trpc';
+import { DonationWidget } from '../components/DonationWidget';
 
 const ProjectDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -107,36 +108,8 @@ const ProjectDetail: React.FC = () => {
           {/* Right Column: Donation & Details Sidebar (35%) */}
           <div className="w-full lg:w-[35%] lg:sticky lg:top-8 self-start space-y-6">
             
-            {/* Donation Card */}
-            <div className="bg-white border border-gray-100 rounded-3xl p-8 shadow-md relative overflow-hidden">
-              <div className="absolute top-0 left-0 w-full h-2 bg-secondary"></div>
-              
-              <h3 className="text-2xl font-bold text-primary mb-3 flex items-center gap-2">
-                <span className="material-symbols-outlined text-secondary fill-current">favorite</span>
-                Support This Project
-              </h3>
-              <p className="text-gray-500 text-sm mb-6 leading-relaxed">
-                Your contributions bring immediate relief, education support, healthcare, and resources directly to this project's beneficiaries.
-              </p>
-
-              <div className="space-y-4">
-                <Link 
-                  to="/donate" 
-                  className="w-full bg-secondary text-primary font-extrabold py-4 px-6 rounded-full shadow-sm hover:shadow-md hover:brightness-[1.03] active:scale-[0.98] transition-all flex items-center justify-center gap-2 text-center text-sm uppercase tracking-wider cursor-pointer"
-                >
-                  <span className="material-symbols-outlined text-[20px] fill-current">volunteer_activism</span>
-                  Donate Now
-                </Link>
-                
-                <Link 
-                  to="/contact" 
-                  className="w-full bg-primary text-white font-extrabold py-4 px-6 rounded-full shadow-sm hover:bg-primary/95 active:scale-[0.98] transition-all flex items-center justify-center gap-2 text-center text-sm uppercase tracking-wider cursor-pointer"
-                >
-                  <span className="material-symbols-outlined text-[20px]">mail</span>
-                  Contact / Join Campaign
-                </Link>
-              </div>
-            </div>
+            {/* Embedded Donation Widget */}
+            <DonationWidget purpose={project.title} />
 
             {/* Quick Details Box */}
             <div className="bg-white border border-gray-100 rounded-3xl p-8 shadow-sm">

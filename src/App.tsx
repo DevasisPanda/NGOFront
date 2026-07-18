@@ -35,6 +35,7 @@ const Internship = lazy(() => import('./pages/Internship'));
 const ViewInternship = lazy(() => import('./pages/ViewInternship'));
 const ManagementBody = lazy(() => import('./pages/ManagementBody'));
 const ProjectDetail = lazy(() => import('./pages/ProjectDetail'));
+const CampaignDetail = lazy(() => import('./pages/CampaignDetail'));
 const CertificateVerification = lazy(() => import('./pages/CertificateVerification'));
 const IDCardVerification = lazy(() => import('./pages/IDCardVerification'));
 const AppointmentLetterVerification = lazy(() => import('./pages/AppointmentLetterVerification'));
@@ -99,6 +100,7 @@ function App() {
                   <Route path="/view-internship" element={<ViewInternship />} />
                   <Route path="/management-body" element={<ManagementBody />} />
                   <Route path="/project/:id" element={<ProjectDetail />} />
+                  <Route path="/campaigns/:id" element={<CampaignDetail />} />
                   <Route path="/member/:id" element={<MemberProfile />} />
                   <Route path="/volunteer" element={<Volunteer />} />
                   <Route path="/csr-partnership" element={<CsrPartnership />} />

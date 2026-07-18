@@ -1,6 +1,6 @@
 import React from 'react';
 import { trpc } from '../lib/trpc';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { toast } from 'sonner';
 import { useAuth } from '../contexts/AuthContext';
 
@@ -52,15 +52,15 @@ const Campaigns: React.FC = () => {
 
               return (
                 <div key={campaign.id} className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition flex flex-col">
-                  <div className="bg-gray-100 h-48 w-full relative overflow-hidden flex items-center justify-center">
+                  <Link to={`/campaigns/${campaign.id}`} className="bg-gray-100 h-48 w-full relative overflow-hidden flex items-center justify-center cursor-pointer group">
                     {campaign.campaignImage ? (
                       <img 
                         src={campaign.campaignImage} 
                         alt={campaign.title} 
-                        className="w-full h-full object-cover" 
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
                       />
                     ) : (
-                      <span className="material-symbols-outlined text-6xl text-gray-300">
+                      <span className="material-symbols-outlined text-6xl text-gray-300 group-hover:scale-105 transition-transform duration-500">
                         {isVolunteer ? 'group' : 'volunteer_activism'}
                       </span>
                     )}
@@ -69,9 +69,11 @@ const Campaigns: React.FC = () => {
                     }`}>
                       {isVolunteer ? 'Volunteering' : 'Donation Campaign'}
                     </span>
-                  </div>
+                  </Link>
                   <div className="p-6 flex flex-col flex-grow">
-                    <h3 className="text-xl font-bold text-primary mb-2">{campaign.title}</h3>
+                    <Link to={`/campaigns/${campaign.id}`} className="hover:text-secondary transition-colors">
+                      <h3 className="text-xl font-bold text-primary mb-2">{campaign.title}</h3>
+                    </Link>
                     <p className="text-gray-600 text-sm mb-4 line-clamp-3 flex-grow">{campaign.description}</p>
                     
                     {isVolunteer ? (
@@ -115,7 +117,7 @@ const Campaigns: React.FC = () => {
                       </button>
                     ) : (
                       <button 
-                        onClick={() => navigate('/donate', { state: { campaignId: campaign.id } })}
+                        onClick={() => navigate(`/campaigns/${campaign.id}`)}
                         className="w-full bg-primary text-white font-bold py-3 rounded-lg hover:bg-[#001b54] transition-colors mt-auto"
                       >
                         Donate Now
