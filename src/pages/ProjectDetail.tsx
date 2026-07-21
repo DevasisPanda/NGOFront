@@ -146,7 +146,7 @@ const ProjectDetail: React.FC = () => {
                   </span>
                   <div>
                     <span className="block text-[11px] font-bold text-gray-400 uppercase tracking-wider">Organization</span>
-                    <span className="text-[14px] text-primary font-semibold leading-tight">Valmiki Samaj Trust</span>
+                    <span className="text-[14px] text-primary font-semibold leading-tight">Valmiki Samaj Charitable Trust</span>
                   </div>
                 </div>
               </div>
