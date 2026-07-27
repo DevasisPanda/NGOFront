@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { trpc } from '../lib/trpc';
 import { toast } from 'sonner';
 
@@ -11,6 +11,9 @@ const SignIn: React.FC = () => {
   const [isRedirecting, setIsRedirecting] = useState(false);
   
   const navigate = useNavigate();
+  const location = useLocation();
+  const from = (location.state as any)?.from?.pathname || "/";
+  
   const createHandoffMutation = trpc.auth.createHandoff.useMutation();
 
   const loginMutation = trpc.auth.login.useMutation({
@@ -33,7 +36,8 @@ const SignIn: React.FC = () => {
             }
             return 'http://localhost:5000';
           };
-          window.location.href = `${getApiUrl()}/sso?code=${handoffData.handoffCode}&role=${data.user.role}`;
+          const redirectUrl = from !== "/" ? `&redirect=${encodeURIComponent(window.location.origin + from)}` : "";
+          window.location.href = `${getApiUrl()}/sso?code=${handoffData.handoffCode}&role=${data.user.role}${redirectUrl}`;
         },
         onError: (err) => {
           console.error("SSO Handoff generation failed:", err);

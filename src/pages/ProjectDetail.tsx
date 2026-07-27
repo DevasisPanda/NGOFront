@@ -84,13 +84,12 @@ const ProjectDetail: React.FC = () => {
             </div>
 
             {/* Proportional Project Image container */}
-            <div className="w-full aspect-[16/10] md:aspect-[16/9] rounded-3xl overflow-hidden shadow-md border border-gray-100 bg-white relative group">
+            <div className="w-full aspect-video rounded-3xl overflow-hidden shadow-md border border-gray-100 bg-slate-100 relative group">
               <img 
                 src={project.image || 'https://via.placeholder.com/800x600?text=No+Image'} 
                 alt={project.title} 
-                className="w-full h-full object-cover object-center group-hover:scale-[1.02] transition-transform duration-500"
+                className="w-full h-full object-cover group-hover:scale-[1.01] transition-transform duration-500"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-primary/10 via-transparent to-transparent pointer-events-none"></div>
             </div>
 
             {/* Project description rendered fully inline (no scrollable modal required) */}

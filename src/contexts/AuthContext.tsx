@@ -21,7 +21,7 @@ type AuthContextType = {
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
-  const [token, setToken] = useState<string | null>(() => localStorage.getItem('token'));
+  const [token, setToken] = useState<string | null>(() => localStorage.getItem('token') || localStorage.getItem('authToken'));
   const [user, setUser] = useState<User | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   
@@ -38,6 +38,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     const params = new URLSearchParams(window.location.search);
     if (params.get('action') === 'logout' || params.get('logout') === 'true') {
       localStorage.removeItem('token');
+      localStorage.removeItem('authToken');
       setToken(null);
       setUser(null);
       // Remove query param from URL so it doesn't keep logging out on refresh
@@ -49,8 +50,10 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   useEffect(() => {
     if (token) {
       localStorage.setItem('token', token);
+      localStorage.setItem('authToken', token);
     } else {
       localStorage.removeItem('token');
+      localStorage.removeItem('authToken');
       setUser(null);
     }
   }, [token]);

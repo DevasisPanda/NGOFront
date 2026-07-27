@@ -46,6 +46,22 @@ const Donate = () => {
     panNumber: '',
     campaignId: campaignState.campaignId,
   });
+
+  // Sync URL search parameters (amount, purpose, cause) into donation form
+  useEffect(() => {
+    const searchParams = new URLSearchParams(location.search);
+    const urlAmount = searchParams.get('amount');
+    const urlPurpose = searchParams.get('purpose') || searchParams.get('cause');
+
+    if (urlAmount || urlPurpose) {
+      setForm((prev) => ({
+        ...prev,
+        amount: urlAmount ? urlAmount : prev.amount,
+        purpose: urlPurpose ? decodeURIComponent(urlPurpose) : prev.purpose,
+      }));
+    }
+  }, [location.search]);
+
   const [step, setStep] = useState<PaymentStep>('form');
   const [receiptNumber, setReceiptNumber] = useState('');
   const [paymentError, setPaymentError] = useState('');
@@ -327,20 +343,27 @@ const Donate = () => {
                 <div className="bg-[#f3f3f4] px-4 flex items-center">
                   <span className="material-symbols-outlined text-[#45464e]">volunteer_activism</span>
                 </div>
-                <select
-                  className="flex-1 bg-white border-none px-4 py-[12px] focus:ring-0 outline-none text-[#45464e] appearance-none notranslate"
+                <input
+                  className="flex-1 bg-white border-none px-4 py-[12px] focus:ring-0 outline-none text-[#45464e] notranslate"
                   translate="no"
                   name="purpose"
+                  placeholder="Purpose / Cause of Donation (e.g. Support a Child, Education)"
+                  type="text"
+                  list="donation-purposes"
                   value={form.purpose}
                   onChange={handleChange}
-                >
-                  <option value="">Purpose of Donation (Optional)</option>
-                  <option value="education">Education</option>
-                  <option value="health">Health</option>
-                  <option value="general">General</option>
-                  <option value="emergency">Emergency Relief</option>
-                  <option value="community">Community Development</option>
-                </select>
+                />
+                <datalist id="donation-purposes">
+                  <option value="Support a Child" />
+                  <option value="Educational Kit" />
+                  <option value="Nutrition Support" />
+                  <option value="Paradise Child Home - Orphan Care" />
+                  <option value="Education Sponsorship" />
+                  <option value="Women's Empowerment" />
+                  <option value="Support for Orphan Girls" />
+                  <option value="Healthcare & Medical Assistance" />
+                  <option value="General Welfare" />
+                </datalist>
               </div>
 
               {/* 80G Info */}

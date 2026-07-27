@@ -18,6 +18,7 @@ const Donate = lazy(() => import('./pages/Donate'));
 const Contact = lazy(() => import('./pages/Contact'));
 const Gallery = lazy(() => import('./pages/Gallery'));
 const Mission = lazy(() => import('./pages/Mission'));
+const Impact = lazy(() => import('./pages/Impact'));
 const Projects = lazy(() => import('./pages/Projects'));
 const Events = lazy(() => import('./pages/Events'));
 const Beneficiaries = lazy(() => import('./pages/Beneficiaries'));
@@ -44,11 +45,19 @@ const Volunteer = lazy(() => import('./pages/Volunteer'));
 const CsrPartnership = lazy(() => import('./pages/CsrPartnership'));
 const NotFound = lazy(() => import('./pages/NotFound'));
 
-// Simple loading indicator for Suspense fallback
+// Custom oddly rotating square loader for Suspense fallback
 const PageLoader = () => (
-  <div className="min-h-[50vh] flex flex-col items-center justify-center p-6">
-    <div className="w-12 h-12 border-4 border-t-orange-500 border-r-slate-200 border-b-slate-200 border-l-slate-200 rounded-full animate-spin mb-4"></div>
-    <p className="text-slate-500 font-semibold text-sm">Loading page...</p>
+  <div className="min-h-[60vh] flex flex-col items-center justify-center p-6 bg-slate-50/50">
+    <div className="relative w-16 h-16 flex items-center justify-center mb-6">
+      {/* Outer Glowing Square Frame */}
+      <div className="absolute inset-0 border-2 border-[#061941]/20 rounded-2xl animate-odd-glow"></div>
+      {/* Inner Oddly Rotating & Morphing Square Box */}
+      <div className="w-10 h-10 bg-[#061941] border-2 border-[#fed813] shadow-lg animate-odd-square"></div>
+    </div>
+    <p className="text-[#061941] font-extrabold text-sm tracking-wider uppercase animate-pulse">
+      Valmiki Samaj Charitable Trust
+    </p>
+    <p className="text-gray-400 font-medium text-xs mt-1">Loading experience...</p>
   </div>
 );
 
@@ -79,6 +88,8 @@ function App() {
                 <Route element={<PageTransition />}>
                   <Route path="/" element={<Home />} />
                   <Route path="/about" element={<AboutUs />} />
+                  <Route path="/mission" element={<Mission />} />
+                  <Route path="/impact" element={<Impact />} />
                   <Route path="/donate" element={<Donate />} />
                   <Route path="/contact" element={<Contact />} />
                   <Route path="/gallery" element={<Gallery />} />

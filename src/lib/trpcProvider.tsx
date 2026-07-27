@@ -31,7 +31,7 @@ export function TRPCProvider({ children }: { children: React.ReactNode }) {
           url: `${getBaseUrl()}/api/trpc`,
           transformer: superjson,
           async headers() {
-            const token = localStorage.getItem('token');
+            const token = localStorage.getItem('token') || localStorage.getItem('authToken');
             return {
               ...(token ? { authorization: `Bearer ${token}` } : {}),
             };

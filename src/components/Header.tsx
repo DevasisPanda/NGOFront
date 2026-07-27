@@ -276,6 +276,7 @@ const Header: React.FC = () => {
                 <div className="bg-white text-primary shadow-lg rounded-b py-2 w-48 border-t-2 border-secondary">
                   <Link to="/about" className="dropdown-link">About Us</Link>
                   <Link to="/mission" className="dropdown-link">Mission & Vision</Link>
+                  <Link to="/impact" className="dropdown-link">Our Impact</Link>
                   <Link to="/achievements" className="dropdown-link">Achievements</Link>
                   <Link to="/certifications" className="dropdown-link">Certifications</Link>
                   <Link to="/audit" className="dropdown-link">Audit</Link>
@@ -354,6 +355,7 @@ const Header: React.FC = () => {
                 <div className="bg-[#0a2560] flex flex-col text-sm py-2">
                   <Link to="/about" className="nav-link-padding" onClick={() => setIsMobileMenuOpen(false)}>About Us</Link>
                   <Link to="/mission" className="nav-link-padding" onClick={() => setIsMobileMenuOpen(false)}>Mission & Vision</Link>
+                  <Link to="/impact" className="nav-link-padding" onClick={() => setIsMobileMenuOpen(false)}>Our Impact</Link>
                   <Link to="/achievements" className="nav-link-padding" onClick={() => setIsMobileMenuOpen(false)}>Achievements</Link>
                   <Link to="/certifications" className="nav-link-padding" onClick={() => setIsMobileMenuOpen(false)}>Certifications</Link>
                   <Link to="/audit" className="nav-link-padding" onClick={() => setIsMobileMenuOpen(false)}>Audit</Link>

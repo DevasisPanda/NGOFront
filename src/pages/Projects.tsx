@@ -62,13 +62,13 @@ const Projects: React.FC = () => {
 
                 return (
                   <div className="card-basic hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 flex flex-col h-full" key={project.id}>
-                    <Link to={`/project/${project.id}`} className="block overflow-hidden h-48 relative group">
+                    <Link to={`/project/${project.id}`} className="block overflow-hidden w-full aspect-video relative group bg-slate-100">
                       <img 
                         alt={project.title} 
                         className="card-img w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" 
                         src={imgSrc} 
                       />
-                      <div className="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-colors duration-300" />
+                      <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-300 pointer-events-none" />
                     </Link>
                     
                     <div className="card-content flex-1 flex flex-col p-6">
