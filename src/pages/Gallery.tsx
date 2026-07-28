@@ -64,20 +64,20 @@ const Gallery: React.FC = () => {
           </div>
         )}
 
-        <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-5 flex flex-col justify-end text-white z-10">
-          <span className="text-[10px] font-extrabold tracking-wider uppercase text-secondary mb-1.5 inline-block">
+        <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/60 to-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-5 flex flex-col justify-end text-white z-10">
+          <span className="text-[11px] font-black tracking-widest uppercase text-[#ed8901] mb-1 inline-block drop-shadow">
             {item.category || 'General'}
           </span>
-          <h4 className="font-bold text-base sm:text-lg leading-tight mb-1">{item.title}</h4>
+          <h4 className="font-extrabold text-base sm:text-lg text-white leading-snug mb-1 drop-shadow">{item.title}</h4>
           
           {item.redirectUrl && (
-            <span className="text-[10px] text-secondary font-bold flex items-center gap-1 mt-1 mb-2">
-              <span className="material-symbols-outlined text-[12px]">link</span> Click to visit link
+            <span className="text-[11px] text-[#ed8901] font-extrabold flex items-center gap-1 mt-1 mb-2">
+              <span className="material-symbols-outlined text-[13px]">link</span> Click to visit link
             </span>
           )}
 
           {item.description && (
-            <p className="text-xs text-gray-200 opacity-90 line-clamp-2 mt-1 font-medium">{item.description}</p>
+            <p className="text-xs text-white opacity-100 line-clamp-3 mt-1 font-semibold leading-relaxed drop-shadow-sm">{item.description}</p>
           )}
         </div>
       </>
