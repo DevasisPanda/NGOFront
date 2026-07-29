@@ -11,6 +11,9 @@ import GA4PageTracker from './components/GA4PageTracker';
 import PageTransition from './components/PageTransition';
 import ErrorBoundary from './components/ErrorBoundary';
 
+import SignIn from './pages/SignIn';
+import SignUp from './pages/SignUp';
+
 // Lazy loaded page components
 const Home = lazy(() => import('./pages/Home'));
 const AboutUs = lazy(() => import('./pages/AboutUs'));
@@ -23,10 +26,8 @@ const Projects = lazy(() => import('./pages/Projects'));
 const Events = lazy(() => import('./pages/Events'));
 const Beneficiaries = lazy(() => import('./pages/Beneficiaries'));
 const ViewBeneficiary = lazy(() => import('./pages/ViewBeneficiary'));
-const SignIn = lazy(() => import('./pages/SignIn'));
 const ForgotPassword = lazy(() => import('./pages/ForgotPassword'));
 const ResetPassword = lazy(() => import('./pages/ResetPassword'));
-const SignUp = lazy(() => import('./pages/SignUp'));
 const Achievements = lazy(() => import('./pages/Achievements'));
 const Certifications = lazy(() => import('./pages/Certifications'));
 const Audit = lazy(() => import('./pages/Audit'));
