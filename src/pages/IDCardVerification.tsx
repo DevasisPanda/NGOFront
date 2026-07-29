@@ -135,8 +135,8 @@ const IDCardVerification: React.FC = () => {
                 <VerifiableDocument
                   templateId="id_card"
                   fieldValues={{
+                    photo: member?.profileImage || "",
                     fullName: member?.name || "",
-                    designation: member?.designation || "Trust Member",
                     cardNumber: card?.cardNumber || "",
                     mobile: member?.phone || "N/A",
                     email: member?.email || "N/A",
@@ -147,18 +147,7 @@ const IDCardVerification: React.FC = () => {
                   dbTemplates={dbTemplates}
                   cardRef={cardRef}
                   className="max-w-md w-full rounded-xl"
-                >
-                  {/* Profile Photo Overlay */}
-                  <div className="absolute top-[41.5%] left-[23%] -translate-x-1/2 w-[16%] aspect-[1/1] rounded-xl overflow-hidden shadow-sm bg-white border border-gray-100 flex items-center justify-center">
-                    {member?.profileImage ? (
-                      <img src={member.profileImage} alt="Profile" className="w-full h-full object-cover" />
-                    ) : (
-                      <div className="w-full h-full flex items-center justify-center text-teal-800 text-[3.5cqw] font-bold bg-teal-100">
-                        {member?.name?.slice(0, 2).toUpperCase() || 'MB'}
-                      </div>
-                    )}
-                  </div>
-                </VerifiableDocument>
+                />
               </div>
             </div>
           )}
