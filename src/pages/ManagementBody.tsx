@@ -1,3 +1,7 @@
+import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { trpc } from '../lib/trpc';
+import { managementMembers } from '../data/managementMembers';
 import CEO1Img from '../assets/CEO1.jpeg';
 import CEO2Img from '../assets/CEO2.jpeg';
 import CEO3Img from '../assets/CEO3.jpeg';
