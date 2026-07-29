@@ -1,21 +1,34 @@
 import React, { useEffect } from 'react';
 import { useParams, Link, Navigate } from 'react-router-dom';
+import { trpc } from '../lib/trpc';
 import { managementMembers } from '../data/managementMembers';
 
 const MemberProfile: React.FC = () => {
   const { id } = useParams<{ id: string }>();
-  const member = managementMembers.find(m => m.id === Number(id));
+  const numericId = Number(id);
+
+  const { data: dbMember, isLoading } = trpc.managementBody.getById.useQuery(
+    { id: numericId },
+    { enabled: !isNaN(numericId), staleTime: 60 * 1000 }
+  );
+
+  const staticMember = managementMembers.find(m => m.id === numericId);
+  const member = dbMember || staticMember;
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [id]);
 
-  if (!member) {
+  if (!member && !isLoading) {
     return <Navigate to="/management-body" replace />;
   }
 
+  if (!member) {
+    return <div className="py-20 text-center text-gray-500 font-semibold">Loading leadership profile...</div>;
+  }
+
   // Parse bullet points out of the bio text to render them as structured key-value pairs
-  const bioLines = member.bio.split('\n');
+  const bioLines = (member.bio || '').split('\n');
   const details: Array<{ key: string; value: string; icon: string }> = [];
   const cleanBioParagraphs: string[] = [];
 

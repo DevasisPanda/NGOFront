@@ -1,8 +1,16 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { trpc } from '../lib/trpc';
 import { managementMembers } from '../data/managementMembers';
 
 const ManagementBody: React.FC = () => {
+  const { data: dbMembers } = trpc.managementBody.getAll.useQuery(undefined, {
+    staleTime: 60 * 1000,
+    refetchOnWindowFocus: false,
+  });
+
+  const displayMembers = dbMembers && dbMembers.length > 0 ? dbMembers : managementMembers;
+
   useEffect(() => {
     const observerOptions = {
       threshold: 0.1
@@ -16,12 +24,15 @@ const ManagementBody: React.FC = () => {
       });
     }, observerOptions);
 
-    document.querySelectorAll('.fade-in-section').forEach(section => {
-      observer.observe(section);
-    });
+    // Observe immediately and on displayMembers update
+    setTimeout(() => {
+      document.querySelectorAll('.fade-in-section').forEach(section => {
+        observer.observe(section);
+      });
+    }, 100);
 
     return () => observer.disconnect();
-  }, []);
+  }, [displayMembers]);
 
   return (
     <div className="page-section fade-in-section">
@@ -47,7 +58,7 @@ const ManagementBody: React.FC = () => {
             <div className="w-24 h-1.5 bg-secondary mx-auto mt-6 rounded-full"></div>
           </div>
 
-          {managementMembers.map((member, index) => (
+          {displayMembers.map((member: any, index: number) => (
             <div key={member.id} className="bg-white rounded-3xl overflow-hidden shadow-[0_10px_40px_rgb(0,0,0,0.06)] border border-gray-100 mb-16 fade-in-section opacity-0 translate-y-5 transition-all duration-800 ease-out [&.is-visible]:opacity-100 [&.is-visible]:translate-y-0">
               <div className={`flex flex-col ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} w-full`}>
                 {/* Image Side */}
@@ -74,7 +85,7 @@ const ManagementBody: React.FC = () => {
                   </div>
                   
                   <p className="text-muted text-[16px] leading-relaxed mb-8 whitespace-pre-line">
-                    {member.bio.split('\n')[0]}
+                    {member.bio ? member.bio.split('\n')[0] : ''}
                   </p>
 
                   <div className="space-y-6 mb-10">
