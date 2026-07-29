@@ -128,6 +128,35 @@ export function VerifiableDocument({
           }}
         >
           {template.fields.map((field) => {
+            if (field.id === "photo") {
+              const photoSrc = fieldValues.photo || fieldValues.visitorPhoto || fieldValues.profileImage || fieldValues.cardImage;
+              const boxWidth = field.size || 160;
+              const boxHeight = Math.round(boxWidth * 1.25);
+              const boxX = field.x - Math.round(boxWidth / 2);
+              const boxY = field.y;
+
+              return (
+                <div
+                  key="photo"
+                  style={{
+                    position: "absolute",
+                    left: `${boxX}px`,
+                    top: `${boxY}px`,
+                    width: `${boxWidth}px`,
+                    height: `${boxHeight}px`,
+                    borderRadius: "10px",
+                    overflow: "hidden",
+                    backgroundColor: "#f8fafc",
+                    border: "1px solid #cbd5e1",
+                  }}
+                >
+                  {photoSrc ? (
+                    <img src={photoSrc} alt="Member/Visitor Photo" className="w-full h-full object-cover" crossOrigin="anonymous" />
+                  ) : null}
+                </div>
+              );
+            }
+
             const val = fieldValues[field.id];
             if (val === undefined || val === null || val === "") return null;
 
