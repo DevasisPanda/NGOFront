@@ -27,11 +27,11 @@ const staticImageMap: Record<number, string> = {
 };
 
 const resolveMemberImage = (member: any, index: number): string => {
-  if (!member.image || member.image.includes('/assets/CEO') || member.image.includes('valmikisamajcharitabletrust.org/assets/')) {
-    const id = member.id || (index + 1);
-    if (staticImageMap[id]) return staticImageMap[id];
+  const orderNum = member.displayOrder || ((index % 12) + 1);
+  if (!member.image || member.image.includes('/assets/') || member.image.includes('CEO')) {
+    if (staticImageMap[orderNum]) return staticImageMap[orderNum];
   }
-  return member.image || staticImageMap[(index % 12) + 1];
+  return member.image || staticImageMap[orderNum] || `/assets/CEO${orderNum}.jpeg`;
 };
 
 const ManagementBody: React.FC = () => {
