@@ -9,11 +9,17 @@ const MemberProfile: React.FC = () => {
 
   const { data: dbMember, isLoading } = trpc.managementBody.getById.useQuery(
     { id: numericId },
-    { enabled: !isNaN(numericId), staleTime: 60 * 1000 }
+    { enabled: !isNaN(numericId) }
   );
 
-  const staticMember = managementMembers.find(m => m.id === numericId);
-  const member = dbMember || staticMember;
+  const staticMember = managementMembers.find(m => m.id === numericId || m.id === dbMember?.displayOrder);
+  const rawMember = dbMember || staticMember;
+
+  const member = rawMember ? {
+    ...rawMember,
+    bio: (dbMember?.bio && dbMember.bio.length >= (staticMember?.bio?.length || 0)) ? dbMember.bio : (staticMember?.bio || rawMember.bio),
+    points: (dbMember?.points && Array.isArray(dbMember.points) && dbMember.points.length > 0) ? dbMember.points : (staticMember?.points || rawMember.points),
+  } : undefined;
 
   useEffect(() => {
     window.scrollTo(0, 0);
