@@ -142,7 +142,7 @@ const ViewInternship: React.FC = () => {
                         <img 
                           src={cert.certificateType === 'achievement' 
                             ? "https://res.cloudinary.com/dxmovdiru/image/upload/v1781611663/ngo-management/templates/achievement_certificate_template.jpg" 
-                            : "https://res.cloudinary.com/dxmovdiru/image/upload/v1781611666/ngo-management/templates/membership_certificate_template.jpg"} 
+                            : "https://res.cloudinary.com/lbpicumc/image/upload/v1785349837/ngo-management/templates/membership_certificate_template.jpg"} 
                           alt="Certificate Template" 
                           className="w-full h-full object-cover" 
                         />
