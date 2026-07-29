@@ -1,13 +1,41 @@
-import React, { useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { trpc } from '../lib/trpc';
-import { managementMembers } from '../data/managementMembers';
+import CEO1Img from '../assets/CEO1.jpeg';
+import CEO2Img from '../assets/CEO2.jpeg';
+import CEO3Img from '../assets/CEO3.jpeg';
+import CEO4Img from '../assets/CEO4.jpeg';
+import CEO5Img from '../assets/CEO5.jpeg';
+import CEO6Img from '../assets/CEO6.jpeg';
+import CEO7Img from '../assets/CEO7.jpeg';
+import CEO8Img from '../assets/CEO8.jpeg';
+import CEO9Img from '../assets/CEO9.jpeg';
+import CEO10Img from '../assets/CEO10.jpeg';
+import CEO11Img from '../assets/CEO11.jpeg';
+import CEO12Img from '../assets/CEO12.jpeg';
+
+const staticImageMap: Record<number, string> = {
+  1: CEO1Img,
+  2: CEO2Img,
+  3: CEO3Img,
+  4: CEO4Img,
+  5: CEO5Img,
+  6: CEO6Img,
+  7: CEO7Img,
+  8: CEO8Img,
+  9: CEO9Img,
+  10: CEO10Img,
+  11: CEO11Img,
+  12: CEO12Img,
+};
+
+const resolveMemberImage = (member: any, index: number): string => {
+  if (!member.image || member.image.includes('/assets/CEO') || member.image.includes('valmikisamajcharitabletrust.org/assets/')) {
+    const id = member.id || (index + 1);
+    if (staticImageMap[id]) return staticImageMap[id];
+  }
+  return member.image || staticImageMap[(index % 12) + 1];
+};
 
 const ManagementBody: React.FC = () => {
-  const { data: dbMembers } = trpc.managementBody.getAll.useQuery(undefined, {
-    staleTime: 60 * 1000,
-    refetchOnWindowFocus: false,
-  });
+  const { data: dbMembers } = trpc.managementBody.getAll.useQuery();
 
   const displayMembers = dbMembers && dbMembers.length > 0 ? dbMembers : managementMembers;
 
@@ -64,7 +92,14 @@ const ManagementBody: React.FC = () => {
                 {/* Image Side */}
                 <div className="lg:w-[35%] relative h-[400px] lg:h-auto bg-primary cursor-pointer group hover:opacity-90 transition-opacity">
                   <Link to={`/member/${member.id}`} className="block w-full h-full">
-                    <img src={member.image} alt={member.name} className="w-full h-full object-cover object-top" />
+                    <img 
+                      src={resolveMemberImage(member, index)} 
+                      alt={member.name} 
+                      onError={(e) => {
+                        (e.target as HTMLImageElement).src = `https://ui-avatars.com/api/?name=${encodeURIComponent(member.name)}&background=061941&color=fed813&size=512`;
+                      }}
+                      className="w-full h-full object-cover object-top" 
+                    />
                     <div className="absolute inset-0 bg-gradient-to-t from-primary via-transparent to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
                     <div className="absolute bottom-4 left-8 right-8 flex justify-center">
                       <div className="bg-white/15 backdrop-blur-xl rounded-[28px] px-7 py-2 text-center max-w-lg w-full shadow-[0_20px_50px_rgba(0,0,0,0.14)] border border-white/20 group-hover:bg-white/25 transition-colors">

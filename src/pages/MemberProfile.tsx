@@ -172,8 +172,11 @@ const MemberProfile: React.FC = () => {
             {/* Circular Rounded Image container with padding context */}
             <div className="w-full aspect-[3/4] h-auto rounded-3xl overflow-hidden shadow-md border border-gray-100 relative bg-white group">
               <img 
-                src={member.image} 
+                src={member.image || staticMember?.image} 
                 alt={member.name} 
+                onError={(e) => {
+                  (e.target as HTMLImageElement).src = `https://ui-avatars.com/api/?name=${encodeURIComponent(member.name)}&background=061941&color=fed813&size=512`;
+                }}
                 className="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-500"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-primary/30 via-transparent to-transparent pointer-events-none"></div>
