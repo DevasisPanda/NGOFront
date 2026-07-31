@@ -10,6 +10,7 @@ import ScrollToTop from './components/ScrollToTop';
 import GA4PageTracker from './components/GA4PageTracker';
 import PageTransition from './components/PageTransition';
 import ErrorBoundary from './components/ErrorBoundary';
+import FloatingWhatsAppBadge from './components/FloatingWhatsAppBadge';
 
 import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp';
@@ -80,6 +81,7 @@ function App() {
       <Toaster richColors position="top-right" />
       <ScrollToTop />
       <GA4PageTracker />
+      <FloatingWhatsAppBadge />
       <div className="app-container flex flex-col min-h-screen">
         <ErrorBoundary><Header /></ErrorBoundary>
         <main className="flex-1 flex flex-col">
