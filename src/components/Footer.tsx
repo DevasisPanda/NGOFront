@@ -1,9 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { FaFacebookF, FaInstagram, FaYoutube, FaLinkedinIn } from 'react-icons/fa';
 
 const Footer: React.FC = () => {
   const [activeModal, setActiveModal] = useState<'terms' | 'privacy' | null>(null);
+
+  // Load freecounterstat.com visitor counter script
+  useEffect(() => {
+    const containerId = 'sfcefxke33zbpfyw3hsykw9drfb9a8na81y';
+    if (!document.getElementById(containerId)) return;
+    const script = document.createElement('script');
+    script.src = 'https://counter11.optistats.ovh/private/counter.js?c=efxke33zbpfyw3hsykw9drfb9a8na81y&down=async';
+    script.async = true;
+    document.getElementById(containerId)?.appendChild(script);
+    return () => { script.remove(); };
+  }, []);
 
   return (
     <footer className="bg-[#1a1a1a] text-white pt-16 pb-8 border-t-4 border-secondary">
@@ -91,6 +102,17 @@ const Footer: React.FC = () => {
       
       <div className="container-main pt-8 border-t border-gray-800 text-center text-gray-500 text-sm">
         <p>© {new Date().getFullYear()} Valmiki Samaj Charitable Trust. All Rights Reserved.</p>
+        {/* Visitor Counter */}
+        <div className="flex items-center justify-center gap-2 mt-3 text-xs text-gray-500">
+          <span className="material-symbols-outlined text-sm text-secondary">counter_1</span>
+          <span>Visitor Counter:</span>
+          <div id="sfcefxke33zbpfyw3hsykw9drfb9a8na81y" className="inline-block" />
+          <noscript>
+            <a href="https://www.freecounterstat.com" title="hit counter">
+              <img src="https://counter11.optistats.ovh/private/freecounterstat.php?c=efxke33zbpfyw3hsykw9drfb9a8na81y" alt="hit counter" style={{ border: 0 }} />
+            </a>
+          </noscript>
+        </div>
         <p className="text-xs text-gray-600 mt-2">Create by Star Marketing</p>
       </div>
 
