@@ -7,10 +7,7 @@ declare global {
   }
 }
 
-/**
- * Tracks SPA page views on route changes by sending page_view events to GA4.
- * Place this inside <Router> alongside <ScrollToTop />.
- */
+// Tracks SPA page views on route changes
 export default function GA4PageTracker() {
   const location = useLocation();
 
