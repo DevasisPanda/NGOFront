@@ -121,7 +121,7 @@ const Contact: React.FC = () => {
               <span className="material-symbols-outlined icon-white-lg">mail</span>
             </div>
             <h3 className="text-primary text-2xl font-bold mb-2">Email Us</h3>
-            <p className="text-[#45464e] font-medium text-base break-all">valmikisamajchiritabletrust@gmail.com</p>
+            <p className="text-[#45464e] font-medium text-base break-all">valmikisamajcharitabletrust@gmail.com</p>
           </div>
         </div>
       </section>

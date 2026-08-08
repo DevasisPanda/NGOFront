@@ -86,8 +86,8 @@ const Footer: React.FC = () => {
             </li>
             <li className="flex items-start gap-3 min-w-0">
               <span className="material-symbols-outlined text-secondary shrink-0">mail</span>
-              <a href="mailto:valmikisamajchiritabletrust@gmail.com" className="hover:text-secondary transition-colors text-[13px] md:text-sm whitespace-nowrap">
-                valmikisamajchiritabletrust@gmail.com
+              <a href="mailto:valmikisamajcharitabletrust@gmail.com" className="hover:text-secondary transition-colors text-[13px] md:text-sm whitespace-nowrap">
+                valmikisamajcharitabletrust@gmail.com
               </a>
             </li>
             <li className="flex items-start gap-3 min-w-0">
